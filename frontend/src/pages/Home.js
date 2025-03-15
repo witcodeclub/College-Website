@@ -1,12 +1,8 @@
+// ✅ Ensure correct export
 import React from "react";
 
-function Home() {
-  return (
-    <div>
-      <h1>Welcome to the College Website!</h1>
-      <p>This is the homepage.</p>
-    </div>
-  );
-}
+const Home = () => {
+  return <h1>Welcome to Home Page</h1>;
+};
 
-export default Home; // ✅ Default export
+export default Home;  // ✅ Must be 'default' export
