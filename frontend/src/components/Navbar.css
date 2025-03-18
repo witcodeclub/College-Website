@@ -1,7 +1,7 @@
 /* Navbar Container */
 .navbar {
     background-color: #0A2647; /* Deep Blue */
-    padding: 14px 20px; /* More padding on all sides */
+    padding: 10px 10px; /* More padding on all sides */
     display: flex;
     justify-content: center;
   }
@@ -50,7 +50,7 @@
   
   /* Dropdown Items */
   .dropdown-item {
-    color: #2E8B57; /* Emerald Green */
+    color: #0A2647;; /* Emerald Green */
     padding: 10px;
     font-size: 15px;
     cursor: pointer;
@@ -59,7 +59,7 @@
   
   /* Dropdown Hover Effect */
   .dropdown-item:hover {
-    background-color: #5DADE2; /* Soft Sky Blue */
+    background-color:#1B3B6F; /* Soft Sky Blue */
     color: white;
     border-radius: 5px;
   }
