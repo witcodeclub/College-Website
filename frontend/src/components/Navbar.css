@@ -1,0 +1,91 @@
+/* Navbar Container */
+.navbar {
+    background-color: #0A2647; /* Deep Blue */
+    padding: 14px 20px; /* More padding on all sides */
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Navbar List */
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Equal spacing for all */
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Navbar Item */
+  .nav-item {
+    position: relative;
+    color: white;
+    font-size: 17px; /* Balanced font size */
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px 15px; /* More padding */
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover Effect */
+  .nav-item:hover {
+    background-color: #1B3B6F; /* Slightly brighter blue */
+    border-radius: 5px;
+  }
+  
+  /* Dropdown */
+  .dropdown {
+    position: absolute;
+    top: 45px; /* Adjusted for padding */
+    left: 0;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 10px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+  
+  /* Dropdown Items */
+  .dropdown-item {
+    color: #2E8B57; /* Emerald Green */
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Dropdown Hover Effect */
+  .dropdown-item:hover {
+    background-color: #5DADE2; /* Soft Sky Blue */
+    color: white;
+    border-radius: 5px;
+  }
+  
+  /* Contact Us and Sign In */
+  .contact {
+    background-color: #2E8B57; /* Emerald Green */
+    padding: 12px 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact:hover {
+    background-color: #5DADE2; /* Sky Blue */
+  }
+  
+  .sign-in {
+    background-color: white;
+    color: #0A2647; /* Deep Blue */
+    padding: 12px 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .sign-in:hover {
+    background-color: #5DADE2; /* Sky Blue */
+    color: white;
+  }
+  

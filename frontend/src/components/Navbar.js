@@ -1,54 +1,109 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import "./Navbar.css"; // Import CSS for styling
 
 const Navbar = () => {
-    const navbarStyle = {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "#0073e6",
-        padding: "15px 30px",
-        color: "white"
-    };
+  const [dropdown, setDropdown] = useState(null);
 
-    const logoStyle = {
-        fontSize: "1.5rem",
-        fontWeight: "bold",
-        textDecoration: "none",
-        color: "white"
-    };
+  const menuItems = [
+    {
+      title: "About Us",
+      submenu: [
+        "Mission & Vision",
+        "History",
+        "About LNMU",
+        "VC's Message",
+        "Director’s Message",
+        "Faculty & Staff",
+        "Department",
+        "Social Media",
+      ],
+    },
+    {
+      title: "Admission",
+      submenu: [
+        "Admission Process",
+        "Fee Structure",
+        "Apply Now",
+        "Eligibility Criteria",
+        "Courses Offered",
+        "Entrance Exam",
+        "Contact Admission Info",
+        "Download Brochure",
+        "Reservation",
+      ],
+    },
+    {
+      title: "Academics",
+      submenu: ["Courses", "Syllabus & Curriculum", "Academic Policies"],
+    },
+    {
+      title: "Facilities",
+      submenu: [
+        "Hostel & Accommodation",
+        "Library",
+        "Labs",
+        "Sports",
+        "WiFi / Water Cooler",
+        "Auditorium",
+        "Clubs",
+        "Canteen",
+        "NSS",
+      ],
+    },
+    {
+      title: "T&P",
+      submenu: [
+        "Alumni List / Message",
+        "About Placements",
+        "Placement Brochure",
+        "Training Process",
+        "T&P Contact Info",
+        "MOU’s",
+      ],
+    },
+    {
+      title: "Student Life",
+      submenu: [
+        "Coding Club",
+        "Cultural Cell",
+        "Sports Club",
+        "Fests",
+        "Canteen",
+        "NSS",
+        "Magazine",
+        "Anti-ragging",
+      ],
+    },
+  ];
 
-    const navLinksStyle = {
-        listStyle: "none",
-        display: "flex",
-        gap: "20px",
-        margin: 0,
-        padding: 0
-    };
-
-    const linkStyle = {
-        textDecoration: "none",
-        color: "white",
-        fontWeight: "500",
-        transition: "0.3s ease-in-out"
-    };
-
-    return (
-        <nav style={navbarStyle}>
-            <div className="logo">
-                <Link to="/" style={logoStyle}>🏫 College Name</Link>
-            </div>
-            <ul style={navLinksStyle}>
-                <li><Link to="/" style={linkStyle}>Home</Link></li>
-                <li><Link to="/about" style={linkStyle}>About Us</Link></li>
-                <li><Link to="/academics" style={linkStyle}>Academics</Link></li>
-                <li><Link to="/admissions" style={linkStyle}>Admissions</Link></li>
-                <li><Link to="/placements" style={linkStyle}>Placements</Link></li>
-                <li><Link to="/resources" style={linkStyle}>Resources</Link></li>
-                <li><Link to="/contact" style={linkStyle}>Contact</Link></li>
-            </ul>
-        </nav>
-    );
+  return (
+    <nav className="navbar">
+      <ul className="nav-list">
+        {menuItems.map((item, index) => (
+          <li
+            key={index}
+            className="nav-item"
+            onMouseEnter={() => setDropdown(index)}
+            onMouseLeave={() => setDropdown(null)}
+          >
+            {item.title}
+            {dropdown === index && (
+              <ul className="dropdown">
+                {item.submenu.map((subItem, subIndex) => (
+                  <li key={subIndex} className="dropdown-item">
+                    {subItem}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+        {/* Contact Us and Sign In */}
+        <li className="nav-item contact">Contact Us</li>
+        <li className="nav-item sign-in">Sign In</li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Navbar;
