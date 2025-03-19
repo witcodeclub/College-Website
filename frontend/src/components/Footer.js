@@ -15,9 +15,6 @@ const Footer = () => {
           </ul>
         </div>
 
-    
-    
-
         {/* Center Section */}
         <div style={{ flex: "1", textAlign: "left", padding: "10px" }}>
           <h3>Location</h3>
@@ -27,27 +24,46 @@ const Footer = () => {
             <br /> Darbhanga, Bihar – 846008
           </p>
         </div>
-
-        {/* Right Section - Social Media */}
+         {/* Right Section - Social Media */}
         <div style={{ flex: "1", textAlign: "left", padding: "10px" }}>
           <h3>Find Us On</h3>
           <div>
-            <a href="#" style={{ margin: "5px" }}><img src="/icons/facebook.png" alt="Facebook" width="25px" /></a>
-            <a href="#" style={{ margin: "5px" }}><img src="/icons/twitter.png" alt="Twitter" width="25px" /></a>
-            <a href="#" style={{ margin: "5px" }}><img src="/icons/instagram.png" alt="Instagram" width="25px" /></a>
-            <a href="#" style={{ margin: "5px" }}><img src="/icons/linkedin.png" alt="LinkedIn" width="25px" /></a>
+          <a href="#" style={{ margin: "10px", color: "#fff", fontSize: "25px" }}>
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a href="#" style={{ margin: "10px", color: "#fff", fontSize: "25px" }}>
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" style={{ margin: "10px", color: "#fff", fontSize: "25px" }}>
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="#" style={{ margin: "10px", color: "#fff", fontSize: "25px" }}>
+              <i className="fab fa-linkedin"></i>
+            </a>
+            
           </div>
         </div>
-      </div>
 
+      </div>
       <hr style={{ margin: "20px 0", borderColor: "#444" }} />
       <p>© 2025 Copyright WIT Darbhanga | Developed by WitCodingClub</p>
     </footer>
   );
 };
 
-
-
-
-
 export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
