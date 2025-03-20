@@ -7,7 +7,6 @@ body, html {
 
 /* ✅ Stick Logo at Top */
 .logo-container {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -38,22 +37,5 @@ body, html {
   padding-bottom: 60px; 
 }
 
-/* ✅ Hero Section Fix (Add Space Below Navbar) */
-/* .hero-section {
-  margin-top: 120px; 
-  width: 100%;
-  text-align: center;
-} */
 
-/* ✅ Footer Fixed at Bottom */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #0A2647;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  z-index: 999;
-}
+
