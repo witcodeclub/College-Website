@@ -34,8 +34,8 @@ const Footer = () => {
         <div>
           <h3>Find Us On</h3>
           <p style={{ fontWeight: "24px" }}>
-            <a href="#" style={{ color: "white",margin: "0 px", fontSize: "24px" }}><FaFacebook /></a>
-            <a href="#" style={{ color: "white",margin: "0 15px", fontSize: "24px" }}><FaInstagram /></a>
+            <a href="https://www.facebook.com/people/apjakwit/61559087061968/?rdid=OIZvadPupztm418C&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1YZQjkpTgV%2F" target="_blank" rel="noopener noreferrer" style={{ color: "white",margin: "0 px", fontSize: "24px" }}><FaFacebook /></a>
+            <a href="https://www.instagram.com/apjak.wit/?igsh=Y2EzNnFnODk1ZHFp#" style={{ color: "white",margin: "0 15px", fontSize: "24px" }}><FaInstagram /></a>
             <a href="#" style={{ color: "white",margin: "0 15px", fontSize: "24px" }}><FaLinkedin /></a>
             <a href="#" style={{ color: "white", margin: "0 10px", fontSize: "24px" }}><FaTwitter/></a>
           </p>

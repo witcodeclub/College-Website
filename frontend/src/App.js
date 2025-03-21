@@ -10,6 +10,7 @@ import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
 import ChatbotComponent from "./chatbot/ChatbotComponent";
 
+
 function App() {
   return (
     <div>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/academics" element={<Academics />} />
         <Route path="/facilities" element={<Facilities />} />
+        
       </Routes>
       <Footer />
     </div>
