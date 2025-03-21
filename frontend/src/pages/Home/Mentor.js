@@ -22,7 +22,7 @@ const Mentor = () => {
           <img src="/images/director.jpeg" alt="Director" style={imageStyle} />
           <div className="mentor-overlay">
             <h2 style={titleStyle}>DIRECTOR</h2>
-            <p style={nameStyle}>Dr. XYZ</p>
+            <p style={nameStyle}>Dr. Ajay Nath Jha</p>
           </div>
         </div>
 
@@ -30,8 +30,8 @@ const Mentor = () => {
         <div style={cardStyle}>
           <img src="/images/registrar.jpeg" alt="Registrar" style={imageStyle} />
           <div className="mentor-overlay">
-            <h2 style={titleStyle}>REGISTRAR</h2>
-            <p style={nameStyle}>Prof. ABC</p>
+            <h2 style={titleStyle}>REGISTRAR ,LNMU</h2>
+            <p style={nameStyle}>DR. Ajay Kumar Pandit</p>
           </div>
         </div>
 
@@ -39,7 +39,7 @@ const Mentor = () => {
         <div style={cardStyle}>
           <img src="/images/nirmal.jpeg" alt="Faculty" style={imageStyle} />
           <div className="mentor-overlay">
-            <h2 style={titleStyle}>FACULTY</h2>
+            <h2 style={titleStyle}>MENTOR</h2>
             <p style={nameStyle}>Dr. Nirmal Kumar</p>
           </div>
         </div>

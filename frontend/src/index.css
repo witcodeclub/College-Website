@@ -3,39 +3,45 @@ body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  width: 100%;
 }
 
-/* ✅ Stick Logo at Top */
+/* ✅ Logo will be above the Navbar */
 .logo-container {
-  top: 0;
-  left: 0;
   width: 100%;
-  background-color: white; /* Adjust as needed */
-  z-index: 1000;
+  background-color: white; /* Ya jo bhi color chahiye */
   display: flex;
   justify-content: center;
-  padding: 15px 0;
-  height: 60px; /* Set a fixed height for logo */
+  /* padding: 15px 0; */
+  height: auto; /* ✅ Auto height so it adjusts */
 }
 
-/* ✅ Navbar Below Logo */
+/* ✅ Navbar will stick when scrolling */
 .navbar {
-  position: fixed;
-  top: 100px; /* 🛠 Set this to match the logo height */
+  position: sticky;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #0A2647;
   z-index: 999;
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  /* padding: 10px 0; */
 }
 
 /* ✅ Main Content Padding (To Avoid Overlap) */
 .main-content {
-  padding-top: 120px; 
-  padding-bottom: 60px; 
+  /* padding-top: 20px; 
+  padding-bottom: 60px; */
+  width: 100%;
+  max-width: 100%;
 }
 
+/* ✅ Hero Section Fix */
+.hero-section {
+  /* margin-top: 20px;  */
+  width: 100%;
+  text-align: center;
+}
 
 

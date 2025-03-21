@@ -102,7 +102,7 @@ const styles = {
     margin: "auto",
     overflow: "hidden",
     position: "relative",
-    marginTop: "80px", // 👈 Navbar se overlap fix ✅
+
   },
   heroImage: {
     width: "100%",
