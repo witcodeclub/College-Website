@@ -25,7 +25,7 @@ const Campus = () => {
     <div
       style={{
         textAlign: "center",
-        marginTop: "60px",
+        marginTop: "40px",
         padding: "30px",
         border: "2px solid gray",
         maxWidth: "1000px",
