@@ -29,7 +29,7 @@ const Footer = () => {
   }, []);
 
     return (
-        <footer style={{ backgroundColor: '#0B3D91', color: 'white', padding: '20px', textAlign: 'center', position: 'relative' }}>
+        <footer style={{ backgroundColor: '#0A2647', color: 'white', padding: '20px', textAlign: 'center', position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', flexWrap: 'wrap' }}>
                 
                 {/* Left Section - Logo and Address */}
@@ -70,22 +70,22 @@ const Footer = () => {
                 </div>
 
                 {/* Right Section - Weather */}
-                <div style={{ flex: '1', textAlign: 'center', paddingLeft: '120px',paddingRight: '10px' }}>
+                <div style={{ backgroundImage: "linear-gradient(to bottom,#ffffff(2, 50, 147),#e0e0e0(0, 34, 102, 0.98))", color: "white", padding: "15px", marginTop: "15px", borderRadius: "10px", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)", flex: '1', textAlign: 'center', margin: "auto"}}>
                     
-                    <h3>Weather in Darbhanga</h3>
-                    <p>{dateTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                    <p>{dateTime.toLocaleTimeString()}</p>
-                    <p>Temperature: {weather.temp}°C</p>
-                    <p>Humidity: {weather.humidity}%</p>
-                    <p>Wind Speed: {weather.wind} m/s</p>
-                    <p>Condition: {weather.condition}</p>
+                    <h3 style={{fontSize: "25px", marginBottom: "10px"}}>Weather in Darbhanga</h3>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>{dateTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>{dateTime.toLocaleTimeString()}</p>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>Temperature: {weather.temp}°C</p>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>Humidity: {weather.humidity}%</p>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>Wind Speed: {weather.wind} m/s</p>
+                    <p style={{fontSize: "16px", fontWeight: "bold"}}>Condition: {weather.condition}</p>
                     <p>Air Pollution (PM2.5): <strong>{weather.pm25}</strong>💚</p>
                 </div>
             </div>
 
 
    {/* Copyright */}
-      <div style={{Color: "grey-blue", marginTop: "20px", borderTop: "3px solid gray", paddingTop: "10px" }}>
+      <div style={{color: "grey-blue", marginTop: "10px", borderTop: "3px solid gray", paddingTop: "10px" }}>
         © 2025 Copyright WIT Darbhanga | Developed by WitCodingClub
       </div>
     </footer>

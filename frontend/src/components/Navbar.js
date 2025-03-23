@@ -42,7 +42,7 @@ const Navbar = () => {
     {
       title: "Facilities",
       submenu: [
-        { name: "Hostel & Accommodation", path: "/facilities/hostel" },
+        { name: "Hostel", path: "/facilities/hostel" },
         { name: "Library", path: "/facilities/library" },
         { name: "Labs", path: "/facilities/labs" },
         { name: "Sports", path: "/facilities/sports" },
@@ -60,8 +60,8 @@ const Navbar = () => {
         { name: "About Placements", path: "/tp/placements" },
         { name: "Placement Brochure", path: "/tp/brochure" },
         { name: "Training Process", path: "/tp/training" },
-        { name: "T&P Contact Info", path: "/tp/contact" },
-        { name: "MOU’s", path: "/tp/mou" },
+        { name: "T&P Contact", path: "/tp/contact" },
+        { name: "MOU's", path: "/tp/mou" },
       ],
     },
     {
