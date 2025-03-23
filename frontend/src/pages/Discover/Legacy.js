@@ -1,11 +1,11 @@
 import React from "react";
 
-function Rules() {
+function Legacy() {
   return (
     <div>
-      <h1> Rules</h1>
+      <h1> Legacy</h1>
     </div>
   );
 }
 
-export default Rules;
+export default Legacy;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // ✅ Link import kiya
 import "./Navbar.css"; // Import CSS for styling
-
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(null);
@@ -9,66 +9,70 @@ const Navbar = () => {
     {
       title: "Discover Us",
       submenu: [
-        "Mission & Vision",
-        "Legacy",
-        "VC's Message",
-        "Director’s Message",
-        "Department",
+        { name: "Mission & Vision", path: "/discover/mission" },
+        { name: "Legacy", path: "/discover/legacy" },
+        { name: "VC's Message", path: "/discover/vc" },
+        { name: "Director’s Message", path: "/discover/director-message" },
+        { name: "Department", path: "/discover/department" },
       ],
     },
     {
       title: "Admission",
       submenu: [
-        "Admission Process",
-        "Fee Structure",
-        "Apply Now",
-        "Eligibility Criteria",
-        "Courses Offered",
-        "Entrance Exam",
-        "Contact Admission Info",
-        "Download Brochure",
-        "Reservation",
+        { name: "Admission Process", path: "/admission/process" },
+        { name: "Fee Structure", path: "/admission/fee-structure" },
+        { name: "Apply Now", path: "/admission/apply" },
+        { name: "Eligibility Criteria", path: "/admission/eligibility" },
+        { name: "Courses Offered", path: "/academics/courses" },
+        { name: "Entrance Exam", path: "/admission/entrance-exam" },
+        { name: "Contact Admission Info", path: "/admission/contact" },
+        { name: "Download Brochure", path: "/admission/brochure" },
+        { name: "Reservation", path: "/admission/reservation" },
       ],
     },
     {
       title: "Academics",
-      submenu: ["Courses", "Syllabus & Curriculum", "Academic Policies", "Faculty"],
+      submenu: [
+        { name: "Courses", path: "/academics/courses" },
+        { name: "Syllabus & Curriculum", path: "/academics/syllabus" },
+        { name: "Academic Policies", path: "/academics/policies" },
+        { name: "Faculty", path: "/academics/faculty" },
+      ],
     },
     {
       title: "Facilities",
       submenu: [
-        "Hostel & Accommodation",
-        "Library",
-        "Labs",
-        "Sports",
-        "WiFi / Water Cooler",
-        "Auditorium",
-        "Societies",
-        "Cafeteria",
+        { name: "Hostel & Accommodation", path: "/facilities/hostel" },
+        { name: "Library", path: "/facilities/library" },
+        { name: "Labs", path: "/facilities/labs" },
+        { name: "Sports", path: "/facilities/sports" },
+        { name: "WiFi / Water Cooler", path: "/facilities/wifi" },
+        { name: "Auditorium", path: "/facilities/auditorium" },
+        { name: "Societies", path: "/facilities/societies" },
+        { name: "Cafeteria", path: "/facilities/cafeteria" },
       ],
     },
     {
       title: "T&P",
       submenu: [
-        "About T&P",
-        "Alumni List / Message",
-        "About Placements",
-        "Placement Brochure",
-        "Training Process",
-        "T&P Contact Info",
-        "MOU’s",
+        { name: "About T&P", path: "/tp/about" },
+        { name: "Alumni List / Message", path: "/tp/alumni" },
+        { name: "About Placements", path: "/tp/placements" },
+        { name: "Placement Brochure", path: "/tp/brochure" },
+        { name: "Training Process", path: "/tp/training" },
+        { name: "T&P Contact Info", path: "/tp/contact" },
+        { name: "MOU’s", path: "/tp/mou" },
       ],
     },
-
     {
       title: "Student Life",
       submenu: [
-        "Coding Club",
-        "Cultural Cell",
-        "Sports Club",
-        "Fests",
-        "Magazine",
-        "Anti-ragging",
+        { name: "Coding Club", path: "/student-life/coding-club" },
+        { name: "Cultural Cell", path: "/student-life/cultural-cell" },
+        { name: "Sports Club", path: "/student-life/sports-club" },
+        { name: "Fests", path: "/student-life/fests" },
+        { name: "Magazine", path: "/student-life/magazine" },
+        { name: "Anti-ragging", path: "/student-life/anti-ragging" },
       ],
     },
   ];
@@ -88,17 +92,30 @@ const Navbar = () => {
               <ul className="dropdown">
                 {item.submenu.map((subItem, subIndex) => (
                   <li key={subIndex} className="dropdown-item">
-                    {subItem}
+                    <Link to={subItem.path}>{subItem.name}</Link>{" "}
+                    {/* ✅ Link Added */}
                   </li>
                 ))}
               </ul>
             )}
           </li>
         ))}
-        {/*NSS, Contact Us and Sign In */}
-        <li className="nav-item nss">NSS</li>
-        <li className="nav-item contact">Contact Us</li>
-        <li className="nav-item sign-in">Sign In</li>
+        {/* NSS, Contact Us and Sign In */}
+        <li className="nav-item">
+          <Link to="/nss" className="nav-button nss">
+            NSS
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact" className="nav-button contact">
+            Contact Us
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/signin" className="nav-button sign-in">
+            Sign In
+          </Link>
+        </li>
       </ul>
     </nav>
   );

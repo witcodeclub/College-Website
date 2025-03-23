@@ -49,13 +49,6 @@
   }
   
   /* Dropdown Items */
-  .dropdown-item {
-    color: #0A2647;; /* Emerald Green */
-    padding: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
   
   /* Dropdown Hover Effect */
   .dropdown-item:hover {
@@ -63,40 +56,64 @@
     color: white;
     border-radius: 5px;
   }
+
+  .dropdown-item a {
+    text-decoration: none; 
+    display: block;
+    color: #0A2647; 
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-item a:hover {
+    background-color: #1B3B6F; /* Soft Sky Blue */
+    color: white;
+    border-radius: 5px;
+  }
   
   /* NSS, Contact Us and Sign In */
 
-  .nss {
-    padding: 12px 18px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
+  /* Navbar Button Styling */
+.nav-button {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
 
-  .nss:hover {
-    background-color: #5DADE2; /* Sky Blue */
-  }
+/* NSS Button */
+.nss {
+  color: white; /* Gold */
+  border: 2px;
+}
 
-  .contact {
-    background-color: #2E8B57; /* Emerald Green */
-    padding: 12px 18px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .contact:hover {
-    background-color: #5DADE2; /* Sky Blue */
-  }
-  
-  .sign-in {
-    background-color: white;
-    color: #0A2647; /* Deep Blue */
-    padding: 12px 18px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  .sign-in:hover {
-    background-color: #5DADE2; /* Sky Blue */
-    color: white;
-  }
-  
+.nss:hover {
+  border-color: #FFD700;
+
+}
+
+/* Contact Us Button */
+.contact {
+  background-color: #2E8B57; /* Emerald Green */
+  color: white;
+}
+
+.contact:hover {
+  background-color: #5DADE2; /* Sky Blue */
+}
+
+/* Sign In Button */
+.sign-in {
+  background-color: white;
+  color: #0A2647; /* Deep Blue */
+}
+
+.sign-in:hover {
+  background-color: #5DADE2; /* Sky Blue */
+  color: white;
+}
