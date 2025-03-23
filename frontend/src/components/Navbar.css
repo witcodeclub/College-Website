@@ -64,7 +64,18 @@
     border-radius: 5px;
   }
   
-  /* Contact Us and Sign In */
+  /* NSS, Contact Us and Sign In */
+
+  .nss {
+    padding: 12px 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .nss:hover {
+    background-color: #5DADE2; /* Sky Blue */
+  }
+
   .contact {
     background-color: #2E8B57; /* Emerald Green */
     padding: 12px 18px;

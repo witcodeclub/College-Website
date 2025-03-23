@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./index.css"; // Import your global styles if any
 import Home from "./pages/Home/Home";
-import About from "./pages/AboutUs/About";
+import Discover from "./pages/Discover Us/Discover";
 import Academics from "./pages/Academics/Academics"; // Correct spelling
 import Facilities from "./pages/Facilities/Facilities";
 import Footer from "./components/Footer";
@@ -23,7 +23,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/discover" element={ <Discover />} />
         <Route path="/academics" element={<Academics />} />
         <Route path="/facilities" element={<Facilities />} />
         

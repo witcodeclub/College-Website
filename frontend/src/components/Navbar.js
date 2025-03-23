@@ -7,16 +7,13 @@ const Navbar = () => {
 
   const menuItems = [
     {
-      title: "About Us",
+      title: "Discover Us",
       submenu: [
         "Mission & Vision",
-        "History",
-        "About LNMU",
+        "Legacy",
         "VC's Message",
         "Director’s Message",
-        "Faculty & Staff",
         "Department",
-        "Social Media",
       ],
     },
     {
@@ -35,7 +32,7 @@ const Navbar = () => {
     },
     {
       title: "Academics",
-      submenu: ["Courses", "Syllabus & Curriculum", "Academic Policies"],
+      submenu: ["Courses", "Syllabus & Curriculum", "Academic Policies", "Faculty"],
     },
     {
       title: "Facilities",
@@ -46,14 +43,14 @@ const Navbar = () => {
         "Sports",
         "WiFi / Water Cooler",
         "Auditorium",
-        "Clubs",
-        "Canteen",
-        "NSS",
+        "Societies",
+        "Cafeteria",
       ],
     },
     {
       title: "T&P",
       submenu: [
+        "About T&P",
         "Alumni List / Message",
         "About Placements",
         "Placement Brochure",
@@ -62,6 +59,7 @@ const Navbar = () => {
         "MOU’s",
       ],
     },
+
     {
       title: "Student Life",
       submenu: [
@@ -69,8 +67,6 @@ const Navbar = () => {
         "Cultural Cell",
         "Sports Club",
         "Fests",
-        "Canteen",
-        "NSS",
         "Magazine",
         "Anti-ragging",
       ],
@@ -99,7 +95,8 @@ const Navbar = () => {
             )}
           </li>
         ))}
-        {/* Contact Us and Sign In */}
+        {/*NSS, Contact Us and Sign In */}
+        <li className="nav-item nss">NSS</li>
         <li className="nav-item contact">Contact Us</li>
         <li className="nav-item sign-in">Sign In</li>
       </ul>
