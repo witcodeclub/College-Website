@@ -29,7 +29,7 @@ const Footer = () => {
   }, []);
 
     return (
-        <footer style={{ backgroundColor: '#0A2647', color: 'white', padding: '20px', textAlign: 'center', position: 'relative' }}>
+        <footer style={{ backgroundColor: '#0A2647', color: 'white', padding: '20px', textAlign: 'center', position: 'relative',  marginTop:'50px'}}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', flexWrap: 'wrap' }}>
                 
                 {/* Left Section - Logo and Address */}

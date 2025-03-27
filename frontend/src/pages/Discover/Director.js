@@ -4,6 +4,10 @@ function Director() {
   return (
     <div>
       <h1> Directors Message</h1>
+      <h1> Directors Message</h1>
+      <h1> Directors Message</h1>
+      <h1> Directors Message</h1>
+      
     </div>
   );
 }

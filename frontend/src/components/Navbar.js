@@ -21,13 +21,11 @@ const Navbar = () => {
       submenu: [
         { name: "Admission Process", path: "/admission/process" },
         { name: "Fee Structure", path: "/admission/fee-structure" },
-        { name: "Apply Now", path: "/admission/apply" },
         { name: "Eligibility Criteria", path: "/admission/eligibility" },
-        { name: "Courses Offered", path: "/academics/courses" },
         { name: "Entrance Exam", path: "/admission/entrance-exam" },
-        { name: "Contact Admission Info", path: "/admission/contact" },
         { name: "Download Brochure", path: "/admission/brochure" },
         { name: "Reservation", path: "/admission/reservation" },
+        { name: "Conselling & Admission", path: "/admission/Conselling" },
       ],
     },
     {

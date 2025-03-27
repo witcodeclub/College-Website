@@ -12,7 +12,7 @@ const Counter = ({ target }) => {
         }
         return prev + Math.ceil(target / 100);
       });
-    }, 20);
+    }, 60);
 
     return () => clearInterval(interval);
   }, [target]);
