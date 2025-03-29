@@ -4,7 +4,7 @@ const Societies = () => {
   const pageStyle = {
     background: "linear-gradient(to right, #d4edda, #a8df8e)", // Soft Green Gradient
     padding: "50px 20px",
-    minHeight: "100vh",
+    minHeight: "30vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -52,7 +52,7 @@ const Societies = () => {
 
   const societies = [
     {
-      name: "WitCodingClub",
+      name: "CodingClub",
       description: "A hub for coding enthusiasts, organizing hackathons, coding challenges, and tech events.",
       image: "https://via.placeholder.com/100",
     },

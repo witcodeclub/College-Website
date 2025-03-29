@@ -2,7 +2,7 @@ import React from "react";
 
 const Hostel = () => {
   const pageStyle = {
-    backgroundColor: "#e6f4ea", // Light green background
+    background: "linear-gradient(to right, #d4edda, #a8df8e)", // Light green background
     padding: "50px 20px",
     minHeight: "100vh",
     display: "flex",

@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
-function Syllabus() {
+const Syllabus = () => {
   return (
-    <div>
-      <h1> Syllabus </h1>
-    </div>
-  );
+    <div>Syllabus</div>
+  )
 }
 
 export default Syllabus;

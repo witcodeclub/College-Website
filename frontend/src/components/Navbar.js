@@ -33,7 +33,7 @@ const Navbar = () => {
       submenu: [
         { name: "Courses", path: "/academics/courses" },
         { name: "Syllabus & Curriculum", path: "/academics/syllabus" },
-        { name: "Academic Policies", path: "/academics/policies" },
+        { name: "Academic Policies", path: "/academics/academicpolicies" },
         { name: "Faculty", path: "/academics/faculty" },
       ],
     },

@@ -16,7 +16,7 @@ const CombinedComponent = () => {
 
   return (
     <div style={{ display: "flex", justifyContent: "center", gap: "20px", padding: "20px" }}>
-      <div style={styles.boxContainer}>
+      <div style={styles.sectionContainer}>
         <h2 style={styles.title}>Accreditations & Recognitions</h2>
         <div style={styles.approvalsContainer}>
           {approvals.map((approval, index) => (
@@ -28,18 +28,20 @@ const CombinedComponent = () => {
         </div>
       </div>
 
-      <div style={styles.boxContainer}>
+      <div style={styles.sectionContainer}>
         <div style={{ textAlign: "center", marginBottom: "15px" }}>
           <button style={styles.noticesButton}>📢 Notices</button>
           <button style={styles.calendarButton} ref={calendarButtonRef} onClick={openPopup}>
             📅 Calendar
           </button>
         </div>
-        <div style={styles.contentBox}>
-          <h4>📜 Nostalgia 2025 Coming Soon</h4>
-          <hr />
-          <h4>🚀 Hackathon 2025</h4>
-        </div>
+        <h4 style={styles.noticeText}> * Nostalgia 2025 Coming Soon</h4>
+        <hr style={styles.hrStyle} />
+        <h4 style={styles.noticeText}> * Hackathon 2025</h4>
+        <hr style={styles.hrStyle} />
+        <h4 style={styles.noticeText}> * Kho-Kho competition on 28 March in WIT campus</h4>
+        <hr style={styles.hrStyle} />
+        
 
         {isPopupOpen && calendarButtonRef.current && (
           <div style={styles.popupBox(calendarButtonRef.current)}>
@@ -48,88 +50,77 @@ const CombinedComponent = () => {
             <div style={styles.calendarContainer}>
               {[
                 { name: "Holiday Calendar", image: "/images/holiday.jpg" },
-                { name: "Event Calendar", image: "/images/event_calendar.jpg" },
-                { name: "Academic Calendar", image: "/images/academic_calendar.jpg" },
+                { name: "Academic Calendar", image: "/images/academic.jpg" },
+                { name: "Event Calendar", image: "/images/event.jpg" },
               ].map((calendar, index) => (
                 <div key={index} style={styles.calendarItem}>
-                  <img src={calendar.image} alt={calendar.name} style={styles.calendarImage} />
+                  <img 
+                  src={calendar.image} alt={calendar.name} style={styles.calendarImage} />
                   <p style={styles.calendarText}>{calendar.name}</p>
-                </div>
-              ))}
-            </div>
+            
           </div>
-        )}
+        ))}
       </div>
     </div>
+      )}
+    </div>
+  </div>
   );
 };
 
 const styles = {
-  boxContainer: {
+  sectionContainer: {
     width: "48%",
-    backgroundColor: "#E3F2E6",
-    padding: "20px",
-    borderRadius: "12px",
-    boxShadow: "4px 6px 10px #C8E6C9 (5, 67, 44, 0.2)",
+    backgroundColor: "#E6F7E6",
+    padding: "25px",
+    borderRadius: "15px",
+    boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.2)",
     textAlign: "center",
   },
   title: {
-    fontSize: "28px",
+    fontSize: "30px",
     fontWeight: "bold",
-    color: "#003B73",
-    marginBottom: "10px",
+    color: "#024E6F",
+    marginBottom: "20px",
+    fontFamily: "Poppins, sans-serif",
   },
   approvalsContainer: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "40px",
-    boxShadow: "2px 4px 6px rgba(0, 0, 0, 0.15)",
-    borderRadius: "10px",
   },
   approvalItem: {
     display: "flex",
-    borderRadius: "10px",
     alignItems: "center",
-    gap: "30px",
-    width: "300px",
-    height: "80px",
-    textAlign: "left",
-    boorderTop: "1px solid black",
-    
+    gap: "15px",
+    padding: "10px",
   },
   approvalImage: {
-    width: "60px",
-    height: "60px",
+    width: "70px",
+    height: "70px",
     borderRadius: "50%",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+    boxShadow: "0px 5px 12px rgba(0, 0, 0, 0.2)",
   },
   approvalText: {
     fontSize: "18px",
-    color: "#333",
+    color: "#2E3A59",
     fontWeight: "500",
-    maxWidth: "220px",
-  },
-  contentBox: {
-    padding: "30px",
-    backgroundColor: "#D6EAD9",
-    borderRadius: "10px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-    marginTop: "20px",
-    textAlign: "left",
-    color: "#003B73",
+    fontFamily: "Poppins, sans-serif",
+    display: "inline-block",
   },
   noticesButton: {
     padding: "12px 20px",
     fontSize: "18px",
     fontWeight: "bold",
-    backgroundColor: "#034078",
+    backgroundColor: "#000080",
     color: "white",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "8px",
     cursor: "pointer",
+    transition: "0.3s",
     width: "180px",
-    marginRight: "10px",
+    
   },
   calendarButton: {
     padding: "12px 20px",
@@ -138,9 +129,19 @@ const styles = {
     backgroundColor: "#FF8C00",
     color: "white",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "8px",
     cursor: "pointer",
+    transition: "0.3s",
     width: "180px",
+  },
+  noticeText: {
+    fontSize: "18px",
+    color: "#2E3A59",
+    textAlign: "left",
+  },
+  hrStyle: {
+    margin: "12px 0",
+    border: "1px solid #024E6F",
   },
   popupBox: (ref) => ({
     position: "absolute",
@@ -148,9 +149,8 @@ const styles = {
     left: ref.offsetLeft,
     background: "white",
     padding: "20px",
-    borderRadius: "8px",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-    width: "fit-content",
+    borderRadius: "10px",
+    boxShadow: "0px 5px 12px rgba(0, 0, 0, 0.15)",
     zIndex: 1000,
   }),
   closeButton: {
@@ -163,7 +163,6 @@ const styles = {
   calendarContainer: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     gap: "20px",
   },
   calendarItem: {
@@ -174,15 +173,16 @@ const styles = {
   calendarImage: {
     width: "120px",
     height: "auto",
-    borderRadius: "5px",
+    borderRadius: "8px",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
   },
   calendarText: {
     marginTop: "8px",
     fontSize: "14px",
     fontWeight: "bold",
     textAlign: "center",
+    fontFamily: "Poppins, sans-serif",
   },
 };
 
 export default CombinedComponent;
-

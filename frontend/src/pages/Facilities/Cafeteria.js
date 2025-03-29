@@ -2,7 +2,7 @@ import React from "react";
 
 const Cafeteria = () => {
   return (
-    <div style={{ backgroundColor: "#d4edda", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ background:"linear-gradient(to right, #d4edc9, #a8df8e)", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h2 style={{ color: "green", textAlign: "center" }}>College Cafeteria</h2>
       <p style={{ textAlign: "justify", fontSize: "16px", lineHeight: "1.6" }}>
         The cafeteria is open full-time, offering snacks, tea, coffee, and other items at affordable prices. 

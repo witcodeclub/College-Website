@@ -2,7 +2,7 @@ import React from "react";
 
 const Sports = () => {
   return (
-    <div style={{ backgroundColor: "#d4edda", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ background: "linear-gradient(to right, #d4edda, #a8df8e)", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h2 style={{ color: "green", textAlign: "center" }}>College Sports Facilities</h2>
       <p style={{ textAlign: "justify", fontSize: "16px", lineHeight: "1.6" }}>
         Our college provides excellent sports facilities for students to stay active and engaged. We have both indoor and outdoor game areas to ensure students have ample opportunities to enjoy their favorite sports.

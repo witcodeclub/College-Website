@@ -9,6 +9,7 @@ function FeeStructure() {
     textAlign: "left",
     maxWidth: "900px",
     margin: "auto",
+    marginTop:"50px"
   };
 
   const headerStyle = {

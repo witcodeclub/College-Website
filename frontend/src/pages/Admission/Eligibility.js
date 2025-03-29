@@ -9,6 +9,7 @@ function Eligibility() {
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
     maxWidth: "900px",
     margin: "20px auto",
+    
   };
 
   const titleStyle = {

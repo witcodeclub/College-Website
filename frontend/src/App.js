@@ -15,7 +15,7 @@ import Library from "./pages/Facilities/Library";
 import Labs from "./pages/Facilities/Labs";
 import Sports from "./pages/Facilities/SportsClub";
 import Hostel from "./pages/Facilities/Hostel";
-import Auditorium from "./pages/Facilities/Auditorium";
+
 import Societies from "./pages/Facilities/Societies";
 import Cafeteria from "./pages/Facilities/Cafeteria";
 
@@ -55,6 +55,12 @@ import Mission from "./pages/Discover/Mission";
 import Vc from "./pages/Discover/Vc";
 import Director from "./pages/Discover/Director";
 
+// Academics Pages
+import Faculty from "./pages/Academics/Faculty";
+import Syllabus from "./pages/Academics/Syllabus";
+import Courses from "./pages/Academics/Courses";
+import AcademicPolicies from "./pages/Academics/Academicp";
+
 function App() {
   return (
       <div>
@@ -79,7 +85,7 @@ function App() {
           <Route path="/facilities/labs" element={<Labs />} />
           <Route path="/facilities/sports" element={<Sports />} />
           <Route path="/facilities/hostel" element={<Hostel />} />
-          <Route path="/facilities/auditorium" element={<Auditorium />} />
+          
           <Route path="/facilities/societies" element={<Societies />} />
           <Route path="/facilities/cafeteria" element={<Cafeteria />} />
 
@@ -118,6 +124,11 @@ function App() {
           <Route path="/discover/legacy" element={<Legacy />} />
           <Route path="/discover/mission" element={<Mission />} />
           <Route path="/discover/vc" element={<Vc />} />
+          {/* Academics Routes */}
+          <Route path="/academics/faculty" element={<Faculty />} />
+          <Route path="/academics/academic-policies" element={< AcademicPolicies/>} />
+          <Route path="/academics/syllabus" element={<Syllabus />} />
+          <Route path="/academics/courses" element={<Courses />} />
          
         </Routes>
 
