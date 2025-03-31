@@ -44,4 +44,12 @@ body, html {
   text-align: center;
 }
 
+img {
+  transition: none;
+}
+
+img:hover {
+  filter: none;
+  opacity: 1;
+}
 
