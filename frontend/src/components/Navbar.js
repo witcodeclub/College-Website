@@ -78,6 +78,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <ul className="nav-list">
+        <li className="nav-item">
+          <Link to="/" className="nav-button home" style={{color : "white"}}>
+            Home
+          </Link>
+        </li>
         {menuItems.map((item, index) => (
           <li
             key={index}
