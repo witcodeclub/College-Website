@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram,  FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   const [weather, setWeather] = useState({
@@ -85,14 +85,9 @@ const Footer = () => {
           >
             <FaInstagram />
           </a>
+          
           <a
-            href="#"
-            style={{ color: "white", margin: "0 15px", fontSize: "26px" }}
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="#"
+            href="https://x.com/apjakwit?t=KGuEITZlvabPTgiweLsxdw&s=08"
             style={{ color: "white", margin: "0 10px", fontSize: "26px" }}
           >
             <FaTwitter />
@@ -142,7 +137,7 @@ const Footer = () => {
             <p>Anti-Ragging</p>
             <p>Placement</p>
             <p>Alumni</p>
-            <p>NSS</p>
+            
           </ul>
         </div>
 

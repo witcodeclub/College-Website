@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
+import {Link} from "react-router-dom"
+
 
 const approvals = [
-  { name: "AICTE", image: "/images/aicte.jpeg" },
-  { name: "DST, Bihar", image: "/images/dst.png" },
-  { name: "Higher Education", image: "/images/higher.png" },
-  { name: "NAAC", image: "/images/naac.png" },
+  { name: "AICTE", image: "/images/aicte.jpeg", link : "/approval/aicte" },
+  { name: "DST, Bihar", image: "/images/dst.png", link: "/approval/dst" },
+  { name: "Higher Education", image: "/images/higher.png", link: "/approval/highereducation" },
+  { name: "NAAC", image: "/images/naac.png", link: "/approval/naac" },
 ];
 
 const CombinedComponent = () => {
@@ -15,15 +17,17 @@ const CombinedComponent = () => {
   const closePopup = () => setIsPopupOpen(false);
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", gap: "20px", padding: "20px" }}>
+    <div style={{ display: "flex", justifyContent: "center", gap: "10px", padding: "20px" }}>
       <div style={styles.sectionContainer}>
         <h2 style={styles.title}>Accreditations & Recognitions</h2>
         <div style={styles.approvalsContainer}>
           {approvals.map((approval, index) => (
-            <div key={index} style={styles.approvalItem}>
-              <img src={approval.image} alt={approval.name} style={styles.approvalImage} />
-              <p style={styles.approvalText}>Accredited by {approval.name}</p>
-            </div>
+             <Link to={approval.link} key={index} style={styles.approvalLink}>
+             <div style={styles.approvalItem}>
+               <img src={approval.image} alt={approval.name} style={styles.approvalImage} />
+               <p style={styles.approvalText}>Accredited by {approval.name}</p>
+             </div>
+           </Link>
           ))}
         </div>
       </div>
@@ -39,7 +43,7 @@ const CombinedComponent = () => {
         <hr style={styles.hrStyle} />
         <h4 style={styles.noticeText}> * Hackathon 2025</h4>
         <hr style={styles.hrStyle} />
-        <h4 style={styles.noticeText}> * Kho-Kho competition on 28 March in WIT campus</h4>
+        <h4 style={styles.noticeText}> * Inter-College Kho-Kho competition in WIT campus</h4>
         <hr style={styles.hrStyle} />
         
 
@@ -72,7 +76,7 @@ const styles = {
   sectionContainer: {
     width: "48%",
     backgroundColor: "#E6F7E6",
-    padding: "25px",
+    padding: "20px",
     borderRadius: "15px",
     boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.2)",
     textAlign: "center",

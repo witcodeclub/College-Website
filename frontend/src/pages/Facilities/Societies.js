@@ -2,7 +2,7 @@ import React from "react";
 
 const Societies = () => {
   const pageStyle = {
-    background: "linear-gradient(to right, #d4edda, #a8df8e)", // Soft Green Gradient
+    background: "#fff", 
     padding: "50px 20px",
     minHeight: "30vh",
     display: "flex",
@@ -32,10 +32,11 @@ const Societies = () => {
   const cardStyle = {
     backgroundColor: "#fff",
     padding: "20px",
-    borderRadius: "15px",
-    boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.15)",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.1)",
     textAlign: "center",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+    cursor: "pointer",
   };
 
   const cardHover = {
@@ -43,33 +44,37 @@ const Societies = () => {
     boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
   };
 
-  const imageStyle = {
-    width: "100px",
-    height: "100px",
+  const logoStyle = {
+    width: "80px",
+    height: "80px",
     borderRadius: "50%",
     marginBottom: "10px",
   };
 
   const societies = [
     {
-      name: "CodingClub",
-      description: "A hub for coding enthusiasts, organizing hackathons, coding challenges, and tech events.",
-      image: "https://via.placeholder.com/100",
+      name: "Coding Club",
+      description:
+        "Promotes a strong coding environment by organizing hackathons, coding competitions, and skill-building sessions.",
+      logo: "/images/codingclub_logo.png",
     },
     {
       name: "Sports Club",
-      description: "Encourages sports activities, tournaments, and fitness programs for students.",
-      image: "https://via.placeholder.com/100",
+      description:
+        "Encourages students to stay active by hosting tournaments, fitness challenges, and inter-college sports events.",
+      logo: "/images/sportsclub_logo.png",
     },
     {
       name: "Cultural Cell",
-      description: "Organizes cultural events, festivals, and artistic performances to celebrate diversity.",
-      image: "https://via.placeholder.com/100",
+      description:
+        "Celebrates diversity through cultural festivals, artistic performances, and music & dance events.",
+      logo: "/images/culturalcell_logo.png",
     },
     {
       name: "Training & Placement Cell",
-      description: "Guides students for career opportunities, placements, and internships.",
-      image: "https://via.placeholder.com/100",
+      description:
+        "Guides students in career planning, internship opportunities, and professional development.",
+      logo: "/images/placementcell_logo.png",
     },
   ];
 
@@ -79,10 +84,17 @@ const Societies = () => {
         <h2 style={headingStyle}>Societies</h2>
         <div style={gridStyle}>
           {societies.map((society, index) => (
-            <div key={index} style={{ ...cardStyle, ":hover": cardHover }}>
-              <img src={society.image} alt={society.name} style={imageStyle} />
-              <h3 style={{ color: "#136d25", marginBottom: "8px" }}>{society.name}</h3>
-              <p style={{ fontSize: "14px", color: "#333" }}>{society.description}</p>
+            <div
+              key={index}
+              style={cardStyle}
+              onMouseOver={(e) => Object.assign(e.currentTarget.style, cardHover)}
+              onMouseOut={(e) => Object.assign(e.currentTarget.style, cardStyle)}
+            >
+              <img src={society.logo} alt={society.name} style={logoStyle} />
+              <h3 style={{ color: "#136d25", marginBottom: "10px" }}>{society.name}</h3>
+              <p style={{ fontSize: "15px", color: "#333", lineHeight: "1.5" }}>
+                {society.description}
+              </p>
             </div>
           ))}
         </div>
@@ -92,4 +104,3 @@ const Societies = () => {
 };
 
 export default Societies;
-
