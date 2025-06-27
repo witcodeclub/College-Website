@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaFacebook, FaInstagram,  FaTwitter } from "react-icons/fa";
-
+// ✅ Define styles outside the component
+const styles = {
+  link: {
+    color: "white",
+    textDecoration: "none",
+    fontSize: "15px"
+  }
+};
 const Footer = () => {
   const [weather, setWeather] = useState({
     temp: "",
@@ -106,10 +114,10 @@ const Footer = () => {
             Explore
           </h3>
           <ul style={{ listStyle: "none", padding: 2 }}>
-            <p>Societies</p>
-            <p>Labs</p>
-            <p>Library</p>
-            <p>Events</p>
+           <li><Link to="/societies" style={styles.link}>Societies</Link></li>
+           <li><Link to="/facilities/labs" style={styles.link}>Labs</Link></li>
+           <li><Link to="/facilities/library" style={styles.link}>Library</Link></li>
+           <li><Link to="/events" style={styles.link}>Events</Link  ></li>
           </ul>
         </div>
 
@@ -132,14 +140,17 @@ const Footer = () => {
             Quick Links
           </h3>
           <ul style={{ listStyle: "none", padding: 0 }}>
-            <p>Admission</p>
-            <p>Departments</p>
-            <p>Anti-Ragging</p>
-            <p>Placement</p>
-            <p>Alumni</p>
-            
+             <li><Link to="/admission/process" style={styles.link}>Admission</Link></li>
+             <li><Link to="/discover/department" style={styles.link}>Departments</Link></li>
+             <li><Link to="/anti-ragging" style={styles.link}>Anti-Ragging</Link></li>
+            <li><Link to="/tp/placements" style={styles.link}>Placement</Link></li>
+            <li><Link to="/tp/alumni" style={styles.link}>Alumni</Link></li>
+
           </ul>
+ 
         </div>
+        
+  l
 
         {/* Right Section - Weather */}
         <div
@@ -200,6 +211,10 @@ const Footer = () => {
         © 2025 Copyright WIT Darbhanga | Developed by WitCodingClub
       </div>
     </footer>
+
+
   );
 };
+
+
 export default Footer;

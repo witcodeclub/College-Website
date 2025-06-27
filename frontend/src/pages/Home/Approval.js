@@ -74,8 +74,9 @@ const CombinedComponent = () => {
 
 const styles = {
   sectionContainer: {
-    width: "48%",
-    backgroundColor: "#E6F7E6",
+    width: "45%",
+    height: "400px",
+    backgroundColor: "#F5F5F5",
     padding: "20px",
     borderRadius: "15px",
     boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.2)",
@@ -84,7 +85,8 @@ const styles = {
   title: {
     fontSize: "30px",
     fontWeight: "bold",
-    color: "#024E6F",
+    color: "#2E3A59",
+    
     marginBottom: "20px",
     fontFamily: "Poppins, sans-serif",
   },
@@ -117,7 +119,7 @@ const styles = {
     padding: "12px 20px",
     fontSize: "18px",
     fontWeight: "bold",
-    backgroundColor: "#000080",
+    backgroundColor: "#2E3A59",
     color: "white",
     border: "none",
     borderRadius: "8px",

@@ -6,18 +6,22 @@ import Home from "./pages/Home/Home";
 import Discover from "./pages/Discover/Discover";
 import Academics from "./pages/Academics/Academics";
 import Facilities from "./pages/Facilities/Facilities";
-import Footer from "./components/Footer";
 import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
 import WITBot from "./components/Chatbot";
+
+//Footer and General
+import Footer from "./components/Footer";
+import AntiRagging from "./pages/AntiRagging";
+import Societies from "./pages/Societies";
+import Events from "./pages/Events";  
+
 
 // Facilities
 import Library from "./pages/Facilities/Library";
 import Labs from "./pages/Facilities/Labs";
 import Sports from "./pages/Facilities/SportsClub";
 import Hostel from "./pages/Facilities/Hostel";
-
-import Societies from "./pages/Facilities/Societies";
 import Cafeteria from "./pages/Facilities/Cafeteria";
 
 // Training & Placement
@@ -37,7 +41,6 @@ import CulturalCell from "./pages/StudentLife/CulturalCell";
 import SportsClub from "./pages/StudentLife/SportsClub";
 import Fests from "./pages/StudentLife/Fests";
 import Magazine from "./pages/StudentLife/Magazine";
-import AntiRagging from "./pages/StudentLife/AntiRagging";
 import NSS from "./pages/NSS";
 
 // Admission Pages
@@ -90,6 +93,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/academics" element={<Academics />} />
+          <Route path="/anti-ragging" element={<AntiRagging />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/societies" element={<Societies />} />
 
           {/* Approval Routes */}
           <Route path="/" element={<Approval/>}/>
@@ -125,7 +131,6 @@ function App() {
           <Route path="/student-life/sports-club" element={<SportsClub />} />
           <Route path="/student-life/fests" element={<Fests />} />
           <Route path="/student-life/magazine" element={<Magazine />} />
-          <Route path="/student-life/anti-ragging" element={<AntiRagging />} />
           <Route path="/nss" element={<NSS />} />
 
           {/* Admission Routes */}
