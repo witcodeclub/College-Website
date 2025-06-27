@@ -17,7 +17,7 @@ function WITBot() {
       { 
         id: 1,
         from: "bot", 
-        text: "Hi there! 👋\n\nI'm WITBot — your personal assistant from Dr. APJAK Women's Institute of Technology.\n\nHow can I help you today?", 
+        text: "Hi! I'm WITBot 👋 How can I help you today?", 
         timestamp: new Date(),
         showFeedback: false
       }
@@ -31,13 +31,13 @@ function WITBot() {
 
   // Quick Action Buttons
   const quickActions = [
-    { text: "Admission Process", emoji: "📌", category: "admission" },
+    { text: "Admission Info", emoji: "📌", category: "admission" },
     { text: "Fee Structure", emoji: "💰", category: "fees" },
     { text: "Courses Offered", emoji: "📚", category: "courses" },
-    { text: "Submit a Complaint", emoji: "📝", category: "complaint" },
-    { text: "Give Feedback", emoji: "💬", category: "feedback" },
+    { text: "Complaint Form", emoji: "📝", category: "complaint" },
+    { text: "Feedback Form", emoji: "💬", category: "feedback" },
     { text: "Academic Calendar", emoji: "🗓️", category: "calendar" },
-    { text: "Contact Info", emoji: "📞", category: "contact" },
+    { text: "Contact", emoji: "📞", category: "contact" },
     { text: "College Location", emoji: "📍", category: "location" }
   ];
 
@@ -48,7 +48,7 @@ function WITBot() {
   const faqDatabase = {
     "admission": {
       keywords: ["admission", "apply", "enroll", "registration", "admission process", "admission info", "how to apply", "entrance exam", "admission process"],
-      response: "📌 **Admission Process:**\n\nYou can apply for admission through our official portal here: [Link]\n\n**Application Steps:**\n• Visit our admission portal\n• Fill out the application form\n• Upload required documents\n• Pay application fee\n• Submit and track status\n\n**Required Documents:**\n• 10th & 12th marksheets\n• Transfer certificate\n• Character certificate\n• ID proof (Aadhar/PAN)\n\nFor any queries, feel free to ask! 😊",
+      response: "📌 **Admission Info:**\n\nYou can apply for admission through our official portal here: [Link]\n\n**Application Steps:**\n• Visit our admission portal\n• Fill out the application form\n• Upload required documents\n• Pay application fee\n• Submit and track status\n\n**Required Documents:**\n• 10th & 12th marksheets\n• Transfer certificate\n• Character certificate\n• ID proof (Aadhar/PAN)\n\nFor any queries, feel free to ask! 😊",
       followUp: ["fees", "courses", "eligibility"]
     },
     "fees": {
@@ -62,13 +62,13 @@ function WITBot() {
       followUp: ["admission", "fees", "placement"]
     },
     "complaint": {
-      keywords: ["complaint", "grievance", "issue", "problem", "submit a complaint", "complaint submission"],
-      response: "📝 **Complaint Submission:**\n\nSure! Please fill out the complaint form so that we can take appropriate action.\n\n**How to submit a complaint:**\n• Online: Fill our complaint form at /complaint-form\n• Email: complaints@apjakwit.edu\n• Phone: +91-XXXXXXXXXX\n• In-person: Visit grievance cell (Room 101)\n\n**Response time:** We aim to respond within 24-48 hours.\n\n**Complaint categories:**\n• Academic issues\n• Infrastructure problems\n• Hostel complaints\n• Faculty concerns\n• General grievances",
+      keywords: ["complaint", "grievance", "issue", "problem", "submit a complaint", "complaint submission", "complaint form"],
+      response: "📝 **Complaint Form:**\n\nSure! Please fill out the complaint form so that we can take appropriate action.\n\n**How to submit a complaint:**\n• Online: Fill our complaint form at /complaint-form\n• Email: complaints@apjakwit.edu\n• Phone: +91-XXXXXXXXXX\n• In-person: Visit grievance cell (Room 101)\n\n**Response time:** We aim to respond within 24-48 hours.\n\n**Complaint categories:**\n• Academic issues\n• Infrastructure problems\n• Hostel complaints\n• Faculty concerns\n• General grievances",
       followUp: ["feedback", "contact", "grievance"]
     },
     "feedback": {
-      keywords: ["feedback", "suggestion", "review", "opinion", "give feedback"],
-      response: "💬 **Give Feedback:**\n\nWe'd love to hear from you! Please share your feedback using the feedback form.\n\n**Feedback Channels:**\n• Online form: /feedback-form\n• Email: feedback@apjakwit.edu\n• Anonymous feedback box in library\n• Student council meetings\n• Department feedback sessions\n\n**What we value:**\n• Academic experience\n• Campus facilities\n• Faculty feedback\n• Administrative services\n• Overall satisfaction\n\nYour feedback helps us improve our services! 🙏",
+      keywords: ["feedback", "suggestion", "review", "opinion", "give feedback", "feedback form"],
+      response: "💬 **Feedback Form:**\n\nWe'd love to hear from you! Please share your feedback using the feedback form.\n\n**Feedback Channels:**\n• Online form: /feedback-form\n• Email: feedback@apjakwit.edu\n• Anonymous feedback box in library\n• Student council meetings\n• Department feedback sessions\n\n**What we value:**\n• Academic experience\n• Campus facilities\n• Faculty feedback\n• Administrative services\n• Overall satisfaction\n\nYour feedback helps us improve our services! 🙏",
       followUp: ["complaint", "improvement", "suggestions"]
     },
     "calendar": {
@@ -78,7 +78,7 @@ function WITBot() {
     },
     "contact": {
       keywords: ["contact", "phone", "email", "address", "location", "where", "contact info", "reach", "office", "contact info"],
-      response: "📞 **Contact Info:**\n\nYou can reach us at:\n📞 Phone: 123-456-7890\n📧 Email: info@apjakwit.edu\n📍 Address: Dr. APJAK Women's Institute of Technology, [Street Address], [City, State]\n\n**Department Contacts:**\n• Admission Office: admission@apjakwit.edu\n• Academic Office: academic@apjakwit.edu\n• Hostel Office: hostel@apjakwit.edu\n• Placement Cell: placement@apjakwit.edu\n\n**Office Hours:**\n🕐 Monday - Friday: 9:00 AM - 5:00 PM\n🕐 Saturday: 9:00 AM - 1:00 PM\n🕐 Sunday: Closed\n\n**Emergency Contact:**\n🚨 Security: +91-XXXXXXXXXX\n🏥 Medical: +91-XXXXXXXXXX",
+      response: "📞 **Contact:**\n\nYou can reach us at:\n📞 Phone: 123-456-7890\n📧 Email: info@apjakwit.edu\n📍 Address: Dr. APJAK Women's Institute of Technology, [Street Address], [City, State]\n\n**Department Contacts:**\n• Admission Office: admission@apjakwit.edu\n• Academic Office: academic@apjakwit.edu\n• Hostel Office: hostel@apjakwit.edu\n• Placement Cell: placement@apjakwit.edu\n\n**Office Hours:**\n🕐 Monday - Friday: 9:00 AM - 5:00 PM\n🕐 Saturday: 9:00 AM - 1:00 PM\n🕐 Sunday: Closed\n\n**Emergency Contact:**\n🚨 Security: +91-XXXXXXXXXX\n🏥 Medical: +91-XXXXXXXXXX",
       followUp: ["location", "visit", "department"]
     },
     "location": {
@@ -292,6 +292,8 @@ function WITBot() {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
+    } else if (e.key === "Escape") {
+      setOpen(false);
     }
   };
 
@@ -342,7 +344,7 @@ function WITBot() {
       { 
         id: 1,
         from: "bot", 
-        text: "Hi there! 👋\n\nI'm WITBot — your personal assistant from Dr. APJAK Women's Institute of Technology.\n\nHow can I help you today?", 
+        text: "Hi! I'm WITBot 👋 How can I help you today?", 
         timestamp: new Date(),
         showFeedback: false
       }
@@ -363,7 +365,7 @@ function WITBot() {
   return (
     <div>
       <button className="chatbot-float-btn" onClick={() => setOpen(!open)}>
-        💬
+        {open ? "×" : "💬"}
       </button>
       {open && (
         <div className="chatbot-window">

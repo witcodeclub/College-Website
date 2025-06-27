@@ -24,7 +24,8 @@
   position: fixed;
   bottom: 100px;
   right: 30px;
-  width: 380px;
+  width: 360px;
+  height: 450px;
   background: white;
   border-radius: 20px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.15);
@@ -136,7 +137,7 @@
   padding: 20px;
   flex: 1;
   overflow-y: auto;
-  max-height: 350px;
+  max-height: 250px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -261,13 +262,16 @@
 
 /* Quick Reply Buttons */
 .quick-replies {
-  padding: 15px 20px;
+  padding: 16px 10px 10px 10px;
+  max-height: 180px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: white;
-  border-top: 1px solid #e1e5e9;
-  animation: quickRepliesSlideIn 0.4s ease-out;
+  margin-bottom: 8px;
+  border-radius: 0 0 16px 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.05);
 }
 
 .quick-replies-title {
@@ -567,6 +571,7 @@
 @media (max-width: 768px) {
   .chatbot-window {
     width: 340px;
+    height: 400px;
     right: 20px;
     bottom: 90px;
   }
@@ -585,7 +590,7 @@
   }
 
   .chatbot-messages {
-    max-height: 280px;
+    max-height: 200px;
   }
 
   .quick-replies {
@@ -601,6 +606,7 @@
 @media (max-width: 480px) {
   .chatbot-window {
     width: 320px;
+    height: 380px;
     right: 10px;
     left: 10px;
     bottom: 80px;
@@ -617,7 +623,7 @@
   }
 
   .chatbot-messages {
-    max-height: 250px;
+    max-height: 180px;
     padding: 15px;
   }
 

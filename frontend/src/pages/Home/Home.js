@@ -7,6 +7,7 @@ import Aproval from "./Approval";
 import Mentor from "./Mentor";
 import Women from "./Women";
 import Photos from "./Photos";
+import FAQSection from "../../components/FAQSection";
 
 import Campus from "./Campus";
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <Mentor />
             <Women />
             <Photos />
+            <FAQSection />
             
         </div>
     );

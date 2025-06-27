@@ -27,97 +27,126 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section
-      style={{
-        background: "#E6F7E6",
-        padding: "40px 20px",
-        borderRadius: 15,
-        margin: "40px auto 0 auto",
-        maxWidth: 900,
-        boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.12)",
-        border: "1px solid #b2dfdb"
-      }}
-    >
-      <h2
-        style={{
-          textAlign: "center",
-          marginBottom: 28,
-          color: "#024E6F",
-          fontWeight: "bold",
-          fontSize: "2rem",
-          fontFamily: "Poppins, sans-serif"
-        }}
-      >
-        Frequently Asked Questions
-      </h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+    <div style={styles.sectionContainer}>
+      <h2 style={styles.title}>Frequently Asked Questions</h2>
+      
+      <div style={styles.faqsContainer}>
         {faqs.map((faq, idx) => (
           <div
             key={idx}
-            style={{
-              background: "#fff",
-              borderRadius: 12,
-              marginBottom: 2,
-              boxShadow: "0px 4px 10px rgba(2, 78, 111, 0.08)",
-              border: "1px solid #c8e6c9",
-              transition: "box-shadow 0.2s"
-            }}
+            style={styles.faqItem}
           >
             <button
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-              style={{
-                width: "100%",
-                background: "none",
-                border: "none",
-                outline: "none",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "18px 24px",
-                cursor: "pointer",
-                fontWeight: 600,
-                color: "#024E6F",
-                fontSize: "1.13rem",
-                borderRadius: 12,
-                fontFamily: "Poppins, sans-serif",
-                textAlign: "left"
-              }}
-              aria-expanded={openIndex === idx}
+              style={styles.faqButton}
             >
-              <span style={{ display: "flex", alignItems: "center" }}>
-                <span style={{ marginRight: 8, color: "#388e3c" }}>❓</span>
+              <span style={styles.questionText}>
+                <span style={styles.questionIcon}>❓</span>
                 {faq.question}
               </span>
               <span
                 style={{
-                  fontSize: "1.3rem",
-                  color: "#388e3c",
+                  ...styles.arrowIcon,
                   transform: openIndex === idx ? "rotate(180deg)" : "rotate(0deg)",
-                  transition: "transform 0.2s"
                 }}
               >
                 ▼
               </span>
             </button>
             {openIndex === idx && (
-              <div
-                style={{
-                  color: "#2E3A59",
-                  lineHeight: 1.7,
-                  padding: "0 24px 18px 40px",
-                  fontSize: "1.05rem",
-                  background: "#f8f9fa",
-                  borderRadius: "0 0 12px 12px"
-                }}
-              >
+              <div style={styles.answerContainer}>
                 {faq.answer}
               </div>
             )}
           </div>
         ))}
       </div>
-    </section>
+      
+      <p style={styles.footerText}>
+        📞 Need more help? Contact our support team or use our chatbot for instant assistance.
+      </p>
+    </div>
   );
 }
+
+const styles = {
+  sectionContainer: {
+    width: "100%",
+    backgroundColor: "#E6F7E6",
+    padding: "20px",
+    borderRadius: "15px",
+    boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.2)",
+    textAlign: "center",
+    margin: "20px auto",
+    maxWidth: "900px",
+  },
+  title: {
+    fontSize: "30px",
+    fontWeight: "bold",
+    color: "#024E6F",
+    marginBottom: "20px",
+    fontFamily: "Poppins, sans-serif",
+  },
+  faqsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+  },
+  faqItem: {
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    overflow: "hidden",
+    boxShadow: "0px 5px 12px rgba(0, 0, 0, 0.1)",
+    border: "1px solid #c8e6c9",
+  },
+  faqButton: {
+    width: "100%",
+    background: "none",
+    border: "none",
+    outline: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "15px 20px",
+    cursor: "pointer",
+    fontWeight: "600",
+    color: "#2E3A59",
+    fontSize: "18px",
+    textAlign: "left",
+    fontFamily: "Poppins, sans-serif",
+  },
+  questionText: {
+    display: "flex",
+    alignItems: "center",
+    flex: "1",
+  },
+  questionIcon: {
+    marginRight: "15px",
+    color: "#024E6F",
+    fontSize: "20px",
+  },
+  arrowIcon: {
+    fontSize: "18px",
+    color: "#024E6F",
+    transition: "transform 0.3s ease",
+  },
+  answerContainer: {
+    color: "#2E3A59",
+    lineHeight: "1.6",
+    padding: "0 20px 15px 55px",
+    fontSize: "16px",
+    backgroundColor: "#f8f9fa",
+    borderTop: "1px solid #c8e6c9",
+    fontFamily: "Poppins, sans-serif",
+  },
+  footerText: {
+    fontSize: "18px",
+    color: "#2E3A59",
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: "20px",
+    fontFamily: "Poppins, sans-serif",
+  },
+};
 
 export default FAQSection; 

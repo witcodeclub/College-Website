@@ -1,5 +1,4 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";  
+import React from "react";  
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";  
 
 import "./index.css"; 
@@ -10,7 +9,7 @@ import Facilities from "./pages/Facilities/Facilities";
 import Footer from "./components/Footer";
 import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
-
+import WITBot from "./components/Chatbot";
 
 // Facilities
 import Library from "./pages/Facilities/Library";
@@ -62,7 +61,6 @@ import Faculty from "./pages/Academics/Faculty";
 import Syllabus from "./pages/Academics/Syllabus";
 import Courses from "./pages/Academics/Courses";
 import AcademicPolicies from "./pages/Academics/Academicp";
-import Chatbot from "./chatbot/Chatbot";
 
 
 
@@ -151,15 +149,12 @@ function App() {
           <Route path="/academics/syllabus" element={<Syllabus />} />
           <Route path="/academics/courses" element={<Courses />} />
          
-        </Routes>
+        </Routes> 
 
-<div style={{ position: "fixed", bottom: "30px", right: "30px", zIndex: 99999, backgroundColor: "red" }}>
-  <p style={{ color: "white" }}>I am visible!</p>
-</div>
- 
         <Footer />
 
-  <Chatbot/>            
+        <WITBot />
+             
       </div>
   );
 }
