@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";  
+import { Routes, Route, Link } from "react-router-dom";  
 import "./index.css"; 
 import Home from "./pages/Home/Home";
 import Discover from "./pages/Discover/Discover";
@@ -8,7 +8,7 @@ import Facilities from "./pages/Facilities/Facilities";
 import Footer from "./components/Footer";
 import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
-import ChatbotComponent from "./chatbot/ChatbotComponent";
+
 
 // Facilities
 import Library from "./pages/Facilities/Library";
@@ -60,6 +60,9 @@ import Faculty from "./pages/Academics/Faculty";
 import Syllabus from "./pages/Academics/Syllabus";
 import Courses from "./pages/Academics/Courses";
 import AcademicPolicies from "./pages/Academics/Academicp";
+import Chatbot from "./chatbot/Chatbot";
+
+
 
 function App() {
   return (
@@ -132,8 +135,13 @@ function App() {
          
         </Routes>
 
-        <ChatbotComponent />
+<div style={{ position: "fixed", bottom: "30px", right: "30px", zIndex: 99999, backgroundColor: "red" }}>
+  <p style={{ color: "white" }}>I am visible!</p>
+</div>
+ 
         <Footer />
+
+  <Chatbot/>            
       </div>
   );
 }
