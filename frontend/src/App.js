@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import { Routes, Route, Link } from "react-router-dom";  
+=======
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";  
+>>>>>>> 03fc07f51576e6b072d775b81c97e942863556b2
 import "./index.css"; 
 import Home from "./pages/Home/Home";
 import Discover from "./pages/Discover/Discover";
@@ -64,6 +68,15 @@ import Chatbot from "./chatbot/Chatbot";
 
 
 
+// ApprovalPages 
+import Approval from "./pages/Home/Approval";
+import AICTE from "./pages/Home/approval/AICTE";
+import DST from "./pages/Home/approval/DST";
+import HigherEducation from "./pages/Home/approval/HigherEducation";
+import NAAC from "./pages/Home/approval/NAAC";
+
+
+
 function App() {
   return (
       <div>
@@ -81,6 +94,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/academics" element={<Academics />} />
+
+          {/* Approval Routes */}
+          <Route path="/" element={<Approval/>}/>
+          <Route path="/approval/aicte" element={<AICTE/>}/>
+          <Route path="/approval/dst" element={<DST />} />
+          <Route path="/approval/highereducation" element={<HigherEducation/>} />
+          <Route path="/approval/naac" element={<NAAC />} />
 
           {/* Facilities Routes */}
           <Route path="/facilities" element={<Facilities />} />

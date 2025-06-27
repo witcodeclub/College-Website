@@ -33,10 +33,10 @@ const styles = {
   container: {
     textAlign: "center",
     padding: "40px",
-    background: "linear-gradient(to right, #d4edc9, #a8df8e)"
+    background: "#fff"
   },
   heading: {
-    fontSize: "28px",
+    fontSize: "30px",
     color: "green"
   },
   description: {
