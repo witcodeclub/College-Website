@@ -1,9 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
 import { Routes, Route, Link } from "react-router-dom";  
-=======
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";  
->>>>>>> 03fc07f51576e6b072d775b81c97e942863556b2
+
 import "./index.css"; 
 import Home from "./pages/Home/Home";
 import Discover from "./pages/Discover/Discover";
