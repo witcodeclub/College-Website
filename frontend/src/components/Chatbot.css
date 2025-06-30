@@ -25,7 +25,7 @@
   bottom: 100px;
   right: 30px;
   width: 360px;
-  height: 450px;
+  height: 430px;
   background: white;
   border-radius: 20px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.15);
@@ -181,6 +181,92 @@
   position: relative;
   white-space: pre-line;
   transition: transform 0.2s ease;
+}
+
+.msg-content a,
+.msg-content div[role="button"] {
+  text-decoration: none;
+  color: inherit;
+}
+
+.msg-content div[role="button"]:hover {
+  opacity: 0.8;
+}
+
+.msg-content button {
+  font-family: inherit;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.msg-content button:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.msg-content button:active {
+  background: #e0e0e0;
+  transform: translateY(1px);
+}
+
+.option-button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  background: #f0f2f5;
+  border: 1px solid #e4e6eb;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  color: #1a1a1a;
+  transition: all 0.2s ease;
+}
+
+.option-button:hover {
+  background: #e4e6eb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.option-button:active {
+  transform: translateY(0);
+  background: #dcdfe3;
+}
+
+.options-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.msg-button {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: auto;
+}
+
+.msg-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.msg-button:active {
+  transform: scale(0.98);
 }
 
 .chatbot-msg.bot .msg-content {

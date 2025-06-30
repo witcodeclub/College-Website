@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Chatbot.css";
 
 function WITBot() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [minimized, setMinimized] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [lastBotMessageId, setLastBotMessageId] = useState(null);
   const [conversationContext, setConversationContext] = useState([]);
-  const [showQuickActions, setShowQuickActions] = useState(true);
+  const [showQuickActions, setShowQuickActions] = useState(false);
 
   const [messages, setMessages] = useState(() => {
     const saved = localStorage.getItem('witbot-messages');
@@ -17,7 +17,7 @@ function WITBot() {
       { 
         id: 1,
         from: "bot", 
-        text: "Hi! I'm WITBot 👋 How can I help you today?", 
+        text: "Hi! I'm WITBot 👋\n\nI'd love to help you! Please let me know:\n1. Are you a prospective student or current student?\n2. What program/course are you interested in?", 
         timestamp: new Date(),
         showFeedback: false
       }
@@ -218,7 +218,6 @@ function WITBot() {
   };
 
   const handleQuickAction = (text, category) => {
-    setShowQuickActions(false);
     const userMsg = { 
       id: Date.now(), 
       from: "user", 
@@ -248,32 +247,46 @@ function WITBot() {
       };
       setMessages(prev => [...prev, botMsg]);
       setLastBotMessageId(botMsg.id);
-    }, 1000 + Math.random() * 1000);
+    }, 1000);
   };
 
   const handleSend = () => {
-    if (input.trim() === "") return;
+    if (!input.trim()) return;
     
-    const userMessage = input.trim();
     const userMsg = { 
       id: Date.now(), 
       from: "user", 
-      text: userMessage, 
+      text: input, 
       timestamp: new Date(),
       showFeedback: false
     };
     setMessages(prev => [...prev, userMsg]);
     setInput("");
     setIsTyping(true);
-    setShowQuickActions(false);
+
+    // Check if this is the first user response
+    if (messages.length === 1) {
+      setTimeout(() => {
+        setIsTyping(false);
+        const featuresMsg = {
+          id: Date.now() + 1,
+          from: "bot",
+          text: "Thank you for sharing that! I can help you with any of these topics:\n\n📌 Admission Info\n💰 Fee Structure\n📚 Courses Offered\n📝 Complaint Form\n💬 Feedback Form\n🗓️ Academic Calendar\n📞 Contact\n📍 College Location\n\nWhat would you like to know more about?",
+          timestamp: new Date(),
+          showFeedback: false
+        };
+        setMessages(prev => [...prev, featuresMsg]);
+      }, 1000);
+      return;
+    }
 
     setTimeout(() => {
       setIsTyping(false);
       
-      let botResponse = findFAQResponse(userMessage);
+      let botResponse = findFAQResponse(input);
       
       if (!botResponse) {
-        botResponse = generateGPTLikeResponse(userMessage);
+        botResponse = generateGPTLikeResponse(input);
       }
       
       const botMsg = { 
@@ -285,7 +298,7 @@ function WITBot() {
       };
       setMessages(prev => [...prev, botMsg]);
       setLastBotMessageId(botMsg.id);
-    }, 1000 + Math.random() * 1000);
+    }, 1000);
   };
 
   const handleKeyPress = (e) => {
@@ -339,18 +352,107 @@ function WITBot() {
 
   const handleClose = () => {
     setOpen(false);
+    setInput("");
+    setIsTyping(false);
+    setShowEmojiPicker(false);
     // Clear messages and reset for new session
     setMessages([
       { 
         id: 1,
         from: "bot", 
-        text: "Hi! I'm WITBot 👋 How can I help you today?", 
+        text: "Hi! I'm WITBot 👋\n\nI'd love to help you! Please let me know:\n1. Are you a prospective student or current student?\n2. What program/course are you interested in?", 
         timestamp: new Date(),
         showFeedback: false
       }
     ]);
-    setShowQuickActions(true);
     setConversationContext([]);
+  };
+
+  const handleOptionClick = (option) => {
+    const userMsg = { 
+      id: Date.now(), 
+      from: "user", 
+      text: option.text, 
+      timestamp: new Date(),
+      showFeedback: false
+    };
+    setMessages(prev => [...prev, userMsg]);
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setIsTyping(false);
+      let botResponse = findFAQResponse(option.text);
+      if (!botResponse) {
+        botResponse = generateGPTLikeResponse(option.text);
+      }
+      const botMsg = { 
+        id: Date.now() + 1, 
+        from: "bot", 
+        text: botResponse, 
+        timestamp: new Date(),
+        showFeedback: true
+      };
+      setMessages(prev => [...prev, botMsg]);
+      setLastBotMessageId(botMsg.id);
+    }, 1000);
+  };
+
+  const renderMessageContent = (msg) => {
+    if (msg.from === 'bot' && messages.indexOf(msg) === 1) {
+      const options = [
+        { emoji: "📌", text: "Admission Info", category: "admission" },
+        { emoji: "💰", text: "Fee Structure", category: "fees" },
+        { emoji: "📚", text: "Courses Offered", category: "courses" },
+        { emoji: "📝", text: "Complaint Form", category: "complaint" },
+        { emoji: "💬", text: "Feedback Form", category: "feedback" },
+        { emoji: "🗓️", text: "Academic Calendar", category: "calendar" },
+        { emoji: "📞", text: "Contact", category: "contact" },
+        { emoji: "📍", text: "College Location", category: "location" }
+      ];
+
+      return (
+        <div style={{ width: '100%' }}>
+          <div>Thank you for sharing that! I can help you with any of these topics:</div>
+          <div style={{ marginTop: '10px', marginBottom: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {options.map((option, idx) => (
+              <button 
+                key={idx}
+                onClick={() => handleOptionClick(option)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '10px 15px',
+                  backgroundColor: '#f0f0f0',
+                  border: '1px solid #ddd',
+                  borderRadius: '8px',
+                  cursor: 'pointer',
+                  width: '100%',
+                  textAlign: 'left',
+                  fontSize: '14px',
+                  transition: 'all 0.2s ease',
+                  color: '#333'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#e8e8e8';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#f0f0f0';
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <span style={{ marginRight: '10px', fontSize: '16px' }}>{option.emoji}</span>
+                {option.text}
+              </button>
+            ))}
+          </div>
+          <div>What would you like to know more about?</div>
+        </div>
+      );
+    }
+    return msg.text;
   };
 
   if (minimized) {
@@ -384,7 +486,7 @@ function WITBot() {
           <div className="chatbot-messages">
             {messages.map((msg, idx) => (
               <div key={msg.id} className={`chatbot-msg ${msg.from}`}>
-                <div className="msg-content">{msg.text}</div>
+                <div className="msg-content">{renderMessageContent(msg)}</div>
                 <div className="msg-time">
                   {formatTime(msg.timestamp)} • {formatDate(msg.timestamp)}
                 </div>
@@ -411,24 +513,6 @@ function WITBot() {
             )}
             <div ref={messagesEndRef} />
           </div>
-
-          {/* Quick Action Buttons */}
-          {showQuickActions && (
-            <div className="quick-replies">
-              <div className="quick-replies-title">
-                Here are a few things I can help you with:
-              </div>
-              {quickActions.map((action, idx) => (
-                <button 
-                  key={idx} 
-                  onClick={() => handleQuickAction(action.text, action.category)}
-                  className="quick-reply-btn"
-                >
-                  {action.emoji} {action.text}
-                </button>
-              ))}
-            </div>
-          )}
           
           <div className="chatbot-input">
             <div className="input-container">
