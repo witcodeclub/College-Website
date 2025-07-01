@@ -4,7 +4,7 @@ import Faculty from "./Faculty";
 import Resources from "./Resources";
 import Syllabus from "./Syllabus";
 import Courses from "./Courses"; 
-import Academicp from "./Academicp"
+import Academicp from "./AcademicPolicies"
 
 const Academics = () => {
   return (

@@ -50,20 +50,17 @@ function NSS() {
         </p>
       </div>
 
-      {/* Intro */}
-      <div style={{ padding: "25px", lineHeight: "1.8", fontSize: "16px" }}>
-        <p style={{ textAlign: "justify" }}>
-          The <strong>National Service Scheme (NSS)</strong> at{" "}
-          <strong>Dr. APJ Abdul Kalam Women's Institute Of Technology</strong>{" "}
-          provides opportunities for students to serve society. Its motto,{" "}
-          <strong>"Not Me, But You,"</strong> promotes selflessness, leadership,
-          and responsibility.
-        </p>
-        <p style={{ textAlign: "justify" }}>
-          Our volunteers engage in health, environment, outreach, and disaster
-          relief initiatives throughout the year.
-        </p>
-      </div>
+   {/* Intro */}
+<div style={{ padding: "25px", lineHeight: "1.8", fontSize: "16px" }}>
+  <p style={{ textAlign: "justify" }}>
+    <strong>National Service Scheme (NSS)</strong> is a Central Sector Scheme of the Government of India, under the Ministry of Youth Affairs & Sports. It was launched in 1969 to promote a spirit of voluntary community service among student youth. The scheme aims to develop the <strong>personality and character</strong> of students by involving them in activities that contribute positively to society.
+  </p>
+
+  <p style={{ textAlign: "justify" }}>
+    At <strong>Dr. APJ Abdul Kalam Women’s Institute of Technology</strong>, the NSS Unit actively engages students in community-oriented projects that build a sense of responsibility, teamwork, and compassion. Guided by the motto <strong>"Not Me, But You"</strong>, students participate in health awareness drives, environmental initiatives, rural outreach, disaster relief, and civic campaigns, contributing meaningfully while gaining leadership and real-world experience.
+  </p>
+</div>
+
 
       {/* Activities */}
       <h2 style={{ textAlign: "center", color: "#003366" }}>Activities We Conduct</h2>
@@ -166,70 +163,67 @@ function NSS() {
           />
         </div>
       )}
-       {/* Contact */}
-       <h2 style={{ textAlign: "center", color: "#003366", marginTop: "30px" }}>
+
+      {/* Contact */}
+      <h2 style={{ textAlign: "center", color: "#003366", marginTop: "30px" }}>
         Contact Us
-          </h2>
-       <div
-  style={{
-    backgroundColor: "#ffffff",
-    maxWidth: "600px",
-    margin: "0 auto",
-    borderRadius: "12px",
-    padding: "20px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-    fontSize: "16px",
-    lineHeight: "1.8",
-    textAlign: "center",
-  }}
->
-  <p>
-    📍 NSS Office, Dr. APJ Abdul Kalam Women's Institute Of Technology
-  </p>
+      </h2>
+      <div
+        style={{
+          backgroundColor: "#ffffff",
+          maxWidth: "600px",
+          margin: "0 auto",
+          borderRadius: "12px",
+          padding: "20px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          fontSize: "16px",
+          lineHeight: "1.8",
+          textAlign: "center",
+        }}
+      >
+        <p>
+          📍 NSS Office, Dr. APJ Abdul Kalam Women's Institute Of Technology
+        </p>
 
-  {/* Social Media Icons */}
-  <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
-    <a
-      href="https://www.facebook.com/people/Nss-Wing-Wit/100085855867819/?rdid=rM5sCl0SOlj2spGs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1ZCsgLqdTt%2F"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        color: "#3b5998",
-        fontWeight: "bold",
-        fontSize: "16px",
-        textDecoration: "none",
-      }}
-    >
-      <span style={{ fontSize: "22px" }}>🔵</span> Facebook
-    </a>
+        {/* Social Media Icons */}
+        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
+          <a
+            href="https://www.facebook.com/people/Nss-Wing-Wit/100085855867819/?rdid=rM5sCl0SOlj2spGs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1ZCsgLqdTt%2F"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#3b5998",
+              fontWeight: "bold",
+              fontSize: "16px",
+              textDecoration: "none",
+            }}
+          >
+            <span style={{ fontSize: "22px" }}>🔵</span> Facebook
+          </a>
 
-    <a
-      href="https://www.instagram.com/nsswing.wit/?igsh=ZGt4enRuZGpsNTRt#"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        color: "#C13584",
-        fontWeight: "bold",
-        fontSize: "16px",
-        textDecoration: "none",
-      }}
-    >
-      <span style={{ fontSize: "22px" }}>📷</span> Instagram
-    </a>
-  </div>
-       </div>
-
-      
-       </div> 
-    
+          <a
+            href="https://www.instagram.com/nsswing.wit/?igsh=ZGt4enRuZGpsNTRt#"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#C13584",
+              fontWeight: "bold",
+              fontSize: "16px",
+              textDecoration: "none",
+            }}
+          >
+            <span style={{ fontSize: "22px" }}>📷</span> Instagram
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 
 export default NSS;
-

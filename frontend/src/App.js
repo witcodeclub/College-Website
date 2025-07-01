@@ -70,7 +70,7 @@ import Director from "./pages/Discover/Director";
 import Faculty from "./pages/Academics/Faculty";
 import Syllabus from "./pages/Academics/Syllabus";
 import Courses from "./pages/Academics/Courses";
-import AcademicPolicies from "./pages/Academics/Academicp";
+import AcademicPolicies from "./pages/Academics/AcademicPolicies";
 
 
 

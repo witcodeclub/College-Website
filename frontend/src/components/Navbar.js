@@ -12,7 +12,7 @@ const Navbar = () => {
         { name: "Mission & Vision", path: "/discover/mission" },
         { name: "Legacy", path: "/discover/legacy" },
         { name: "VC's Message", path: "/discover/vc" },
-        { name: "Director’s Message", path: "/discover/director-message" },
+        { name: "Director’s Message", path: "/discover/director" },
         { name: "Department", path: "/discover/department" },
       ],
     },
@@ -33,7 +33,7 @@ const Navbar = () => {
       submenu: [
         { name: "Courses", path: "/academics/courses" },
         { name: "Syllabus & Curriculum", path: "/academics/syllabus" },
-        { name: "Academic Policies", path: "/academics/academicpolicies" },
+        { name: "Academic Policies", path: "/academics/academic-policies" },
         { name: "Faculty", path: "/academics/faculty" },
       ],
     },
