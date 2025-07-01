@@ -1,0 +1,22 @@
+[
+  {
+    "course": "B.Tech CSE & IT",
+    "semesters": 8,
+    "pdf": "/assets/syllabus_pdfs/full_syllabus.pdf"
+  },
+  {
+    "course": "B.Tech BI",
+    "semesters": 8,
+    "pdf": "/assets/syllabus_pdfs/bi/full_syllabus.pdf"  
+  },
+  {
+    "course": "BCA",
+    "semesters": 6,
+    "pdf": "/assets/syllabus_pdfs/bca/full_syllabus.pdf"
+  },
+  {
+    "course": "MCA",
+    "semesters": 4,
+    "pdf": "/assets/syllabus_pdfs/mca/full_syllabus.pdf"
+  }
+]

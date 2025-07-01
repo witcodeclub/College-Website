@@ -28,10 +28,10 @@ const Mentor = () => {
 
         {/* Registrar Card */}
         <div style={cardStyle}>
-          <img src="/images/registrar.jpeg" alt="Registrar" style={imageStyle} />
+          <img src="" alt="Registrar" style={imageStyle} />
           <div className="mentor-overlay">
-            <h2 style={titleStyle}>REGISTRAR ,LNMU</h2>
-            <p style={nameStyle}>DR. Ajay Kumar Pandit</p>
+            <h2 style={titleStyle}>REGISTRAR ,APJAKWIT</h2>
+            <p style={nameStyle}>Dr. Priyanka Rai</p>
           </div>
         </div>
 

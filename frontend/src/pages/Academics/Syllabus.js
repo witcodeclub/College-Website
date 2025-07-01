@@ -1,84 +1,49 @@
-import React, { useEffect, useState } from "react";
+
+
+import React from "react";
+import syllabusData from "../../data/syllabus.json";
 
 const Syllabus = () => {
-  const [selectedSemester, setSelectedSemester] = useState("1");
-  const [selectedBranch, setSelectedBranch] = useState("CS");
-  const [syllabusData, setSyllabusData] = useState({});
-
-  useEffect(() => {
-    fetch("/data/syllabus.json")
-      .then((res) => res.json())
-      .then((data) => setSyllabusData(data))
-      .catch((err) => console.error("Failed to load syllabus data", err));
-  }, []);
-
-  const syllabusList = syllabusData[selectedSemester]?.[selectedBranch] || [];
-  const showComingSoon = ["BCA", "MCA", "BI"].includes(selectedBranch) && syllabusList.length === 0;
-
   return (
-    <div style={{ padding: "30px", fontFamily: "Arial" }}>
-      <h2>Syllabus</h2>
+    <div style={{ padding: "2rem", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem", color: "#333" }}>Syllabus Library</h1>
 
-      <div style={{ marginBottom: "20px" }}>
-        <label>
-          Semester:
-          <select value={selectedSemester} onChange={(e) => setSelectedSemester(e.target.value)} style={{ margin: "0 10px" }}>
-            {[...Array(8)].map((_, i) => (
-              <option key={i + 1} value={i + 1}>{`Semester ${i + 1}`}</option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Branch:
-          <select value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)} style={{ margin: "0 10px" }}>
-            <option value="CS">Computer Science</option>
-            <option value="IT">Information Technology</option>
-            <option value="BI">Bioinformatics</option>
-            <option value="BCA">BCA</option>
-            <option value="MCA">MCA</option>
-          </select>
-        </label>
-      </div>
-
-      {syllabusList.length > 0 ? (
-        syllabusList.map((subject, index) => (
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
+        {syllabusData.map((item, index) => (
           <div
             key={index}
             style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "15px",
-              marginBottom: "15px",
-              backgroundColor: "#f9f9f9"
+              width: "300px",
+              backgroundColor: "#fff",
+              borderRadius: "12px",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+              padding: "1.5rem",
+              textAlign: "center"
             }}
           >
-            <h3>{subject.code} - {subject.name}</h3>
-            <ul>
-              {subject.chapters.map((chapter, i) => (
-                <li key={i}>{chapter}</li>
-              ))}
-            </ul>
-            <a href={subject.pdf} download style={{ color: "blue", textDecoration: "underline" }}>
-              Download PDF
+            <h2 style={{ color: "#2c3e50" }}>{item.course}</h2>
+            <p style={{ margin: "1rem 0", color: "#555" }}>
+              Total Semesters: {item.semesters}
+            </p>
+            <a
+              href={item.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                marginTop: "1rem",
+                padding: "0.6rem 1.2rem",
+                backgroundColor: "#3498db",
+                color: "#fff",
+                borderRadius: "8px",
+                textDecoration: "none"
+              }}
+            >
+              View Syllabus PDF
             </a>
           </div>
-        ))
-      ) : showComingSoon ? (
-        <div style={{
-          padding: "20px",
-          textAlign: "center",
-          backgroundColor: "#ffe9e9",
-          color: "#c0392b",
-          border: "1px dashed #c0392b",
-          borderRadius: "10px"
-        }}>
-          <h3>{selectedBranch} - Semester {selectedSemester}</h3>
-          <p><strong>Syllabus Coming Soon...</strong></p>
-        </div>
-      ) : (
-        <p>No syllabus available for selected semester and branch.</p>
-      )}
+        ))}
+      </div>
     </div>
   );
 };

@@ -10,6 +10,12 @@ import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
 import WITBot from "./components/Chatbot";
 
+//Login and SignUp
+import Login from "./pages/Login";
+import Student from "./pages/Dashboard/Student";
+import Professor from "./pages/Dashboard/Professor";
+import Staff from "./pages/Dashboard/Staff";
+
 //Footer and General
 import Footer from "./components/Footer";
 import AntiRagging from "./pages/AntiRagging";
@@ -23,6 +29,7 @@ import Labs from "./pages/Facilities/Labs";
 import Sports from "./pages/Facilities/SportsClub";
 import Hostel from "./pages/Facilities/Hostel";
 import Cafeteria from "./pages/Facilities/Cafeteria";
+import Other from "./pages/Facilities/Other";
 
 // Training & Placement
 import TP from "./pages/TP/TP";
@@ -97,6 +104,13 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/societies" element={<Societies />} />
 
+          {/*Login Routes*/}
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard/student" element={<Student />} />
+          <Route path="/dashboard/professor" element={<Professor />} />
+           <Route path="/dashboard/staff" element={<Staff />} />
+
+
           {/* Approval Routes */}
           <Route path="/" element={<Approval/>}/>
           <Route path="/approval/aicte" element={<AICTE/>}/>
@@ -110,7 +124,7 @@ function App() {
           <Route path="/facilities/labs" element={<Labs />} />
           <Route path="/facilities/sports" element={<Sports />} />
           <Route path="/facilities/hostel" element={<Hostel />} />
-          
+          <Route path="/facilities/other" element={<Other />} />
           <Route path="/facilities/societies" element={<Societies />} />
           <Route path="/facilities/cafeteria" element={<Cafeteria />} />
 

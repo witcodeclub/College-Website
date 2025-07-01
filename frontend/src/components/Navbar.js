@@ -44,10 +44,9 @@ const Navbar = () => {
         { name: "Library", path: "/facilities/library" },
         { name: "Labs", path: "/facilities/labs" },
         { name: "Sports", path: "/facilities/sports" },
-        { name: "WiFi / Water Cooler", path: "/facilities/wifi" },
-        { name: "Auditorium", path: "/facilities/auditorium" },
         { name: "Societies", path: "/facilities/societies" },
         { name: "Cafeteria", path: "/facilities/cafeteria" },
+        { name: "Other", path: "facilities/other" },
       ],
     },
     {
@@ -70,7 +69,7 @@ const Navbar = () => {
         { name: "Sports Club", path: "/student-life/sports-club" },
         { name: "Fests", path: "/student-life/fests" },
         { name: "Magazine", path: "/student-life/magazine" },
-        { name: "Anti-ragging", path: "/student-life/anti-ragging" },
+      
       ],
     },
   ];
@@ -103,7 +102,7 @@ const Navbar = () => {
             )}
           </li>
         ))}
-        {/* NSS, Contact Us and Sign In */}
+        {/* NSS, Contact Us and Log In */}
         <li className="nav-item">
           <Link to="/nss" className="nav-button nss">
             NSS
@@ -115,7 +114,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/signin" className="nav-button sign-in">
+          <Link to="/login" className="nav-button log-in">
             Sign In
           </Link>
         </li>
