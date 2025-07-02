@@ -14,7 +14,10 @@ const Professor = () => {
   const schedule = [
     { day: 'Monday', subjects: ['DSA', 'OS'] },
     { day: 'Tuesday', subjects: ['DBMS', 'AI'] },
-    { day: 'Wednesday', subjects: ['DSA', 'DBMS'] },
+    { day: 'Wednesday', subjects: ['CS', 'DBMS'] },
+    { day: 'Thursday', subjects: ['Maths', 'Set'] },
+    { day: 'Friday', subjects: ['OS', 'AI'] },
+    { day: 'Saturday', subjects: ['DSA', 'DBMS'] },
   ];
 
   const announcements = [
@@ -23,26 +26,34 @@ const Professor = () => {
   ];
 
   return (
-    <div style={mainContainer}>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button style={logoutBtn}>Logout</button>
+    <div className="min-h-screen bg-gray-300 text-white p-6 font-sans">
+      {/* Logout */}
+      <div className="flex justify-end">
+        <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded mb-6 font-semibold">
+          Logout
+        </button>
       </div>
 
-      <h1 style={pageTitle}>Welcome, Professor!</h1>
+      <h1 className="text-3xl font-bold mb-6">Welcome, Professor!</h1>
 
-      <div style={cardRow}>
-        <div style={chartCard}>
-          <h3 style={cardTitle}>Overview</h3>
+      {/* Profile + Overview Chart */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* Profile Section */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Professor Profile</h3>
+          <p><strong>Name:</strong> Dr. A.K. Sinha</p>
+          <p><strong>Department:</strong> Computer Science</p>
+          <p><strong>Email:</strong> aksinha@college.edu.in</p>
+          <p><strong>Courses Taught:</strong> DSA, DBMS, OS</p>
+          <p><strong>Experience:</strong> 10+ years</p>
+        </div>
+
+        {/* Chart Section */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Overview</h3>
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                dataKey="value"
-                label
-              >
+              <Pie data={chartData} cx="50%" cy="50%" outerRadius={80} dataKey="value" label>
                 {chartData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
@@ -51,97 +62,50 @@ const Professor = () => {
             </PieChart>
           </ResponsiveContainer>
         </div>
+      </div>
 
-        <div style={cardStyle}>
-          <h3 style={cardTitle}>Weekly Schedule</h3>
-          {schedule.map((s, i) => (
-            <p key={i}><strong>{s.day}:</strong> {s.subjects.join(', ')}</p>
+      {/* Schedule + Notices Side by Side */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        {/* Your Schedule */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Your Schedule</h3>
+          {schedule.map((item, index) => (
+            <p key={index} className="mb-2">
+              <strong>{item.day}:</strong> {item.subjects.join(', ')}
+            </p>
           ))}
         </div>
-      </div>
 
-      <div style={cardRow}>
-        <div style={cardStyle}>
-          <h3 style={cardTitle}>Upload Marks</h3>
-          <button style={primaryBtn}>Upload Internal Marks</button>
-        </div>
-
-        <div style={cardStyle}>
-          <h3 style={cardTitle}>Upload Notes</h3>
-          <button style={primaryBtn}>Upload PDF Notes</button>
-        </div>
-      </div>
-
-      <div style={cardRow}>
-        <div style={{ ...cardStyle, flex: '1 1 100%' }}>
-          <h3 style={cardTitle}>Faculty Notices</h3>
-          <ul>
-            {announcements.map((note, idx) => (
-              <li key={idx} style={{ marginBottom: '8px' }}>{note}</li>
+        {/* Notices */}
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Faculty Notices</h3>
+          <ul className="list-disc pl-6">
+            {announcements.map((note, index) => (
+              <li key={index} className="mb-2">{note}</li>
             ))}
           </ul>
+        </div>
+      </div>
+
+      {/* Upload Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Upload Marks</h3>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-semibold">
+            Upload Internal Marks
+          </button>
+        </div>
+
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-4">Upload Notes</h3>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-semibold">
+            Upload PDF Notes
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-const mainContainer = {
-  padding: '30px',
-  backgroundColor: '#f4f6fa',
-  minHeight: '100vh',
-  fontFamily: 'Arial, sans-serif'
-};
-
-const pageTitle = {
-  color: '#2d2d39',
-  marginBottom: '30px'
-};
-
-const cardRow = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '20px',
-  marginBottom: '30px'
-};
-
-const cardStyle = {
-  backgroundColor: '#fff',
-  padding: '20px',
-  borderRadius: '10px',
-  boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-  flex: '1 1 45%'
-};
-
-const chartCard = {
-  ...cardStyle,
-  flex: '1 1 45%',
-  height: '320px'
-};
-
-const cardTitle = {
-  marginBottom: '15px',
-  color: '#1e1e2f'
-};
-
-const logoutBtn = {
-  backgroundColor: '#ff4c4c',
-  color: 'white',
-  border: 'none',
-  padding: '8px 16px',
-  cursor: 'pointer',
-  borderRadius: '6px',
-  fontWeight: 'bold'
-};
-
-const primaryBtn = {
-  backgroundColor: '#4a90e2',
-  color: 'white',
-  padding: '10px 20px',
-  border: 'none',
-  borderRadius: '6px',
-  cursor: 'pointer',
-  fontWeight: 'bold'
-};
-
 export default Professor;
+

@@ -10,7 +10,6 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Dummy condition — replace with real validation later
     if (emailOrReg && password) {
       if (role === 'student') navigate('/dashboard/student');
       else if (role === 'professor') navigate('/dashboard/professor');
@@ -21,18 +20,22 @@ function Login() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.box}>
-        <h2 style={styles.heading}>Login</h2>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
         <form onSubmit={handleLogin}>
-          <label style={styles.label}>Select Role</label>
-          <select value={role} onChange={(e) => setRole(e.target.value)} style={styles.input}>
+          <label className="block font-semibold text-gray-700 mb-1">Select Role</label>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
             <option value="student">Student</option>
             <option value="professor">Professor</option>
             <option value="staff">Staff</option>
           </select>
 
-          <label style={styles.label}>
+          <label className="block font-semibold text-gray-700 mb-1">
             {role === 'student' ? 'Registration Number' : 'Email'}
           </label>
           <input
@@ -40,73 +43,31 @@ function Login() {
             placeholder={role === 'student' ? 'e.g., 23CSE1234' : 'Enter your email'}
             value={emailOrReg}
             onChange={(e) => setEmailOrReg(e.target.value)}
-            style={styles.input}
+            className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
 
-          <label style={styles.label}>Password</label>
+          <label className="block font-semibold text-gray-700 mb-1">Password</label>
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
+            className="w-full border border-gray-300 rounded-md p-2 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
 
-          <button type="submit" style={styles.button}>Login</button>
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-semibold transition duration-200"
+          >
+            Login
+          </button>
         </form>
       </div>
     </div>
   );
 }
 
-// Styles (inline CSS)
-const styles = {
-  container: {
-    minHeight: '100vh',
-    backgroundColor: '#f1f2f6',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  box: {
-    backgroundColor: '#fff',
-    padding: '30px',
-    borderRadius: '8px',
-    boxShadow: '0px 2px 10px rgba(0,0,0,0.1)',
-    width: '350px',
-  },
-  heading: {
-    marginBottom: '20px',
-    color: '#2c3e50',
-    textAlign: 'center',
-  },
-  label: {
-    marginTop: '10px',
-    display: 'block',
-    fontWeight: 'bold',
-    color: '#2c3e50',
-  },
-  input: {
-    width: '100%',
-    padding: '10px',
-    marginTop: '5px',
-    marginBottom: '15px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    fontSize: '14px',
-  },
-  button: {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#27ae60',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-  },
-};
-
 export default Login;
+

@@ -10,100 +10,44 @@ const Staff = () => {
     { title: 'Help Desk Queries', description: 'Respond to student queries and requests from the online help desk.' },
   ];
 
+  const cardColors = [
+    'bg-[#2c3e50]',
+    'bg-[#34495e]',
+    'bg-[#3b3b58]',
+    'bg-[#22313f]',
+    'bg-[#2f3640]',
+    'bg-[#3d3d5c]',
+  ];
+
   return (
-    <div style={mainContainer}>
-      <div style={headerRow}>
-        <h1 style={pageTitle}>Welcome, Office Staff!</h1>
-        <button style={logoutBtn}>Logout</button>
+    <div className="min-h-screen bg-gray-100 p-6 text-gray-900 font-sans">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-semibold">Welcome, Office Staff!</h1>
+        <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-bold">
+          Logout
+        </button>
       </div>
 
-      <div style={cardRow}>
+      {/* Cards */}
+      <div className="flex flex-wrap gap-6">
         {officeModules.map((module, idx) => (
           <div
             key={idx}
-            style={{
-              ...cardStyle,
-              backgroundColor: cardColors[idx % cardColors.length]
-            }}
+            className={`w-full sm:w-[47%] p-5 rounded-xl shadow-md text-white flex flex-col justify-between ${cardColors[idx % cardColors.length]}`}
           >
-            <h3 style={cardTitle}>{module.title}</h3>
-            <p style={{ color: '#eee', fontSize: '14px' }}>{module.description}</p>
-            <button style={primaryBtn}>Open</button>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">{module.title}</h3>
+              <p className="text-sm text-gray-200">{module.description}</p>
+            </div>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded font-semibold w-fit">
+              Open
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
-};
-
-const mainContainer = {
-  padding: '20px 30px',
-  backgroundColor: '#f0f2f5',
-  minHeight: '100vh',
-  fontFamily: 'Segoe UI, sans-serif',
-  color: '#1d1d1f'
-};
-
-const headerRow = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '20px'
-};
-
-const pageTitle = {
-  color: '#1d1d1f',
-  margin: 0,
-  fontSize: '24px'
-};
-
-const cardRow = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '20px'
-};
-
-const cardStyle = {
-  padding: '18px',
-  borderRadius: '12px',
-  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-  flex: '1 1 45%',
-  minHeight: '160px',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-  transition: '0.3s ease'
-};
-
-const cardColors = [
-  '#2c3e50', '#34495e', '#3b3b58', '#22313f', '#2f3640', '#3d3d5c'
-];
-
-const cardTitle = {
-  marginBottom: '10px',
-  color: '#ffffff',
-  fontSize: '17px'
-};
-
-const logoutBtn = {
-  backgroundColor: '#ff4c4c',
-  color: 'white',
-  border: 'none',
-  padding: '8px 16px',
-  cursor: 'pointer',
-  borderRadius: '6px',
-  fontWeight: 'bold'
-};
-
-const primaryBtn = {
-  backgroundColor: '#4a90e2',
-  color: 'white',
-  padding: '6px 12px',
-  border: 'none',
-  borderRadius: '6px',
-  cursor: 'pointer',
-  marginTop: '10px',
-  alignSelf: 'flex-start'
 };
 
 export default Staff;

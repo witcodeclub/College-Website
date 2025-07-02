@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaFacebook, FaInstagram,  FaTwitter } from "react-icons/fa";
-// ✅ Define styles outside the component
-const styles = {
-  link: {
-    color: "white",
-    textDecoration: "none",
-    fontSize: "15px"
-  }
-};
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   const [weather, setWeather] = useState({
     temp: "",
@@ -19,6 +12,7 @@ const Footer = () => {
     pm25: "",
   });
   const [dateTime, setDateTime] = useState(new Date());
+
   useEffect(() => {
     axios
       .get(
@@ -30,14 +24,13 @@ const Footer = () => {
           humidity: response.data.main.humidity,
           wind: response.data.wind.speed,
           condition: response.data.weather[0].main,
-          pm25: "Fetching...", // Placeholder for air pollution API
+          pm25: "Fetching...",
         });
       })
       .catch((error) => console.error("Weather API Error:", error));
   }, []);
 
   useEffect(() => {
-    // Update date and time every second
     const interval = setInterval(() => {
       setDateTime(new Date());
     }, 1000);
@@ -45,132 +38,71 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer
-      style={{
-        backgroundColor: "#0A2647",
-        color: "white",
-        padding: "20px",
-        textAlign: "center",
-        position: "relative",
-        marginTop: "50px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "start",
-          flexWrap: "wrap",
-        }}
-      >
-        {/* Left Section - Logo and Address */}
-        <div style={{ flex: "1", textAlign: "center", paddingRight: "20px" }}>
+    <footer className="bg-[#0A2647] text-white px-6 py-10 mt-12 text-center relative">
+      <div className="flex flex-wrap justify-between text-left">
+        {/* Logo and Address */}
+        <div className="flex-1 text-center md:text-left md:pr-6 mb-6">
           <img
             src="/images/wit.jpeg"
             alt="wit Logo"
-            style={{
-              width: "80px",
-              marginBottom: "2px",
-              borderRadius: "50%",
-              marginBottom: "8px",
-            }}
+            className="w-20 mx-auto md:mx-0 rounded-full mb-3"
           />
-          <h3>WIT Darbhanga</h3>
+          <h3 className="text-xl font-semibold">WIT Darbhanga</h3>
           <p>Kameshwarnagar, Darbhanga, Bihar-846008</p>
           <p>📧 email-directorwit@yahoo.in</p>
           <p>📞 +91-06272-246579</p>
-          <a
-            href="https://www.facebook.com/people/apjakwit/61559087061968/?rdid=OIZvadPupztm418C&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1YZQjkpTgV%2F"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "white", margin: "0 px", fontSize: "26px" }}
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="https://www.instagram.com/apjak.wit/?igsh=Y2EzNnFnODk1ZHFp#"
-            style={{ color: "white", margin: "0 14px", fontSize: "28px" }}
-          >
-            <FaInstagram />
-          </a>
-          
-          <a
-            href="https://x.com/apjakwit?t=KGuEITZlvabPTgiweLsxdw&s=08"
-            style={{ color: "white", margin: "0 10px", fontSize: "26px" }}
-          >
-            <FaTwitter />
-          </a>
+          <div className="flex justify-center md:justify-start mt-4 gap-6 text-2xl">
+            <a
+              href="https://www.facebook.com/people/apjakwit/61559087061968"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="https://www.instagram.com/apjak.wit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://x.com/apjakwit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaTwitter />
+            </a>
+          </div>
         </div>
 
-        {/* Middle Left Section - Explore */}
-        <div style={{ flex: "1", textAlign: "left", paddingLeft: "120px" }}>
-          <h3
-            style={{
-              display: "inline-block",
-              borderBottom: "2px dotted white",
-              paddingBottom: "5px",
-            }}
-          >
-            Explore
-          </h3>
-          <ul style={{ listStyle: "none", padding: 2 }}>
-           <li><Link to="/societies" style={styles.link}>Societies</Link></li>
-           <li><Link to="/facilities/labs" style={styles.link}>Labs</Link></li>
-           <li><Link to="/facilities/library" style={styles.link}>Library</Link></li>
-           <li><Link to="/events" style={styles.link}>Events</Link  ></li>
+        {/* Explore */}
+        <div className="flex-1 mb-6 pl-6">
+          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Explore</h3>
+          <ul className="list-none space-y-1 text-sm">
+            <li><Link to="/societies" className="hover:underline">Societies</Link></li>
+            <li><Link to="/facilities/labs" className="hover:underline">Labs</Link></li>
+            <li><Link to="/facilities/library" className="hover:underline">Library</Link></li>
+            <li><Link to="/events" className="hover:underline">Events</Link></li>
           </ul>
         </div>
 
-        {/* Middle Right Section - Quick Links */}
-        <div
-          style={{
-            flex: "1",
-            textAlign: "left",
-            paddingLeft: "10px",
-            paddingRight: "20px",
-          }}
-        >
-          <h3
-            style={{
-              display: "inline-block",
-              borderBottom: "2px dotted white",
-              paddingBottom: "5px",
-            }}
-          >
-            Quick Links
-          </h3>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-             <li><Link to="/admission/process" style={styles.link}>Admission</Link></li>
-             <li><Link to="/discover/department" style={styles.link}>Departments</Link></li>
-             <li><Link to="/anti-ragging" style={styles.link}>Anti-Ragging</Link></li>
-            <li><Link to="/tp/placements" style={styles.link}>Placement</Link></li>
-            <li><Link to="/tp/alumni" style={styles.link}>Alumni</Link></li>
-
+        {/* Quick Links */}
+        <div className="flex-1 mb-6 px-6">
+          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Quick Links</h3>
+          <ul className="list-none space-y-1 text-sm">
+            <li><Link to="/admission/process" className="hover:underline">Admission</Link></li>
+            <li><Link to="/discover/department" className="hover:underline">Departments</Link></li>
+            <li><Link to="/anti-ragging" className="hover:underline">Anti-Ragging</Link></li>
+            <li><Link to="/tp/placements" className="hover:underline">Placement</Link></li>
+            <li><Link to="/tp/alumni" className="hover:underline">Alumni</Link></li>
           </ul>
- 
         </div>
-        
-  l
 
-        {/* Right Section - Weather */}
-        <div
-          style={{
-            backgroundImage:
-              "linear-gradient(to bottom,#006400 ,#e0e0e0)",
-            color: "white",
-            padding: "15px",
-            marginTop: "15px",
-            borderRadius: "10px",
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
-            flex: "1",
-            textAlign: "center",
-            margin: "auto",
-          }}
-        >
-          <h3 style={{ fontSize: "25px", marginBottom: "10px" }}>
-            Weather in Darbhanga
-          </h3>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
+        {/* Weather Card */}
+        <div className="flex-1 mt-1 bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-xl shadow-lg text-center">
+          <h3 className="text-xl font-semibold mb-2">Weather in Darbhanga</h3>
+          <p className="font-bold text-sm">
             {dateTime.toLocaleDateString("en-US", {
               weekday: "long",
               year: "numeric",
@@ -178,43 +110,20 @@ const Footer = () => {
               day: "numeric",
             })}
           </p>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            {dateTime.toLocaleTimeString()}
-          </p>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            Temperature: {weather.temp}°C
-          </p>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            Humidity: {weather.humidity}%
-          </p>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            Wind Speed: {weather.wind} m/s
-          </p>
-          <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-            Condition: {weather.condition}
-          </p>
-          <p>
-            Air Pollution (PM2.5): <strong>{weather.pm25}</strong>💚
-          </p>
+          <p className="font-bold text-sm mb-1">{dateTime.toLocaleTimeString()}</p>
+          <p className="font-bold text-sm">Temperature: {weather.temp}°C</p>
+          <p className="font-bold text-sm">Humidity: {weather.humidity}%</p>
+          <p className="font-bold text-sm">Wind Speed: {weather.wind} m/s</p>
+          <p className="font-bold text-sm">Condition: {weather.condition}</p>
+          <p className="text-sm">Air Pollution (PM2.5): <strong>{weather.pm25}</strong>💚</p>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div
-        style={{
-          color: "grey-blue",
-          marginTop: "10px",
-          borderTop: "3px solid gray",
-          paddingTop: "10px",
-        }}
-      >
+      <div className="mt-6 border-t border-gray-400 pt-4 text-sm text-gray-300">
         © 2025 Copyright WIT Darbhanga | Developed by WitCodingClub
       </div>
     </footer>
-
-
   );
 };
-
 
 export default Footer;

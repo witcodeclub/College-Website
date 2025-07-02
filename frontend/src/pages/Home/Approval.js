@@ -74,7 +74,7 @@ const CombinedComponent = () => {
 
 const styles = {
   sectionContainer: {
-    width: "45%",
+    width: "50%",
     height: "400px",
     backgroundColor: "#F5F5F5",
     padding: "20px",
