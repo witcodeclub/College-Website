@@ -30,7 +30,7 @@ const Mentor = () => {
         <div style={cardStyle}>
           <img src="" alt="Registrar" style={imageStyle} />
           <div className="mentor-overlay">
-            <h2 style={titleStyle}>REGISTRAR ,APJAKWIT</h2>
+            <h2 style={titleStyle}>Deputy REGISTRAR ,APJAKWIT</h2>
             <p style={nameStyle}>Dr. Priyanka Rai</p>
           </div>
         </div>

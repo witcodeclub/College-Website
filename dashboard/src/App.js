@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+//
+import './index.css'; // Assuming you have an index.css file for global styles
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <div className="min-h-screen bg-blue-500 flex items-center justify-center">
+      <h1 className="text-white text-4xl font-bold p-4 rounded-lg shadow-lg">
+        Hello Tailwind!
+      </h1>
     </div>
   );
 }
-
 export default App;
+
+

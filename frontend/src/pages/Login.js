@@ -10,16 +10,23 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (emailOrReg && password) {
-      if (role === 'student') navigate('/dashboard/student');
-      else if (role === 'professor') navigate('/dashboard/professor');
-      else if (role === 'staff') navigate('/dashboard/staff');
+     if (emailOrReg && password) {
+      // 👉 Replace with your actual dashboard port if different
+      const baseURL = 'http://localhost:3001';
+
+      if (role === 'student') {
+        window.location.href = `${baseURL}/student`;
+      } else if (role === 'professor') {
+        window.location.href = `${baseURL}/professor`;
+      } else if (role === 'staff') {
+        window.location.href = `${baseURL}/staff`;
+      }
     } else {
       alert("Please enter valid credentials.");
     }
   };
 
-  return (
+   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
@@ -70,4 +77,3 @@ function Login() {
 }
 
 export default Login;
-

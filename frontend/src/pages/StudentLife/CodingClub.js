@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 const events = [
   { title: "Coding Quest", desc: "Competitive coding challenge for all skill levels." },
@@ -16,10 +16,10 @@ const projects = [
 ];
 
 const members = [
-  { name: "Rimjhim Jha", role: "President" },
-  { name: "Shruti Riya", role: "Secretary" },
-  { name: "Jaya", role: "Core Member" },
-  { name: "More members coming soon...", role: "" },
+  { name: "Rimjhim Jha", role: "President", img: "/images/members/rimjhim.jpg" },
+  { name: "Shruti Riya", role: "Secretary", img: "/images/members/shruti.jpg" },
+  { name: "Jaya", role: "Core Member", img: "/images/members/jaya.jpg" },
+  { name: "More members coming soon...", role: "", img: "/images/members/default.jpg" },
 ];
 
 const photos = [
@@ -35,148 +35,127 @@ const CodingClub = () => {
   }, []);
 
   return (
-    <div style={{ fontFamily: "Segoe UI", background: "#f9fafb", padding: "30px" }}>
-      {/* Heading with Logo */}
+    <div className="font-sans bg-gray-50 p-8">
+      {/* Logo and Title */}
       <div
-        style={{
-          ...popStyle(show, 0),
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "20px",
-          marginBottom: "20px",
-        }}
+        className={`flex items-center justify-center gap-5 mb-8 transition-all duration-700 ${show ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        style={{ transitionDelay: '0s' }}
       >
         <img
-          src="\images\codingclub_logo.jpg" 
+          src="/images/codingclub_logo.jpg"
           alt="Club Logo"
-          style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "50%",
-            objectFit: "cover",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          }}
+          className="w-16 h-16 rounded-full object-cover shadow-md"
         />
-        <h1 style={{ fontSize: "2.8rem", color: "#1e3a8a", margin: 0 }}>WIT CODE</h1>
+        <h1 className="text-4xl text-blue-900 font-bold m-0">WIT CODE</h1>
       </div>
 
       {/* Club Intro */}
-      <div style={popStyle(show, 0.1)}>
-        <p style={{ maxWidth: "800px", margin: "auto", fontSize: "1.1rem", textAlign: "center" }}>
+      <div
+        className={`transition-all duration-700 ${show ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        style={{ transitionDelay: '100ms' }}
+      >
+        <p className="max-w-3xl mx-auto text-lg text-center">
           <strong>Coding Club</strong> is a <strong>student-led initiative</strong> started by passionate students of Dr. APJ Abdul Kalam Women’s Institute of Technology. The club was inaugurated by our Hon’ble VC Sir in the presence of our respected Director and faculty members. Our goal is to build real-world skills through coding, projects, and collaboration.
         </p>
       </div>
 
-      {/* Events Section */}
-      <Section title="✨ Events We Organize" show={show} delay={0.3}>
+      <Section title="✨ Events We Organize" show={show} delay="300">
         <CardContainer items={events} />
       </Section>
 
-      {/* Projects Section */}
-      <Section title="💡 Our Projects" show={show} delay={0.5}>
+      <Section title="💡 Our Projects" show={show} delay="500">
         <CardContainer items={projects} />
       </Section>
 
-      {/* Chart */}
-      <Section title="📊 Event Type Distribution" show={show} delay={0.7}>
-        <div style={{ textAlign: "center" }}>
+      <Section title="📊 Event Type Distribution" show={show} delay="700">
+        <div className="text-center">
           <img
             src="https://quickchart.io/chart?c={type:'pie',data:{labels:['Coding Quest','Workshops','Projects','Hackathons','Tech Fest'],datasets:[{data:[20,20,20,20,20]}]}}"
             alt="event distribution"
-            style={{
-              maxWidth: "350px",
-              borderRadius: "12px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              marginTop: "10px",
-            }}
+            className="max-w-xs mx-auto mt-2 rounded-xl shadow-lg"
           />
         </div>
       </Section>
 
-      {/* Photos */}
-      <Section title="📷 Glimpses of Club Activities" show={show} delay={0.9}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+      <Section title="📷 Glimpses of Club Activities" show={show} delay="900">
+        <div className="flex flex-wrap gap-5 justify-center">
           {photos.map((src, idx) => (
             <img
               key={idx}
               src={src}
               alt={`club-img-${idx}`}
-              style={{
-                width: "300px",
-                height: "180px",
-                objectFit: "cover",
-                borderRadius: "12px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              }}
+              className="w-72 h-44 object-cover rounded-xl shadow-lg"
             />
           ))}
         </div>
       </Section>
 
-      {/* Members Section */}
-      <Section title="👩‍💻 Core Members" show={show} delay={1.1}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+      <Section title="👩‍💻 Core Members" show={show} delay="1100">
+        <div className="flex flex-wrap gap-5 justify-center">
           {members.map((member, idx) => (
             <div
               key={idx}
-              style={{
-                background: "#ffffff",
-                padding: "20px",
-                width: "230px",
-                textAlign: "center",
-                borderRadius: "12px",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-              }}
+              className="bg-white p-5 w-56 text-center rounded-xl shadow-md transform transition-transform duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              <div style={{ fontSize: "1.1rem", fontWeight: "bold", color: "#1e40af" }}>{member.name}</div>
-              <div style={{ color: "#475569", fontSize: "0.95rem", marginTop: "6px" }}>{member.role}</div>
+              <img
+                src={member.img}
+                alt={member.name}
+                className="w-20 h-20 rounded-full object-cover mb-2 shadow"
+              />
+              <div className="text-blue-800 font-semibold text-lg">{member.name}</div>
+              <div className="text-slate-600 text-sm mt-1">{member.role}</div>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Footer */}
+      <Section title="📬 Contact & Social Media" show={show} delay="1300">
+        <div className="text-center flex flex-col items-center gap-4 text-base">
+          <div>Email us at: <a href="mailto:witcodeclub@gmail.com" className="text-blue-800">witcodingclub@gmail.com</a></div>
+          <div className="flex gap-6 text-2xl justify-center">
+            <a href="https://www.instagram.com/witcodeclub?utm_source=qr&igsh=MWtsand0dTFlMWp0eA==" target="_blank" rel="noreferrer" title="Instagram">
+              <FaInstagram className="text-pink-600" />
+            </a>
+            <a href="https://www.linkedin.com/company/105056331/admin/dashboard/" target="_blank" rel="noreferrer" title="LinkedIn">
+              <FaLinkedin className="text-blue-700" />
+            </a>
+            <a href="https://chat.whatsapp.com/LF1AimjQpdJ42mNdRw1nSr" target="_blank" rel="noreferrer" title="WhatsApp Channel">
+              <FaWhatsapp className="text-green-500" />
+            </a>
+            <a href="mailto:witcodingclub@gmail.com" title="Email">
+              <FaEnvelope className="text-gray-700" />
+            </a>
+          </div>
         </div>
       </Section>
     </div>
   );
 };
 
-// Section Component with Pop-in
-const Section = ({ title, children, show, delay = 0 }) => {
-  return (
-    <div style={popStyle(show, delay)}>
-      <h2 style={{ color: "#0f172a", fontSize: "1.8rem", marginBottom: "15px", textAlign: "center" }}>{title}</h2>
-      {children}
-    </div>
-  );
-};
+const Section = ({ title, children, show, delay }) => (
+  <div
+    className={`transition-all duration-700 ${show ? 'scale-100 opacity-100' : 'scale-95 opacity-0'} mt-10`}
+    style={{ transitionDelay: `${delay}ms` }}
+  >
+    <h2 className="text-gray-900 text-2xl mb-4 text-center font-semibold">{title}</h2>
+    {children}
+  </div>
+);
 
-// Card container
 const CardContainer = ({ items }) => (
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+  <div className="flex flex-wrap gap-5 justify-center">
     {items.map((item, idx) => (
       <div
         key={idx}
-        style={{
-          background: "#ffffff",
-          padding: "20px",
-          width: "280px",
-          borderRadius: "12px",
-          boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
-          transition: "transform 0.3s ease",
-        }}
+        className="bg-white p-5 w-72 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
       >
-        <h3 style={{ color: "#2563eb", fontSize: "1.2rem" }}>{item.title}</h3>
-        <p style={{ fontSize: "0.95rem", color: "#4b5563" }}>{item.desc}</p>
+        <h3 className="text-blue-600 text-lg font-medium">{item.title}</h3>
+        <p className="text-slate-600 text-sm mt-1">{item.desc}</p>
       </div>
     ))}
   </div>
 );
 
-// Pop animation
-const popStyle = (show, delaySec = 0) => ({
-  transform: show ? "scale(1)" : "scale(0.95)",
-  opacity: show ? 1 : 0,
-  transition: `all 0.6s ease ${delaySec}s`,
-  marginTop: "40px",
-});
-
 export default CodingClub;
+

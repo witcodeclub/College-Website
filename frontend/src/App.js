@@ -2,19 +2,19 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";  
 
 import "./index.css"; 
-import Home from "./pages/Home/Home";
 import Discover from "./pages/Discover/Discover";
 import Academics from "./pages/Academics/Academics";
 import Facilities from "./pages/Facilities/Facilities";
 import Logo from "./pages/Home/Logo";
 import Navbar from "./components/Navbar";
 import WITBot from "./components/Chatbot";
+import Home from "./pages/Home/Home";
 
 //Login and SignUp
 import Login from "./pages/Login";
-import Student from "./pages/Dashboard/Student";
-import Professor from "./pages/Dashboard/Professor";
-import Staff from "./pages/Dashboard/Staff";
+//import Student from "./pages/Dashboard/Student/";
+//import Professor from "./pages/Dashboard/Professor";
+//import Staff from "./pages/Dashboard/Staff";
 
 //Footer and General
 import Footer from "./components/Footer";
@@ -106,9 +106,9 @@ function App() {
 
           {/*Login Routes*/}
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard/student" element={<Student />} />
-          <Route path="/dashboard/professor" element={<Professor />} />
-           <Route path="/dashboard/staff" element={<Staff />} />
+          {/*<Route path="/dashboard/student" element={<Student />} />
+          {/*<Route path="/dashboard/professor" element={<Professor />} />
+           {/*<Route path="/dashboard/staff" element={<Staff />} />
 
 
           {/* Approval Routes */}

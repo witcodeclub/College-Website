@@ -17,9 +17,9 @@ const societies = [
     img: "/images/placement-cell.jpg",
   },
   {
-    name: "Imaginative Society",
+    name: "Sports Club",
     description: "A creative corner for thinkers, designers, poets, and storytellers.",
-    img: "/images/imaginative.jpg",
+    img: "/images/sports-club.jpg",
   },
 ];
 
