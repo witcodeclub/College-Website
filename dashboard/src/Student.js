@@ -49,14 +49,18 @@ const Student = () => {
           <li><a href="#notes" className="hover:text-yellow-400 block">Notes</a></li>
           <li><a href="#result" className="hover:text-yellow-400 block">Results</a></li>
         </ul>
-        <Link
-  to="/"
-  className="mt-10 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-full text-center block"
+             <button
+  onClick={() => {
+    localStorage.clear(); // logout logic
+    window.location.href = "http://localhost:3000/login"; // redirect to frontend login
+  }}
+  className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-center text-white font-semibold"
 >
   Logout
-</Link>
+</button>
 
       </aside>
+    
 
       {/* Main Content */}
       <main className="ml-56 flex-1 p-6 space-y-6 overflow-y-auto">

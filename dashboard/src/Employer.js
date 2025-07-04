@@ -9,17 +9,21 @@ const Employer = () => {
         <div>
           <h2 className="text-xl font-bold text-center mb-8">Employer Panel</h2>
           <nav className="space-y-4 text-sm">
-            <Link to="/dashboard/student" className="block hover:text-yellow-400">Student Dashboard</Link>
-            <Link to="/dashboard/professor" className="block hover:text-yellow-400">Professor Dashboard</Link>
-            <Link to="/dashboard/staff" className="block hover:text-yellow-400">Staff Dashboard</Link>
+            <Link to="/student" className="block hover:text-yellow-400">Student Dashboard</Link>
+            <Link to="/professor" className="block hover:text-yellow-400">Professor Dashboard</Link>
+            <Link to="/staff" className="block hover:text-yellow-400">Staff Dashboard</Link>
           </nav>
         </div>
-        <Link
-          to="/"
-          className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-center text-white font-semibold"
-        >
-          Logout
-        </Link>
+        <button
+  onClick={() => {
+    localStorage.clear(); // logout logic
+    window.location.href = "http://localhost:3000/employer-login"; // redirect to frontend login
+  }}
+  className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-center text-white font-semibold"
+>
+  Logout
+</button>
+
       </aside>
 
       {/* Main Content */}

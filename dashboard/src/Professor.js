@@ -69,12 +69,16 @@ const Professor = () => {
           <a href="#notices" className="block hover:text-yellow-400">Notices</a>
           <a href="#upload" className="block hover:text-yellow-400">Upload</a>
         </nav>
-        <Link
-       to="/"
-         className="mt-10 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-full text-center block"
-        >
-         Logout
-        </Link>
+        <button
+  onClick={() => {
+    localStorage.clear(); // logout logic
+    window.location.href = "http://localhost:3000/login"; // redirect to frontend login
+  }}
+  className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-center text-white font-semibold"
+>
+  Logout
+</button>
+
 
       </aside>
 

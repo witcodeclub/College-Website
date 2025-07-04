@@ -68,13 +68,16 @@ const Staff = () => {
           </nav>
         </div>
 
-        {/* ✅ Linked Logout */}
-        <Link
-          to="/"
-          className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-white font-semibold text-center"
-        >
-          Logout
-        </Link>
+              <button
+  onClick={() => {
+    localStorage.clear(); // logout logic
+    window.location.href = "http://localhost:3000/login"; // redirect to frontend login
+  }}
+  className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-center text-white font-semibold"
+>
+  Logout
+</button>
+
       </aside>
 
       {/* Main content */}

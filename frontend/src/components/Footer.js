@@ -47,11 +47,12 @@ const Footer = () => {
             alt="wit Logo"
             className="w-20 mx-auto md:mx-0 rounded-full mb-3"
           />
-          <h3 className="text-xl font-semibold">WIT Darbhanga</h3>
+          <h3 className="text-xl font-semibold">Dr. APJ Abdul kalam Women's Institute Of Technology
+             Darbhanga</h3>
           <p>Kameshwarnagar, Darbhanga, Bihar-846008</p>
           <p>📧 email-directorwit@yahoo.in</p>
           <p>📞 +91-06272-246579</p>
-          <div className="flex justify-center md:justify-start mt-4 gap-6 text-2xl">
+          <div className="flex justify-center md:justify-start mt-2 gap-6 text-2xl">
             <a
               href="https://www.facebook.com/people/apjakwit/61559087061968"
               target="_blank"
