@@ -1,56 +1,6 @@
 import React from "react";
 
 const Societies = () => {
-  const pageStyle = {
-    background: "#fff", 
-    padding: "50px 20px",
-    minHeight: "30vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-
-  const containerStyle = {
-    maxWidth: "1100px",
-    textAlign: "center",
-  };
-
-  const headingStyle = {
-    color: "#136d25",
-    fontSize: "35px",
-    fontWeight: "bold",
-    marginBottom: "30px",
-    textTransform: "uppercase",
-  };
-
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "20px",
-  };
-
-  const cardStyle = {
-    backgroundColor: "#fff",
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.1)",
-    textAlign: "center",
-    transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-    cursor: "pointer",
-  };
-
-  const cardHover = {
-    transform: "scale(1.05)",
-    boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-  };
-
-  const logoStyle = {
-    width: "80px",
-    height: "80px",
-    borderRadius: "50%",
-    marginBottom: "10px",
-  };
-
   const societies = [
     {
       name: "Coding Club",
@@ -79,22 +29,25 @@ const Societies = () => {
   ];
 
   return (
-    <div style={pageStyle}>
-      <div style={containerStyle}>
-        <h2 style={headingStyle}>Societies</h2>
-        <div style={gridStyle}>
+    <div className="bg-white py-12 px-4 flex justify-center items-center min-h-[30vh]">
+      <div className="max-w-6xl text-center w-full">
+        <h2 className="text-3xl md:text-4xl font-bold text-green-800 uppercase mb-10">
+          Societies
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {societies.map((society, index) => (
             <div
               key={index}
-              style={cardStyle}
-              onMouseOver={(e) => Object.assign(e.currentTarget.style, cardHover)}
-              onMouseOut={(e) => Object.assign(e.currentTarget.style, cardStyle)}
+              className="bg-white p-6 rounded-xl shadow-md text-center transition transform hover:scale-105 hover:shadow-xl cursor-pointer"
             >
-              <img src={society.logo} alt={society.name} style={logoStyle} />
-              <h3 style={{ color: "#136d25", marginBottom: "10px" }}>{society.name}</h3>
-              <p style={{ fontSize: "15px", color: "#333", lineHeight: "1.5" }}>
-                {society.description}
-              </p>
+              <img
+                src={society.logo}
+                alt={society.name}
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="text-green-800 font-semibold text-lg mb-2">{society.name}</h3>
+              <p className="text-sm text-gray-700 leading-relaxed">{society.description}</p>
             </div>
           ))}
         </div>
@@ -104,3 +57,4 @@ const Societies = () => {
 };
 
 export default Societies;
+

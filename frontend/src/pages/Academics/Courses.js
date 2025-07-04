@@ -10,17 +10,23 @@ const courses = [
 
 const Courses = () => {
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>Courses Offered</h2>
-      <p style={styles.description}>Explore the range of courses offered under different departments.</p>
-      <div style={styles.grid}>
+    <div className="bg-white py-10 px-5 text-center">
+      <h2 className="text-3xl font-bold text-emerald-700 mb-2 animate-fade-in-down">Courses Offered</h2>
+      <p className="text-gray-600 mb-8 text-sm md:text-base animate-fade-in-up">
+        Explore the range of courses offered under different departments.
+      </p>
+
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
         {courses.map((course, index) => (
-          <div key={index} style={styles.card}>
-            <div style={styles.icon}>🎓</div>
-            <h3 style={styles.title}>{course.name}</h3>
-            <p><strong>Department:</strong> {course.dept}</p>
-            <p><strong>Duration:</strong> {course.duration}</p>
-            <p><strong>No. of Seats:</strong> {course.seats}</p>
+          <div
+            key={index}
+            className="bg-white w-full max-w-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up"
+          >
+            <div className="text-4xl mb-3">🎓</div>
+            <h3 className="text-xl font-semibold text-blue-700 mb-2">{course.name}</h3>
+            <p className="text-gray-700 text-sm"><strong>Department:</strong> {course.dept}</p>
+            <p className="text-gray-700 text-sm"><strong>Duration:</strong> {course.duration}</p>
+            <p className="text-gray-700 text-sm"><strong>No. of Seats:</strong> {course.seats}</p>
           </div>
         ))}
       </div>
@@ -28,48 +34,6 @@ const Courses = () => {
   );
 };
 
-// Inline CSS styles
-const styles = {
-  container: {
-    textAlign: "center",
-    padding: "40px",
-    background: "#fff"
-  },
-  heading: {
-    fontSize: "30px",
-    color: "green"
-  },
-  description: {
-    fontSize: "16px",
-    color: "#666"
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "20px",
-    justifyContent: "center",
-    paddingTop: "20px"
-  },
-  card: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-    cursor: "pointer"
-  },
-  cardHover: {
-    transform: "translateY(-10px)",
-    boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.3)"
-  },
-  icon: {
-    fontSize: "30px"
-  },
-  title: {
-    color: "#21618C",
-    fontSize: "20px",
-    fontWeight: "bold"
-  }
-};
-
 export default Courses;
+
+

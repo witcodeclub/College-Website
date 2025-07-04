@@ -1,43 +1,28 @@
-
-
 import React from "react";
 import syllabusData from "../../data/syllabus.json";
 
 const Syllabus = () => {
   return (
-    <div style={{ padding: "2rem", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "2rem", color: "#333" }}>Syllabus Library</h1>
+    <div className="bg-gray-100 px-6 py-10">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        Syllabus Library
+      </h1>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
+      <div className="flex flex-wrap justify-center gap-6">
         {syllabusData.map((item, index) => (
           <div
             key={index}
-            style={{
-              width: "300px",
-              backgroundColor: "#fff",
-              borderRadius: "12px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-              padding: "1.5rem",
-              textAlign: "center"
-            }}
+            className="w-72 bg-white rounded-xl shadow-md p-6 text-center transition hover:shadow-lg"
           >
-            <h2 style={{ color: "#2c3e50" }}>{item.course}</h2>
-            <p style={{ margin: "1rem 0", color: "#555" }}>
+            <h2 className="text-xl font-semibold text-gray-700">{item.course}</h2>
+            <p className="text-gray-600 mt-2 mb-4">
               Total Semesters: {item.semesters}
             </p>
             <a
               href={item.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "inline-block",
-                marginTop: "1rem",
-                padding: "0.6rem 1.2rem",
-                backgroundColor: "#3498db",
-                color: "#fff",
-                borderRadius: "8px",
-                textDecoration: "none"
-              }}
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm transition"
             >
               View Syllabus PDF
             </a>
@@ -49,3 +34,4 @@ const Syllabus = () => {
 };
 
 export default Syllabus;
+

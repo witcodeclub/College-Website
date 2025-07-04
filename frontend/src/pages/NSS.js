@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function NSS() {
   const activities = [
     "🌱 Plantation programme in and around the campus",
-    "🩸 Blood donation camp",
+    "🧨 Blood donation camp",
     "👧 Save girl child campaign",
     "🗳️ National Voters Day rally",
     "🎗️ International AIDS Day rally",
@@ -23,68 +23,31 @@ function NSS() {
   }, []);
 
   return (
-    <div
-      style={{
-        fontFamily: "Segoe UI, sans-serif",
-        padding: "20px",
-        background: "linear-gradient(to bottom right, #f0f4ff, #eaf3ff)",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-        transition: "all 0.8s ease",
-      }}
-    >
+    <div className={`font-sans p-5 bg-gradient-to-br from-blue-50 to-blue-100 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Header */}
-      <div
-        style={{
-          textAlign: "center",
-          padding: "25px",
-          borderRadius: "12px",
-          background: "#003366",
-          color: "#fff",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
-        }}
-      >
-        <h1 style={{ margin: 0 }}>National Service Scheme (NSS)</h1>
-        <p style={{ fontSize: "18px", marginTop: "8px" }}>
-          Serving Society, Building the Nation
+      <div className="text-center p-6 rounded-lg bg-blue-900 text-white shadow-xl">
+        <h1 className="text-3xl font-bold">National Service Scheme (NSS)</h1>
+        <p className="text-lg mt-2">Serving Society, Building the Nation</p>
+      </div>
+
+      {/* Intro */}
+      <div className="px-6 py-5 leading-relaxed text-base">
+        <p className="text-justify">
+          <strong>National Service Scheme (NSS)</strong> is a Central Sector Scheme of the Government of India, under the Ministry of Youth Affairs & Sports. It was launched in 1969 to promote a spirit of voluntary community service among student youth. The scheme aims to develop the <strong>personality and character</strong> of students by involving them in activities that contribute positively to society.
+        </p>
+        <p className="text-justify mt-4">
+          At <strong>Dr. APJ Abdul Kalam Women’s Institute of Technology</strong>, the NSS Unit actively engages students in community-oriented projects that build a sense of responsibility, teamwork, and compassion. Guided by the motto <strong>"Not Me, But You"</strong>, students participate in health awareness drives, environmental initiatives, rural outreach, disaster relief, and civic campaigns, contributing meaningfully while gaining leadership and real-world experience.
         </p>
       </div>
 
-   {/* Intro */}
-<div style={{ padding: "25px", lineHeight: "1.8", fontSize: "16px" }}>
-  <p style={{ textAlign: "justify" }}>
-    <strong>National Service Scheme (NSS)</strong> is a Central Sector Scheme of the Government of India, under the Ministry of Youth Affairs & Sports. It was launched in 1969 to promote a spirit of voluntary community service among student youth. The scheme aims to develop the <strong>personality and character</strong> of students by involving them in activities that contribute positively to society.
-  </p>
-
-  <p style={{ textAlign: "justify" }}>
-    At <strong>Dr. APJ Abdul Kalam Women’s Institute of Technology</strong>, the NSS Unit actively engages students in community-oriented projects that build a sense of responsibility, teamwork, and compassion. Guided by the motto <strong>"Not Me, But You"</strong>, students participate in health awareness drives, environmental initiatives, rural outreach, disaster relief, and civic campaigns, contributing meaningfully while gaining leadership and real-world experience.
-  </p>
-</div>
-
-
       {/* Activities */}
-      <h2 style={{ textAlign: "center", color: "#003366" }}>Activities We Conduct</h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-          gap: "20px",
-          padding: "20px",
-        }}
-      >
+      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-6">Activities We Conduct</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-5">
         {activities.map((act, index) => (
           <div
             key={index}
-            style={{
-              background: "#fff",
-              borderLeft: "5px solid #003366",
-              padding: "15px",
-              borderRadius: "10px",
-              boxShadow: "0 3px 10px rgba(0, 0, 0, 0.1)",
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateX(0)" : "translateX(-30px)",
-              transition: `all 0.5s ease ${index * 0.1}s`,
-            }}
+            className={`bg-white border-l-4 border-blue-900 p-4 rounded-md shadow-md transform transition-all duration-500 ease-out ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             {act}
           </div>
@@ -92,42 +55,19 @@ function NSS() {
       </div>
 
       {/* Gallery */}
-      <h2 style={{ textAlign: "center", color: "#003366", marginTop: "30px" }}>
-        Gallery
-      </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "15px",
-          padding: "20px",
-        }}
-      >
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num, index) => (
+      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-10">Gallery</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
+        {[...Array(12).keys()].map((num, index) => (
           <div
             key={num}
-            onClick={() => setModalImage(`/images/nss${num}.jpg`)}
-            style={{
-              cursor: "pointer",
-              borderRadius: "10px",
-              overflow: "hidden",
-              backgroundColor: "#fff",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              transform: visible ? "translateY(0)" : "translateY(30px)",
-              transition: `all 0.4s ease ${index * 0.15 + 0.4}s`,
-            }}
+            onClick={() => setModalImage(`/images/nss${num + 1}.jpg`)}
+            className={`cursor-pointer rounded-lg overflow-hidden bg-white shadow-md transform transition-transform duration-500 hover:scale-105 ${visible ? 'translate-y-0' : 'translate-y-6'}`}
+            style={{ transitionDelay: `${index * 120 + 400}ms` }}
           >
             <img
-              src={`/images/nss${num}.jpg`}
-              alt={`NSS ${num}`}
-              style={{
-                width: "100%",
-                height: "160px",
-                objectFit: "cover",
-                transition: "transform 0.3s ease",
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              src={`/images/nss${num + 1}.jpg`}
+              alt={`NSS ${num + 1}`}
+              className="w-full h-40 object-cover transition-transform duration-300 hover:scale-105"
             />
           </div>
         ))}
@@ -137,88 +77,41 @@ function NSS() {
       {modalImage && (
         <div
           onClick={() => setModalImage(null)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0,0,0,0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 999,
-            cursor: "zoom-out",
-          }}
+          className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-zoom-out"
         >
           <img
             src={modalImage}
             alt="Preview"
-            style={{
-              maxWidth: "90%",
-              maxHeight: "90%",
-              borderRadius: "10px",
-              boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
-            }}
+            className="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl"
           />
         </div>
       )}
 
       {/* Contact */}
-      <h2 style={{ textAlign: "center", color: "#003366", marginTop: "30px" }}>
-        Contact Us
-      </h2>
-      <div
-        style={{
-          backgroundColor: "#ffffff",
-          maxWidth: "600px",
-          margin: "0 auto",
-          borderRadius: "12px",
-          padding: "20px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          fontSize: "16px",
-          lineHeight: "1.8",
-          textAlign: "center",
-        }}
-      >
+      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-10">Contact Us</h2>
+      <div className="bg-white max-w-xl mx-auto rounded-xl p-6 shadow-lg text-center text-base leading-relaxed">
         <p>
           📍 NSS Office, Dr. APJ Abdul Kalam Women's Institute Of Technology
         </p>
 
         {/* Social Media Icons */}
-        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
+        <div className="mt-6 flex justify-center gap-8">
           <a
             href="https://www.facebook.com/people/Nss-Wing-Wit/100085855867819/?rdid=rM5sCl0SOlj2spGs&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1ZCsgLqdTt%2F"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              color: "#3b5998",
-              fontWeight: "bold",
-              fontSize: "16px",
-              textDecoration: "none",
-            }}
+            className="flex items-center gap-2 text-blue-600 font-bold text-base hover:underline"
           >
-            <span style={{ fontSize: "22px" }}>🔵</span> Facebook
+            <span className="text-xl">🔵</span> Facebook
           </a>
 
           <a
             href="https://www.instagram.com/nsswing.wit/?igsh=ZGt4enRuZGpsNTRt#"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              color: "#C13584",
-              fontWeight: "bold",
-              fontSize: "16px",
-              textDecoration: "none",
-            }}
+            className="flex items-center gap-2 text-pink-600 font-bold text-base hover:underline"
           >
-            <span style={{ fontSize: "22px" }}>📷</span> Instagram
+            <span className="text-xl">📷</span> Instagram
           </a>
         </div>
       </div>
@@ -227,3 +120,4 @@ function NSS() {
 }
 
 export default NSS;
+
