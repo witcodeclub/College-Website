@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,6 +12,7 @@ const Footer = () => {
     condition: "",
     pm25: "",
   });
+
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -38,49 +40,50 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-[#0A2647] text-white px-6 py-10 mt-12 text-center relative">
-      <div className="flex flex-wrap justify-between text-left">
-        {/* Logo and Address */}
-        <div className="flex-1 text-center md:text-left md:pr-6 mb-6">
+    <footer className="bg-[#0A2647] text-white px-6 lg:px-16 py-12">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        {/* Logo + Info */}
+        <div className="text-center sm:text-left">
           <img
             src="/images/wit.jpeg"
-            alt="wit Logo"
-            className="w-20 mx-auto md:mx-0 rounded-full mb-3"
+            alt="WIT Logo"
+            className="w-24 lg:w-28 mx-auto sm:mx-0 rounded-full mb-4"
           />
-          <h3 className="text-xl font-semibold">Dr. APJ Abdul kalam Women's Institute Of Technology
-             Darbhanga</h3>
-          <p>Kameshwarnagar, Darbhanga, Bihar-846008</p>
-          <p>📧 email-directorwit@yahoo.in</p>
-          <p>📞 +91-06272-246579</p>
-          <div className="flex justify-center md:justify-start mt-2 gap-6 text-2xl">
-            <a
-              href="https://www.facebook.com/people/apjakwit/61559087061968"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+          <h3 className="text-lg md:text-xl lg:text-2xl font-semibold leading-tight">
+            Dr. APJ Abdul Kalam Women's Institute Of Technology
+          </h3>
+          <p className="text-sm lg:text-base mt-1">Kameshwarnagar, Darbhanga, Bihar - 846008</p>
+          <p className="mt-2 text-sm lg:text-base">
+            📧{" "}
+            <a href="mailto:directorwit@yahoo.in" className="hover:underline text-white">
+              directorwit@yahoo.in
+            </a>
+          </p>
+          <p className="text-sm lg:text-base">
+            📞{" "}
+            <a href="tel:+9106272246579" className="hover:underline text-white">
+              +91-06272-246579
+            </a>
+          </p>
+          <div className="flex justify-center sm:justify-start mt-3 gap-4 text-xl lg:text-2xl">
+            <a href="https://www.facebook.com/people/apjakwit/61559087061968" target="_blank" rel="noreferrer" className="transition hover:text-[#1877F2] hover:scale-125">
               <FaFacebook />
             </a>
-            <a
-              href="https://www.instagram.com/apjak.wit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.instagram.com/apjak.wit" target="_blank" rel="noreferrer" className="transition hover:text-[#E1306C] hover:scale-125">
               <FaInstagram />
             </a>
-            <a
-              href="https://x.com/apjakwit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://x.com/apjakwit" target="_blank" rel="noreferrer" className="transition hover:text-[#1DA1F2] hover:scale-125">
               <FaTwitter />
             </a>
           </div>
         </div>
 
         {/* Explore */}
-        <div className="flex-1 mb-6 pl-6">
-          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Explore</h3>
-          <ul className="list-none space-y-1 text-sm">
+        <div>
+          <h3 className="text-lg lg:text-xl font-semibold border-b-2 border-dotted mb-2 inline-block">
+            Explore
+          </h3>
+          <ul className="text-sm lg:text-base space-y-1 mt-2">
             <li><Link to="/societies" className="hover:underline">Societies</Link></li>
             <li><Link to="/facilities/labs" className="hover:underline">Labs</Link></li>
             <li><Link to="/facilities/library" className="hover:underline">Library</Link></li>
@@ -89,9 +92,11 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="flex-1 mb-6 px-6">
-          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Quick Links</h3>
-          <ul className="list-none space-y-1 text-sm">
+        <div>
+          <h3 className="text-lg lg:text-xl font-semibold border-b-2 border-dotted mb-2 inline-block">
+            Quick Links
+          </h3>
+          <ul className="text-sm lg:text-base space-y-1 mt-2">
             <li><Link to="/admission/process" className="hover:underline">Admission</Link></li>
             <li><Link to="/discover/department" className="hover:underline">Departments</Link></li>
             <li><Link to="/anti-ragging" className="hover:underline">Anti-Ragging</Link></li>
@@ -100,10 +105,10 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Weather Card */}
-        <div className="flex-1 mt-1 bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-xl shadow-lg text-center">
-          <h3 className="text-xl font-semibold mb-2">Weather in Darbhanga</h3>
-          <p className="font-bold text-sm">
+        {/* Weather */}
+        <div className="bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-xl shadow-md text-center">
+          <h3 className="text-lg lg:text-xl font-semibold mb-2">Weather in Darbhanga</h3>
+          <p className="text-sm lg:text-base font-medium">
             {dateTime.toLocaleDateString("en-US", {
               weekday: "long",
               year: "numeric",
@@ -111,17 +116,18 @@ const Footer = () => {
               day: "numeric",
             })}
           </p>
-          <p className="font-bold text-sm mb-1">{dateTime.toLocaleTimeString()}</p>
-          <p className="font-bold text-sm">Temperature: {weather.temp}°C</p>
-          <p className="font-bold text-sm">Humidity: {weather.humidity}%</p>
-          <p className="font-bold text-sm">Wind Speed: {weather.wind} m/s</p>
-          <p className="font-bold text-sm">Condition: {weather.condition}</p>
-          <p className="text-sm">Air Pollution (PM2.5): <strong>{weather.pm25}</strong>💚</p>
+          <p className="text-sm lg:text-base mb-2">{dateTime.toLocaleTimeString()}</p>
+          <p className="text-sm lg:text-base">🌡 Temperature: {weather.temp}°C</p>
+          <p className="text-sm lg:text-base">💧 Humidity: {weather.humidity}%</p>
+          <p className="text-sm lg:text-base">🌬 Wind Speed: {weather.wind} m/s</p>
+          <p className="text-sm lg:text-base">☁️ Condition: {weather.condition}</p>
+          <p className="text-sm lg:text-base">PM2.5: <strong>{weather.pm25}</strong></p>
         </div>
       </div>
 
-      <div className="mt-6 border-t border-gray-400 pt-4 text-sm text-gray-300">
-        © 2025 Copyright WIT Darbhanga | Developed by WitCodingClub
+      {/* Copyright */}
+      <div className="mt-12 text-center text-gray-300 text-sm lg:text-base border-t border-gray-500 pt-4">
+        © 2025 Copyright WIT Darbhanga | Developed by <span className="text-[#FFD700]">WitCodingClub</span>
       </div>
     </footer>
   );

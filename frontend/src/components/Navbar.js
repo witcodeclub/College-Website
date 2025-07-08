@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
-  const [dropdown, setDropdown] = useState(null);
-  const [loginRole, setLoginRole] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const menuItems = [
     {
@@ -75,107 +73,98 @@ const Navbar = () => {
     },
   ];
 
-  const handleLoginClick = (role) => {
-    setLoginRole(role);
-    setShowModal(true);
-  };
-
-  const handleSubmit = () => {
-    if (loginRole) {
-      window.location.href = `http://localhost:3001/${loginRole.toLowerCase()}`;
-    }
-  };
-
   return (
     <>
-      <nav className="navbar">
-        <ul className="nav-list">
-          <li className="nav-item">
-            <Link to="/" className="nav-button home" style={{ color: "white" }}>
-              Home
-            </Link>
-          </li>
+      <nav className="bg-[#0A2647] text-white shadow-md relative z-[999]">
+        <div className="max-w-[1200px] mx-auto px-4 py-3 flex justify-between items-center">
+          {/* Hamburger - Mobile */}
+          <div className="md:hidden">
+            <button onClick={() => setMobileMenu(!mobileMenu)}>
+              {mobileMenu ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
 
-          {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className="nav-item"
-              onMouseEnter={() => setDropdown(index)}
-              onMouseLeave={() => setDropdown(null)}
-            >
-              {item.title}
-              {dropdown === index && (
-                <ul className="dropdown">
-                  {item.submenu.map((subItem, subIndex) => (
-                    <li key={subIndex} className="dropdown-item">
-                      <Link to={subItem.path}>{subItem.name}</Link>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex gap-4 items-center whitespace-nowrap">
+            <li>
+              <Link to="/" className="text-white font-bold text-[17px] px-4 py-2 hover:bg-[#1B3B6F] rounded transition">
+                Home
+              </Link>
+            </li>
+
+            {menuItems.map((item, index) => (
+              <li key={index} className="relative group">
+                <span className="text-white font-bold text-[17px] px-4 py-2 cursor-pointer hover:bg-[#1B3B6F] rounded transition inline-block">
+                  {item.title}
+                </span>
+                <ul className="absolute hidden group-hover:flex flex-col top-full left-0 bg-white text-black rounded-md shadow-md min-w-[220px] z-[999]">
+                  {item.submenu.map((sub, i) => (
+                    <li key={i}>
+                      <Link
+                        to={sub.path}
+                        className="block px-4 py-2 text-[15px] hover:bg-[#1B3B6F] hover:text-white transition whitespace-nowrap"
+                      >
+                        {sub.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
-              )}
+              </li>
+            ))}
+
+            <li>
+              <Link to="/nss" className="text-white font-bold text-[17px] px-4 py-2 hover:text-[#FFD700] rounded transition">
+                NSS
+              </Link>
             </li>
-          ))}
 
-          <li className="nav-item">
-            <Link to="/nss" className="nav-button nss">
-              NSS
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-button contact">
-              Contact Us
-            </Link>
-          </li>
+            <li>
+              <Link to="/contact" className="bg-[#2E8B57] text-white font-bold text-[17px] px-4 py-2 rounded hover:bg-[#5DADE2] transition">
+                Contact Us
+              </Link>
+            </li>
 
-        {/* Dropdown with two login options */}
-<li className="relative group nav-item">
-  <button className="nav-button log-in">Sign In</button>
-  <ul className="absolute hidden group-hover:block bg-white text-black mt-1 p-2 rounded shadow z-50 min-w-max">
-    <li className="cursor-pointer hover:bg-gray-200 px-4 py-2">
-      <Link to="/login">Login</Link>
-    </li>
-    <li className="cursor-pointer hover:bg-gray-200 px-4 py-2">
-      <Link to="/employer-login">Login as Employer</Link>
-    </li>
-  </ul>
-</li>
-
-
-        </ul>
-      </nav>
-
-      {/* Login Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-96 relative">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-2 right-3 text-gray-600 hover:text-black text-xl"
-            >
-              &times;
-            </button>
-            <h2 className="text-xl font-semibold mb-4 text-center">
-              {`Login as ${loginRole.charAt(0).toUpperCase() + loginRole.slice(1)}`}
-            </h2>
-            <input
-              type="text"
-              placeholder="Username"
-              className="w-full border rounded px-3 py-2 mb-3"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full border rounded px-3 py-2 mb-4"
-            />
-            <button
-              className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-              onClick={handleSubmit}
-            >
-              Login
-            </button>
-          </div>
+            <li className="relative group">
+              <div className="bg-white text-[#0A2647] font-bold text-[17px] px-4 py-2 rounded hover:bg-[#5DADE2] hover:text-white transition cursor-pointer">
+                Sign In
+              </div>
+              <div className="absolute hidden group-hover:flex flex-col top-full right-0 bg-white text-black rounded shadow-md min-w-[180px] z-[999]">
+                <Link to="/login" className="px-4 py-2 hover:bg-[#1B3B6F] hover:text-white transition">
+                  Login
+                </Link>
+                <Link to="/employer-login" className="px-4 py-2 hover:bg-[#1B3B6F] hover:text-white transition">
+                  Login as Employer
+                </Link>
+              </div>
+            </li>
+          </ul>
         </div>
-      )}
+
+        {/* Mobile Menu */}
+        {mobileMenu && (
+          <div className="md:hidden px-4 pb-4">
+            <ul className="flex flex-col gap-3 text-white">
+              <li><Link to="/" onClick={() => setMobileMenu(false)}>Home</Link></li>
+              {menuItems.map((item, index) => (
+                <details key={index} className="bg-[#1B3B6F] rounded">
+                  <summary className="cursor-pointer px-4 py-2 font-semibold">{item.title}</summary>
+                  <ul className="pl-4 pb-2">
+                    {item.submenu.map((sub, i) => (
+                      <li key={i}>
+                        <Link to={sub.path} onClick={() => setMobileMenu(false)} className="block py-1 text-sm">{sub.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
+              <li><Link to="/nss" onClick={() => setMobileMenu(false)}>NSS</Link></li>
+              <li><Link to="/contact" onClick={() => setMobileMenu(false)}>Contact Us</Link></li>
+              <li><Link to="/login" onClick={() => setMobileMenu(false)}>Login</Link></li>
+              <li><Link to="/employer-login" onClick={() => setMobileMenu(false)}>Login as Employer</Link></li>
+            </ul>
+          </div>
+        )}
+      </nav>
     </>
   );
 };
