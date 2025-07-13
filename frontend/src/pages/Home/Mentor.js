@@ -2,62 +2,65 @@ import React from "react";
 
 const mentors = [
   {
-    title: "VICE-CHANCELLOR",
-    name: "Prof. Sanjay Kumar Choudhary",
+    title: "VICE-CHANCELLOR, LNMU",
+    name: "Prof. Sanjay Kumar Chaudhary",
     image: "/images/vc.jpeg",
   },
   {
-    title: "DIRECTOR",
+    title: "DIRECTOR. WIT",
     name: "Dr. Ajay Nath Jha",
     image: "/images/director.jpeg",
   },
   {
-    title: "REGISTRAR ,LNMU",
-    name: "Dr. Divya Rani Hansda",
+    title: "REGISTRAR, LNMU",
+    name: "",
     image: "/images/registrar.jpeg",
   },
   {
-    title: "DEPUTY REGISTRAR",
-    name: "Priyanka Rai",
-    image: "",
-  },
-  {
-    title: "MENTOR",
-    name: "Dr. Nirmal Kumar",
-    image: "/images/nirmal.jpeg",
+    title: "DEPUTY REGISTRAR, WIT",
+    name: "",
+    image: "/images/deputy.jpeg",
   },
 ];
 
 const Mentor = () => {
   return (
-    <div className="flex flex-col items-center px-2 py-6">
-      <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#2c3e50] mb-6">
-        Our Mentors
-      </h1>
+    <section className="w-full bg-[#eafaf0] py-10 px-4 md:px-8 xl:px-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#2c3e50] mb-8">
+          Our Mentors
+        </h2>
 
-      {/* Responsive grid with fixed card size */}
-      <div className="w-full flex flex-wrap justify-center gap-4">
-        {mentors.map((mentor, index) => (
-          <div
-            key={index}
-            className="relative w-[120px] h-[180px] rounded-lg shadow-md overflow-hidden group"
-          >
-            <img
-              src={mentor.image}
-              alt={mentor.title}
-              className="w-full h-full object-cover group-hover:brightness-50 transition duration-300"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-white px-2 text-center">
-              <h2 className="text-xs font-bold text-green-300 mb-1">{mentor.title}</h2>
-              <p className="text-xs">{mentor.name}</p>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {mentors.map((mentor, index) => (
+            <div
+              key={index}
+              className="relative w-full max-w-[160px] sm:max-w-[180px] md:max-w-[200px] mx-auto rounded-xl overflow-hidden shadow-md group transition-transform hover:scale-105 bg-white"
+            >
+              <img
+                src={mentor.image}
+                alt={mentor.title}
+                className="w-full h-[200px] sm:h-[220px] md:h-[240px] object-cover"
+              />
+              {/* Hover/Touch Overlay */}
+              <div className="absolute bottom-0 w-full bg-black bg-opacity-60 text-white text-center text-xs sm:text-sm font-medium px-2 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div>{mentor.title}</div>
+                {mentor.name && <div className="text-[11px] sm:text-xs">{mentor.name}</div>}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default Mentor;
+
+
+
+
 
 

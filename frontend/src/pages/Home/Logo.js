@@ -1,23 +1,17 @@
 import React from "react";
 
 const Hero = () => {
-    return (
-        <div style={{ 
-            display: "flex", 
-            justifyContent: "center", 
-            alignItems: "center", 
-            width: "100%",
-        }}>
-            <img 
-                src="/images/logo.jpg"  // Public folder se direct
-                alt="Hero Banner" 
-                style={{ 
-                    maxWidth: "100%",  
-                    height: "auto"   
-                }}
-            />
-        </div>
-    );
+  return (
+    <div className="w-full">
+      <img
+        src="/images/logo.jpg"
+        alt="Hero Banner"
+        className="w-full h-auto object-cover"
+      />
+    </div>
+  );
 };
 
 export default Hero;
+
+

@@ -27,126 +27,47 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div style={styles.sectionContainer}>
-      <h2 style={styles.title}>Frequently Asked Questions</h2>
-      
-      <div style={styles.faqsContainer}>
+    <div className="w-full bg-green-50 p-5 md:p-8 rounded-xl shadow-lg text-center max-w-screen-md mx-auto">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#024E6F] mb-5 font-[Poppins]">
+        Frequently Asked Questions
+      </h2>
+
+      <div className="flex flex-col gap-4">
         {faqs.map((faq, idx) => (
           <div
             key={idx}
-            style={styles.faqItem}
+            className="bg-white rounded-lg border border-green-200 shadow-md overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-              style={styles.faqButton}
+              className="w-full flex justify-between items-center text-left px-5 py-4 font-semibold text-base sm:text-lg text-gray-800 hover:bg-green-50 transition duration-200 font-[Poppins]"
             >
-              <span style={styles.questionText}>
-                <span style={styles.questionIcon}>❓</span>
+              <span className="flex items-center gap-3">
+                <span className="text-green-700 text-xl">❓</span>
                 {faq.question}
               </span>
               <span
-                style={{
-                  ...styles.arrowIcon,
-                  transform: openIndex === idx ? "rotate(180deg)" : "rotate(0deg)",
-                }}
+                className={`transform transition-transform duration-300 text-green-700 text-lg ${
+                  openIndex === idx ? "rotate-180" : ""
+                }`}
               >
                 ▼
               </span>
             </button>
             {openIndex === idx && (
-              <div style={styles.answerContainer}>
+              <div className="px-5 pb-4 pl-14 text-sm sm:text-base bg-gray-50 text-gray-700 border-t border-green-200 font-[Poppins]">
                 {faq.answer}
               </div>
             )}
           </div>
         ))}
       </div>
-      
-      <p style={styles.footerText}>
+
+      <p className="text-sm sm:text-base mt-6 font-semibold text-gray-800 font-[Poppins]">
         📞 Need more help? Contact our support team or use our chatbot for instant assistance.
       </p>
     </div>
   );
 }
 
-const styles = {
-  sectionContainer: {
-    width: "100%",
-    backgroundColor: "#E6F7E6",
-    padding: "20px",
-    borderRadius: "15px",
-    boxShadow: "4px 6px 15px rgba(5, 67, 44, 0.2)",
-    textAlign: "center",
-    margin: "20px auto",
-    maxWidth: "900px",
-  },
-  title: {
-    fontSize: "30px",
-    fontWeight: "bold",
-    color: "#024E6F",
-    marginBottom: "20px",
-    fontFamily: "Poppins, sans-serif",
-  },
-  faqsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  },
-  faqItem: {
-    backgroundColor: "#fff",
-    borderRadius: "10px",
-    overflow: "hidden",
-    boxShadow: "0px 5px 12px rgba(0, 0, 0, 0.1)",
-    border: "1px solid #c8e6c9",
-  },
-  faqButton: {
-    width: "100%",
-    background: "none",
-    border: "none",
-    outline: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "15px 20px",
-    cursor: "pointer",
-    fontWeight: "600",
-    color: "#2E3A59",
-    fontSize: "18px",
-    textAlign: "left",
-    fontFamily: "Poppins, sans-serif",
-  },
-  questionText: {
-    display: "flex",
-    alignItems: "center",
-    flex: "1",
-  },
-  questionIcon: {
-    marginRight: "15px",
-    color: "#024E6F",
-    fontSize: "20px",
-  },
-  arrowIcon: {
-    fontSize: "18px",
-    color: "#024E6F",
-    transition: "transform 0.3s ease",
-  },
-  answerContainer: {
-    color: "#2E3A59",
-    lineHeight: "1.6",
-    padding: "0 20px 15px 55px",
-    fontSize: "16px",
-    backgroundColor: "#f8f9fa",
-    borderTop: "1px solid #c8e6c9",
-    fontFamily: "Poppins, sans-serif",
-  },
-  footerText: {
-    fontSize: "18px",
-    color: "#2E3A59",
-    textAlign: "center",
-    fontWeight: "bold",
-    marginTop: "20px",
-    fontFamily: "Poppins, sans-serif",
-  },
-};
-
-export default FAQSection; 
+export default FAQSection;
