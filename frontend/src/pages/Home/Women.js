@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const Women = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [mutedStates, setMutedStates] = useState(
-    Array(4).fill(true) // Initialize all videos as muted
-  );
+  const [mutedStates, setMutedStates] = useState(Array(4).fill(true));
   const videoRefs = useRef([]);
+  const { t } = useTranslation();
 
   const toggleMute = (index) => {
     const video = videoRefs.current[index];
@@ -19,26 +19,26 @@ const Women = () => {
 
   const womenLeaders = [
     {
-      name: "Shahwaar Aafreen",
-      company: "Infosys as a Java Full Stack Developer",
+      name: "shahwaar_name",
+      company: "shahwaar_role",
       image: "/images/Shahwaar.jpg",
       video: "/videos/Shahwaar.mp4",
     },
     {
-      name: "Gita Gopinath",
-      company: "IMF Deputy Director",
+      name: "gita_name",
+      company: "gita_role",
       image: "/images/gita.jpg",
       video: "/videos/gita.mp4",
     },
     {
-      name: "Roshni Nadar",
-      company: "Chairperson, HCL Tech",
+      name: "roshni_name",
+      company: "roshni_role",
       image: "/images/roshni.jpg",
       video: "/videos/roshni.mp4",
     },
     {
-      name: "Kiran Mazumdar-Shaw",
-      company: "Founder, Biocon",
+      name: "kiran_name",
+      company: "kiran_role",
       image: "/images/kiran.jpg",
       video: "/videos/kiran.mp4",
     },
@@ -47,7 +47,7 @@ const Women = () => {
   return (
     <div className="px-4 py-10 max-w-6xl mx-auto">
       <h1 className="text-2xl sm:text-3xl font-bold text-center text-[#2c3e50] mb-8">
-        Women Who Lead
+        {t("women_lead_title")}
       </h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
@@ -59,7 +59,7 @@ const Women = () => {
               setHoveredIndex(index);
               const video = videoRefs.current[index];
               if (video) {
-                video.play().catch(() => {}); // try to play in case autoplay blocked
+                video.play().catch(() => {});
               }
             }}
             onMouseLeave={() => {
@@ -67,7 +67,7 @@ const Women = () => {
               const video = videoRefs.current[index];
               if (video) {
                 video.pause();
-                video.currentTime = 0; // reset for cleaner replay
+                video.currentTime = 0;
               }
             }}
           >
@@ -83,7 +83,7 @@ const Women = () => {
             ) : (
               <img
                 src={leader.image}
-                alt={leader.name}
+                alt={t(leader.name)}
                 className="w-full h-full object-cover"
               />
             )}
@@ -98,8 +98,10 @@ const Women = () => {
             )}
 
             <div className="absolute bottom-0 w-full bg-black bg-opacity-70 text-white text-center p-2">
-              <h2 className="text-sm font-semibold truncate">{leader.name}</h2>
-              <p className="text-[11px]">{leader.company}</p>
+              <h2 className="text-sm font-semibold truncate">
+                {t(leader.name)}
+              </h2>
+              <p className="text-[11px]">{t(leader.company)}</p>
             </div>
           </div>
         ))}
@@ -109,6 +111,7 @@ const Women = () => {
 };
 
 export default Women;
+
 
 
 

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [weather, setWeather] = useState({
     temp: "",
     humidity: "",
@@ -49,9 +51,9 @@ const Footer = () => {
             className="w-20 sm:w-24 lg:w-28 mx-auto sm:mx-0 rounded-full mb-4"
           />
           <h3 className="text-lg font-semibold leading-tight">
-            Dr. APJ Abdul Kalam Women's Institute Of Technology
+            {t("footer_college_name")}
           </h3>
-          <p className="mt-1 text-gray-300">Kameshwarnagar, Darbhanga, Bihar - 846008</p>
+          <p className="mt-1 text-gray-300">{t("footer_address")}</p>
           <p className="mt-2">
             📧 <a href="mailto:directorwit@yahoo.in" className="hover:underline">directorwit@yahoo.in</a>
           </p>
@@ -73,30 +75,30 @@ const Footer = () => {
 
         {/* Column 2 - Explore */}
         <div>
-          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">Explore</h4>
+          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">{t("explore")}</h4>
           <ul className="space-y-1 text-gray-300">
-            <li><Link to="/societies" className="hover:underline">Societies</Link></li>
-            <li><Link to="/facilities/labs" className="hover:underline">Labs</Link></li>
-            <li><Link to="/facilities/library" className="hover:underline">Library</Link></li>
-            <li><Link to="/events" className="hover:underline">Events</Link></li>
+            <li><Link to="/societies" className="hover:underline">{t("societies")}</Link></li>
+            <li><Link to="/facilities/labs" className="hover:underline">{t("labs")}</Link></li>
+            <li><Link to="/facilities/library" className="hover:underline">{t("library")}</Link></li>
+            <li><Link to="/events" className="hover:underline">{t("events")}</Link></li>
           </ul>
         </div>
 
         {/* Column 3 - Quick Links */}
         <div>
-          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">Quick Links</h4>
+          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">{t("quick_links")}</h4>
           <ul className="space-y-1 text-gray-300">
-            <li><Link to="/admission/process" className="hover:underline">Admission</Link></li>
-            <li><Link to="/discover/department" className="hover:underline">Departments</Link></li>
-            <li><Link to="/anti-ragging" className="hover:underline">Anti-Ragging</Link></li>
-            <li><Link to="/tp/placements" className="hover:underline">Placement</Link></li>
-            <li><Link to="/tp/alumni" className="hover:underline">Alumni</Link></li>
+            <li><Link to="/admission/process" className="hover:underline">{t("admission")}</Link></li>
+            <li><Link to="/discover/department" className="hover:underline">{t("departments")}</Link></li>
+            <li><Link to="/anti-ragging" className="hover:underline">{t("anti_ragging")}</Link></li>
+            <li><Link to="/tp/placements" className="hover:underline">{t("placement")}</Link></li>
+            <li><Link to="/tp/alumni" className="hover:underline">{t("alumni")}</Link></li>
           </ul>
         </div>
 
         {/* Column 4 - Weather */}
         <div className="bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-lg shadow-md min-h-[200px]">
-          <h4 className="font-semibold mb-2 text-center">Weather in Darbhanga</h4>
+          <h4 className="font-semibold mb-2 text-center">{t("weather_title")}</h4>
           <p className="text-sm text-center">
             {dateTime.toLocaleDateString("en-US", {
               weekday: "long",
@@ -107,23 +109,23 @@ const Footer = () => {
           </p>
           <p className="text-sm text-center mb-2">{dateTime.toLocaleTimeString()}</p>
           <div className="space-y-1 text-sm">
-            <p>🌡 Temperature: {weather.temp}°C</p>
-            <p>💧 Humidity: {weather.humidity}%</p>
-            <p>🌬 Wind Speed: {weather.wind} m/s</p>
-            <p>☁️ Condition: {weather.condition}</p>
-            <p>PM2.5: <strong>{weather.pm25}</strong></p>
+            <p>🌡 {t("temperature")}: {weather.temp}°C</p>
+            <p>💧 {t("humidity")}: {weather.humidity}%</p>
+            <p>🌬 {t("wind_speed")}: {weather.wind} m/s</p>
+            <p>☁️ {t("condition")}: {weather.condition}</p>
+            <p>{t("pm25")}: <strong>{weather.pm25}</strong></p>
           </div>
         </div>
       </div>
 
       {/* Bottom line */}
       <div className="mt-8 text-center text-gray-300 text-xs sm:text-sm border-t border-gray-500 pt-4">
-        © 2025 Copyright Dr. APJ Abdul Kalam Women's Institute Of Technology, Darbhanga |
-        Developed by <span className="text-yellow-400 font-semibold">WitCodingClub</span>
+        {t("copyright")} <span className="text-yellow-400 font-semibold">{t("wit_coding_club")}</span>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
 

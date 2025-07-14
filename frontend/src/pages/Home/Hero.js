@@ -2,12 +2,14 @@ import React from "react";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const settings = {
     dots: true,
@@ -40,7 +42,7 @@ const Hero = () => {
       <button
         className="absolute bottom-16 left-4 sm:left-8 bg-transparent border-2 border-white text-white font-bold py-2 px-4 sm:px-6 rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm sm:text-base"
       >
-        Step Inside →
+        {t("step_inside")}
       </button>
 
       {/* Apply Now Button */}
@@ -48,7 +50,7 @@ const Hero = () => {
         className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 sm:px-6 rounded-md transition-all duration-300 text-sm sm:text-base"
         onClick={() => navigate("/admission/applynow")}
       >
-        Apply Now
+        {t("apply_now") || "Apply Now"}
       </button>
     </div>
   );

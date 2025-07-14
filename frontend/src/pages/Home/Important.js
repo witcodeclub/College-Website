@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Important = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openPopup = () => setIsPopupOpen(true);
   const closePopup = () => setIsPopupOpen(false);
@@ -11,21 +13,21 @@ const Important = () => {
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
         <button className="px-6 py-3 text-lg font-bold bg-blue-700 text-white rounded shadow-md hover:bg-blue-800 w-full sm:w-48">
-          📢 Notices
+          {t("notices_button")}
         </button>
         <button
           onClick={openPopup}
           className="px-6 py-3 text-lg font-bold bg-emerald-700 text-white rounded shadow-md hover:bg-emerald-800 w-full sm:w-48"
         >
-          📅 Holiday Calendar
+          {t("holiday_calendar_button")}
         </button>
       </div>
 
       {/* Notices */}
       <div className="bg-gray-100 p-5 rounded-lg shadow-md w-full sm:w-1/2 mx-auto text-left text-gray-800">
-        <p className="mb-2">📜 Nostalgia 2025 Coming Soon</p>
+        <p className="mb-2">{t("notice_1")}</p>
         <hr className="border-gray-300 mb-2" />
-        <p>🚀 Hackathon 2025</p>
+        <p>{t("notice_2")}</p>
       </div>
 
       {/* Popup Modal */}
@@ -51,4 +53,5 @@ const Important = () => {
 };
 
 export default Important;
+
 

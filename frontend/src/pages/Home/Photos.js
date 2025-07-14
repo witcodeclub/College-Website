@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const imageUrls = [
   "/images/img1.jpg",
@@ -17,11 +18,11 @@ const Photos = () => {
   const [scrollIndex, setScrollIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef(null);
+  const { t } = useTranslation();
 
-  // Start auto-scroll on mount
   useEffect(() => {
     startAutoScroll();
-    return () => stopAutoScroll(); // cleanup
+    return () => stopAutoScroll();
   }, []);
 
   const handleNext = () => {
@@ -48,10 +49,9 @@ const Photos = () => {
   return (
     <div className="text-center px-4 py-10">
       <h1 className="text-3xl sm:text-4xl font-bold text-green-600 mb-6">
-        Life At WIT
+        {t("life_at_wit")}
       </h1>
 
-      {/* Gallery */}
       <div className="flex items-center justify-center gap-4 flex-wrap">
         {/* Prev Button */}
         <button

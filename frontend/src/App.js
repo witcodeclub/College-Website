@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // Global styles
 import "./index.css";
+import { useTranslation } from "react-i18next";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -79,9 +80,24 @@ import DST from "./pages/Home/approval/DST";
 import HigherEducation from "./pages/Home/approval/HigherEducation";
 import NAAC from "./pages/Home/approval/NAAC";
 
-function App() {
+
+
+const App = () => {
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <div>
+      {/* Language Switcher */}
+      <div className="bg-slate-100 text-right pr-4 pt-2 text-sm">
+        <button onClick={() => changeLanguage("en")} className="mr-2 hover:underline">English</button>
+        <button onClick={() => changeLanguage("hi")} className="hover:underline">हिन्दी</button>
+      </div>
+
+
       {/* Logo */}
       <div className="logo-container">
         <Link to="/" className="logo-link">
