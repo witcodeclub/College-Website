@@ -1,151 +1,128 @@
 import React from "react";
 
 function FeeStructure() {
-  const containerStyle = {
-    padding: "40px",
-    backgroundColor: "#e8f5e9", // Light green background
-    borderRadius: "10px",
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-    textAlign: "left",
-    maxWidth: "900px",
-    margin: "auto",
-    marginTop:"50px"
-  };
-
-  const headerStyle = {
-    backgroundColor: "#1B3B6F", // Dark blue header
-    color: "white",
-    padding: "15px",
-    borderRadius: "10px 10px 0 0",
-    textAlign: "center",
-    fontSize: "1.8rem",
-  };
-
-  const tableStyle = {
-    width: "100%",
-    borderCollapse: "collapse",
-    marginTop: "20px",
-  };
-
-  const thTdStyle = {
-    border: "1px solid #ddd",
-    padding: "10px",
-    textAlign: "center",
-  };
-
-  const thStyle = {
-    ...thTdStyle,
-    backgroundColor: "#4CAF50", // Green theme for table header
-    color: "white",
-  };
-
   return (
-    <div style={containerStyle}>
-      <h1 style={headerStyle}>Fee Structure</h1>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>S.No</th>
-            <th style={thStyle}>Particulars</th>
-            <th style={thStyle}>B.Tech (Annual)</th>
-            <th style={thStyle}>MCA (Per Semester)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style={thTdStyle}>1</td>
-            <td style={thTdStyle}>Annual Fee</td>
-            <td style={thTdStyle}>₹30,000/-</td>
-            <td style={thTdStyle}>Annual Fee</td>
-          </tr>
-          <tr>
-            <td style={thTdStyle}>2</td>
-            <td style={thTdStyle}>Tuition Fee</td>
-            <td style={thTdStyle}>₹42,000/-</td>
-            <td style={thTdStyle}>-</td>
-          </tr>
-          <tr>
-            <td style={thTdStyle}>3</td>
-            <td style={thTdStyle}>Miscellaneous</td>
-            <td style={thTdStyle}>₹8,000/-</td>
-            <td style={thTdStyle}>₹20,000/-</td>
-          </tr>
-          <tr>
-            <td style={thTdStyle}>4</td>
-            <td style={thTdStyle}>Examination Fee</td>
-            <td style={thTdStyle}>₹1,000/-</td>
-            <td style={thTdStyle}>-</td>
-          </tr>
-          <tr>
-            <td style={thTdStyle}><b>Total</b></td>
-            <td style={thTdStyle}></td>
-            <td style={thTdStyle}><b>₹81,000/-</b></td>
-            <td style={thTdStyle}><b>₹20,000/-</b></td>
-          </tr>
-          <tr>
-            <td style={thTdStyle}>5</td>
-            <td style={thTdStyle}>Caution Money (Refundable) (One-Time)</td>
-            <td style={thTdStyle}>₹2,500/-</td>
-            <td style={thTdStyle}>₹2,500/-</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="bg-green-50 p-4 sm:p-10 max-w-5xl mx-auto rounded-xl shadow-lg mt-12">
+      <h1 className="bg-[#1B3B6F] text-white text-lg sm:text-2xl font-semibold text-center py-4 rounded-t-xl">
+        Fee Structure
+      </h1>
 
-      <h2 style={{ marginTop: "30px", color: "#1B3B6F" }}>Hostel Fee</h2>
-      <p>
-        Lodging charges of <b>₹12,000/- per annum</b> for Institute Campus Hostel & <b>₹18,000/- per annum</b> for University Campus Hostel (400 meters away).
+      {/* Academic Fee Table */}
+      <div className="mt-6">
+        <table className="w-full border border-gray-300 text-xs sm:text-sm table-fixed">
+          <thead>
+            <tr>
+              <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border break-words">S.No</th>
+              <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border break-words">Particulars</th>
+              <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border break-words">B.Tech (Annual)</th>
+              <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border break-words">MCA (Per Semester)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="text-center">
+              <td className="border p-1 sm:p-2">1</td>
+              <td className="border p-1 sm:p-2">Annual Fee</td>
+              <td className="border p-1 sm:p-2">₹30,000/-</td>
+              <td className="border p-1 sm:p-2">Annual Fee</td>
+            </tr>
+            <tr className="text-center">
+              <td className="border p-1 sm:p-2">2</td>
+              <td className="border p-1 sm:p-2">Tuition Fee</td>
+              <td className="border p-1 sm:p-2">₹42,000/-</td>
+              <td className="border p-1 sm:p-2">-</td>
+            </tr>
+            <tr className="text-center">
+              <td className="border p-1 sm:p-2">3</td>
+              <td className="border p-1 sm:p-2">Miscellaneous</td>
+              <td className="border p-1 sm:p-2">₹8,000/-</td>
+              <td className="border p-1 sm:p-2">₹20,000/-</td>
+            </tr>
+            <tr className="text-center">
+              <td className="border p-1 sm:p-2">4</td>
+              <td className="border p-1 sm:p-2">Examination Fee</td>
+              <td className="border p-1 sm:p-2">₹1,000/-</td>
+              <td className="border p-1 sm:p-2">-</td>
+            </tr>
+            <tr className="text-center font-semibold">
+              <td className="border p-1 sm:p-2">Total</td>
+              <td className="border p-1 sm:p-2"></td>
+              <td className="border p-1 sm:p-2">₹81,000/-</td>
+              <td className="border p-1 sm:p-2">₹20,000/-</td>
+            </tr>
+            <tr className="text-center">
+              <td className="border p-1 sm:p-2">5</td>
+              <td className="border p-1 sm:p-2">Caution Money (Refundable) (One-Time)</td>
+              <td className="border p-1 sm:p-2">₹2,500/-</td>
+              <td className="border p-1 sm:p-2">₹2,500/-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* Hostel Fee Section */}
+      <h2 className="text-base sm:text-lg font-semibold text-[#1B3B6F] mt-6 mb-1">Hostel Fee</h2>
+      <p className="text-gray-700 text-xs sm:text-sm mb-1">
+        Lodging charges of <b>₹12,000/-</b> per annum for Institute Campus Hostel &{" "}
+        <b>₹18,000/-</b> per annum for University Campus Hostel (400 meters away).
       </p>
-      <p>
+      <p className="text-gray-700 text-xs sm:text-sm">
         Mess charges shall be borne by boarders on a monthly basis. Presently, it is <b>₹2,200/- per month</b> (subject to change as per inflation rate).
       </p>
 
-      <h2 style={{ marginTop: "30px", color: "#1B3B6F" }}>Payment Details</h2>
-      <p>
-        The institute accepts fees via **Demand Draft** in favor of <b>“W.I.T. LNMU Security Deposit”</b> payable at Darbhanga or through Electronic Fund Transfer (RTGS, NEFT, IMPS) as per the details below:
+      {/* Payment Details */}
+      <h2 className="text-base sm:text-lg font-semibold text-[#1B3B6F] mt-6 mb-1">Payment Details</h2>
+      <p className="text-gray-700 text-xs sm:text-sm mb-4">
+        The institute accepts fees via <b>Demand Draft</b> in favor of{" "}
+        <b>“W.I.T. LNMU Security Deposit”</b> payable at Darbhanga or through Electronic Fund Transfer
+        (RTGS, NEFT, IMPS) as per the details below:
       </p>
-      <table style={tableStyle}>
+
+      {/* Bank Details Table */}
+      <table className="w-full border border-gray-300 text-xs sm:text-sm table-fixed">
         <thead>
           <tr>
-            <th style={thStyle}>S.No</th>
-            <th style={thStyle}>Particulars</th>
-            <th style={thStyle}>Details</th>
+            <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border">S.No</th>
+            <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border">Particulars</th>
+            <th className="bg-green-600 text-white py-2 px-1 sm:px-3 border">Details</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style={thTdStyle}>1</td>
-            <td style={thTdStyle}>Account Holder Name</td>
-            <td style={thTdStyle}>W.I.T. LNMU Security Deposit</td>
+          <tr className="text-center">
+            <td className="border p-1 sm:p-2">1</td>
+            <td className="border p-1 sm:p-2">Account Holder Name</td>
+            <td className="border p-1 sm:p-2">W.I.T. LNMU Security Deposit</td>
           </tr>
-          <tr>
-            <td style={thTdStyle}>2</td>
-            <td style={thTdStyle}>Bank Name</td>
-            <td style={thTdStyle}>Punjab National Bank</td>
+          <tr className="text-center">
+            <td className="border p-1 sm:p-2">2</td>
+            <td className="border p-1 sm:p-2">Bank Name</td>
+            <td className="border p-1 sm:p-2">Punjab National Bank</td>
           </tr>
-          <tr>
-            <td style={thTdStyle}>3</td>
-            <td style={thTdStyle}>Branch</td>
-            <td style={thTdStyle}>LNMU Campus, Kameshwara Nagar, Darbhanga</td>
+          <tr className="text-center">
+            <td className="border p-1 sm:p-2">3</td>
+            <td className="border p-1 sm:p-2">Branch</td>
+            <td className="border p-1 sm:p-2">LNMU Campus, Kameshwara Nagar, Darbhanga</td>
           </tr>
-          <tr>
-            <td style={thTdStyle}>4</td>
-            <td style={thTdStyle}>Account Number</td>
-            <td style={thTdStyle}>0108032100000241</td>
+          <tr className="text-center">
+            <td className="border p-1 sm:p-2">4</td>
+            <td className="border p-1 sm:p-2">Account Number</td>
+            <td className="border p-1 sm:p-2">0108032100000241</td>
           </tr>
-          <tr>
-            <td style={thTdStyle}>5</td>
-            <td style={thTdStyle}>IFSC Code</td>
-            <td style={thTdStyle}>PUNB0622700</td>
+          <tr className="text-center">
+            <td className="border p-1 sm:p-2">5</td>
+            <td className="border p-1 sm:p-2">IFSC Code</td>
+            <td className="border p-1 sm:p-2">PUNB0622700</td>
           </tr>
         </tbody>
       </table>
 
-      <h2 style={{ marginTop: "30px", color: "#1B3B6F" }}>Lateral Entry</h2>
-      <p>
-        Admission through **Lateral Entry** in the **second year** of B.Tech (CSE & IT) is also allowed for **diploma holders** in relevant programs.
+      {/* Lateral Entry Info */}
+      <h2 className="text-base sm:text-lg font-semibold text-[#1B3B6F] mt-6 mb-1">Lateral Entry</h2>
+      <p className="text-gray-700 text-xs sm:text-sm">
+        Admission through <b>Lateral Entry</b> in the <b>second year</b> of B.Tech (CSE & IT) is also allowed for <b>diploma holders</b> in relevant programs.
       </p>
     </div>
   );
 }
 
 export default FeeStructure;
+

@@ -10,23 +10,25 @@ const courses = [
 
 const Courses = () => {
   return (
-    <div className="bg-white py-10 px-5 text-center">
-      <h2 className="text-3xl font-bold text-emerald-700 mb-2 animate-fade-in-down">Courses Offered</h2>
-      <p className="text-gray-600 mb-8 text-sm md:text-base animate-fade-in-up">
+    <div className="bg-white py-6 px-4 text-center">
+      <h2 className="text-2xl sm:text-3xl font-bold text-emerald-700 mb-1 animate-fade-in-down">
+        Courses Offered
+      </h2>
+      <p className="text-gray-600 mb-5 text-sm sm:text-base animate-fade-in-up">
         Explore the range of courses offered under different departments.
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
         {courses.map((course, index) => (
           <div
             key={index}
-            className="bg-white w-full max-w-sm p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 animate-slide-up"
+            className="bg-white w-full max-w-sm p-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-slide-up"
           >
-            <div className="text-4xl mb-3">🎓</div>
-            <h3 className="text-xl font-semibold text-blue-700 mb-2">{course.name}</h3>
-            <p className="text-gray-700 text-sm"><strong>Department:</strong> {course.dept}</p>
-            <p className="text-gray-700 text-sm"><strong>Duration:</strong> {course.duration}</p>
-            <p className="text-gray-700 text-sm"><strong>No. of Seats:</strong> {course.seats}</p>
+            <div className="text-3xl sm:text-4xl mb-2">🎓</div>
+            <h3 className="text-lg sm:text-xl font-semibold text-blue-700 mb-1">{course.name}</h3>
+            <p className="text-gray-700 text-sm sm:text-base"><strong>Department:</strong> {course.dept}</p>
+            <p className="text-gray-700 text-sm sm:text-base"><strong>Duration:</strong> {course.duration}</p>
+            <p className="text-gray-700 text-sm sm:text-base"><strong>No. of Seats:</strong> {course.seats}</p>
           </div>
         ))}
       </div>
@@ -35,5 +37,6 @@ const Courses = () => {
 };
 
 export default Courses;
+
 
 

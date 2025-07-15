@@ -41,36 +41,36 @@ const facultyData = [
 
 const Faculty = () => {
   return (
-    <div className="px-6 py-10 font-sans bg-gray-50 min-h-screen">
-      <h2 className="text-3xl font-bold text-blue-900 text-center mb-10 uppercase">
+    <div className="px-4 py-8 sm:px-6 lg:px-10 bg-gray-50 min-h-screen">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 text-center mb-6 uppercase">
         Faculty Members
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
         {facultyData.map((faculty, index) => (
           <div
             key={index}
-            className="w-72 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
           >
             {/* Title Bar */}
-            <div className="bg-emerald-900 text-white text-xs py-2 px-3 text-center font-medium tracking-wide">
+            <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-1.5 px-2 text-center font-medium tracking-wide">
               {faculty.title}
             </div>
 
-            {/* Image */}
+            {/* Image with responsive height */}
             <img
               src={faculty.image}
               alt={faculty.name}
-              className="w-full h-64 object-cover"
+              className="w-full h-44 sm:h-52 md:h-60 lg:h-72 object-cover"
             />
 
             {/* Name */}
-            <div className="bg-gray-200 text-green-700 text-sm font-semibold py-2 px-3 text-center">
+            <div className="bg-gray-200 text-green-800 text-sm sm:text-base font-semibold py-2 px-2 text-center">
               {faculty.name}
             </div>
 
             {/* Department */}
-            <div className="bg-gray-100 text-gray-700 text-xs py-2 px-3 text-center border-t border-gray-300">
+            <div className="bg-gray-100 text-gray-700 text-xs sm:text-sm py-2 px-2 text-center border-t border-gray-300">
               {faculty.department}
             </div>
           </div>
@@ -81,4 +81,6 @@ const Faculty = () => {
 };
 
 export default Faculty;
+
+
 
