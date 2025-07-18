@@ -4,7 +4,7 @@ const Events = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsVisible(true), 100); // slight delay for animation
+    setTimeout(() => setIsVisible(true), 100);
   }, []);
 
   const eventsData = [
@@ -27,74 +27,35 @@ const Events = () => {
 
   return (
     <div
-      style={{
-        padding: "60px 20px",
-        background: "#f5f5f5",
-        minHeight: "100vh",
-        transition: "opacity 1s ease-in-out",
-        opacity: isVisible ? 1 : 0,
-      }}
+      className={`py-16 px-4 md:px-10 min-h-screen bg-gray-100 transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
     >
-      <h1 style={{
-        textAlign: "center",
-        color: "#006400",
-        marginBottom: "40px",
-        fontSize: "38px",
-        borderBottom: "3px solid #006400",
-        display: "inline-block",
-        paddingBottom: "10px"
-      }}>
+      <h1 className="text-center text-green-800 text-4xl font-bold border-b-4 border-green-700 inline-block pb-2 mb-10">
         Events in WIT
       </h1>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "30px",
-          marginTop: "40px",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {eventsData.map((event, index) => (
           <div
             key={index}
-            style={{
-              background: "white",
-              borderRadius: "10px",
-              padding: "20px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              cursor: "pointer",
-              animation: `fadeInUp 0.6s ease ${index * 0.2}s both`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 100, 0, 0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
-            }}
+            className={`bg-white p-6 rounded-lg shadow-md transform transition duration-300 hover:-translate-y-2 hover:shadow-xl animate-fade-in`}
+            style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "both" }}
           >
-            <h3 style={{ color: "#006400", marginBottom: "10px" }}>{event.title}</h3>
-            <p style={{ fontWeight: "bold", color: "#444" }}>{event.date}</p>
-            <p style={{ color: "#666", marginTop: "8px" }}>{event.description}</p>
+            <h3 className="text-xl font-semibold text-green-700 mb-2">{event.title}</h3>
+            <p className="text-sm font-medium text-gray-700">{event.date}</p>
+            <p className="text-gray-600 mt-2">{event.description}</p>
           </div>
         ))}
       </div>
 
-      {/* Keyframe animation using inline style tag */}
+      {/* Inline keyframes animation */}
       <style>
         {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+          @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in {
+            animation: fade-in 0.6s ease forwards;
           }
         `}
       </style>
@@ -103,3 +64,4 @@ const Events = () => {
 };
 
 export default Events;
+

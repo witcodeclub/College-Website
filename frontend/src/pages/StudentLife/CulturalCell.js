@@ -2,9 +2,9 @@ import React from 'react';
 
 const CulturalCell = () => {
   const galleryImages = [
-    { src: 'images/placeholder1.jpg', alt: 'Event Image 1', delay: 'delay-200' },
-    { src: 'images/placeholder2.jpg', alt: 'Event Image 2', delay: 'delay-400' },
-    { src: 'images/placeholder3.jpg', alt: 'Event Image 3', delay: 'delay-600' },
+    { src: '/images/cultural1.jpg', alt: 'Event Image 1', delay: 'delay-200' },
+    { src: '/images/cultural2.jpg', alt: 'Event Image 2', delay: 'delay-400' },
+    { src: '/images/cultural3.jpg', alt: 'Event Image 3', delay: 'delay-600' },
   ];
 
   return (
@@ -23,11 +23,11 @@ const CulturalCell = () => {
         </p>
         <h3 className="text-2xl text-green-800 font-semibold mt-6 mb-3 animate-fade-in delay-300">Our Mission</h3>
         <p className="text-base text-gray-700 mb-4 animate-fade-in delay-300">
-          To foster creativity, organize cultural events, and provide a platform for students to express themselves through various artistic forms. We aim to create an environment that encourages collaboration, innovation, and cultural exchange.
+          To foster creativity, organize cultural events, and provide a platform for students to express themselves through various artistic forms.
         </p>
         <h3 className="text-2xl text-green-800 font-semibold mt-6 mb-3 animate-fade-in delay-400">Our Vision</h3>
         <p className="text-base text-gray-700 animate-fade-in delay-400">
-          To be a hub of creativity where students can discover, nurture, and share their artistic talents. We aspire to build a community that values cultural diversity, artistic expression, and the power of creative collaboration.
+          To be a hub of creativity where students can discover, nurture, and share their artistic talents, building a culturally rich and diverse community.
         </p>
       </section>
 
@@ -35,7 +35,7 @@ const CulturalCell = () => {
       <section className="px-6 py-10 bg-white mx-4 md:mx-16 my-8 rounded-lg shadow-md">
         <h2 className="text-3xl text-green-900 font-semibold mb-4 animate-fade-in">Upcoming Events</h2>
         <p className="text-lg text-gray-700 animate-fade-in delay-500">
-          Stay tuned for exciting events that bring the best of creativity and culture to life. We have workshops, performances, and competitions lined up to showcase the talents of our student community.
+          Stay tuned for exciting events that bring creativity and culture to life — from performances to competitions and workshops.
         </p>
       </section>
 
@@ -54,7 +54,7 @@ const CulturalCell = () => {
         </div>
       </section>
 
-      {/* Animations */}
+      {/* CSS for Animations */}
       <style>
         {`
           .animate-fade-in {
@@ -77,3 +77,4 @@ const CulturalCell = () => {
 };
 
 export default CulturalCell;
+

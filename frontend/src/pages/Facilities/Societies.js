@@ -31,7 +31,7 @@ const Societies = () => {
   return (
     <div className="bg-white py-12 px-4 flex justify-center items-center min-h-[30vh]">
       <div className="max-w-6xl text-center w-full">
-        <h2 className="text-3xl md:text-4xl font-bold text-green-800 uppercase mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-green-800 uppercase mb-10 mx-auto">
           Societies
         </h2>
 

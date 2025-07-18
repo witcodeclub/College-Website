@@ -4,13 +4,15 @@ const Sports = () => {
   const images = ["sports1.jpg", "sports2.jpg", "sports4.jpg"];
 
   return (
-    <div className="px-5 py-10 bg-white font-sans flex flex-col items-center">
+    <div className="px-4 sm:px-6 py-10 bg-white font-sans flex flex-col items-center">
+      {/* Heading */}
       <h2 className="text-3xl font-bold text-green-600 text-center mb-6">
         College Sports Facilities
       </h2>
 
-      <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md mb-8 text-left">
-        <div className="text-lg text-gray-700 leading-relaxed mb-6">
+      {/* Content Box */}
+      <div className="w-full max-w-5xl bg-white p-4 sm:p-6 rounded-lg shadow-md mb-8">
+        <div className="text-lg text-gray-700 leading-relaxed mb-6 text-center sm:text-justify">
           <p className="mb-4">
             Our college provides excellent sports facilities for students to stay active and engaged. 
             We have both indoor and outdoor game areas to ensure students have ample opportunities to 
@@ -33,7 +35,8 @@ const Sports = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-between gap-4 mt-6">
+        {/* Images */}
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
           {images.map((img, index) => (
             <div
               key={index}
@@ -42,7 +45,7 @@ const Sports = () => {
               <img
                 src={`/images/${img}`}
                 alt={`Sports ${index + 1}`}
-                className="w-full h-44 object-cover rounded-md"
+                className="w-full h-44 sm:h-52 object-cover rounded-md"
               />
             </div>
           ))}
@@ -53,4 +56,5 @@ const Sports = () => {
 };
 
 export default Sports;
+
 

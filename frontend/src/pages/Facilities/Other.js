@@ -22,7 +22,7 @@ const Other = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-6">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-10 mx-auto">
         Other Campus Facilities
       </h1>
 

@@ -11,11 +11,13 @@ const LabFacilities = () => {
   const labImages = ["lab1.jpg", "lab2.jpg", "lab3.jpg", "lab4.jpg"];
 
   return (
-    <div className="px-4 py-10 bg-white font-sans flex flex-col items-center">
+    <div className="px-4 sm:px-6 py-10 bg-white font-sans flex flex-col items-center">
+      {/* Heading */}
       <h2 className="text-3xl font-bold text-green-600 text-center mb-6">Labs</h2>
 
-      <div className="w-full max-w-5xl bg-white p-6 rounded-lg shadow-md mb-8 text-left">
-        <p className="text-lg leading-relaxed text-gray-700 mb-6">
+      {/* Description Box */}
+      <div className="w-full max-w-5xl bg-white p-4 sm:p-6 rounded-lg shadow-md mb-8">
+        <p className="text-lg leading-relaxed text-gray-700 mb-6 text-center sm:text-justify">
           Dr. A.P.J. Abdul Kalam Women's Institute of Technology provides state-of-the-art
           laboratory facilities to enhance practical learning and research. The institution
           houses two fully functional computer labs equipped with modern computing resources
@@ -28,7 +30,8 @@ const LabFacilities = () => {
           setups to support scientific research and innovation.
         </p>
 
-        <div className="flex flex-wrap justify-between gap-4 mt-4">
+        {/* Image Cards */}
+        <div className="flex flex-wrap justify-center gap-4 mt-4">
           {labImages.map((img, index) => (
             <div
               key={index}
@@ -37,7 +40,7 @@ const LabFacilities = () => {
               <img
                 src={`/images/${img}`}
                 alt={`Lab ${index + 1}`}
-                className="w-full h-36 object-cover rounded-md mb-2"
+                className="w-full h-40 sm:h-44 object-cover rounded-md mb-2"
               />
               <p className="text-sm text-gray-700">{labDescriptions[index]}</p>
             </div>
@@ -49,4 +52,5 @@ const LabFacilities = () => {
 };
 
 export default LabFacilities;
+
 
