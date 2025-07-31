@@ -145,7 +145,32 @@
   "kiran_role": "Founder, Biocon",
 
   
-  "life_at_wit": "Life At WIT"
+  "life_at_wit": "Life At WIT",
+
+  "faq_heading": "Frequently Asked Questions",
+  "faq_footer": "Need more help? Contact our support team or use our chatbot for instant assistance.",
+  "faqs": [
+    {
+      "question": "How do I apply for admission?",
+      "answer": "You can apply for admission through our official portal. Visit the Admissions page for step-by-step instructions and required documents."
+    },
+    {
+      "question": "What courses are offered at Dr. APJAK Women's Institute of Technology?",
+      "answer": "We offer B.Tech, BCA, MCA, MBA, and various diploma programs. Check the Courses page for a full list."
+    },
+    {
+      "question": "How can I submit a complaint or feedback?",
+      "answer": "You can submit complaints or feedback online using the forms available on our website, or contact the relevant department directly."
+    },
+    {
+      "question": "Where can I find the fee structure?",
+      "answer": "Fee details for all courses are available on the Fee Structure page. Scholarships and payment plans are also listed there."
+    },
+    {
+      "question": "How do I contact the college?",
+      "answer": "You can reach us at info@apjakwit.edu or call 123-456-7890. Visit the Contact page for more details."
+    }
+  ]
 
 
 

@@ -1,35 +1,28 @@
 import React, { useState } from "react";
-
-const faqs = [
-  {
-    question: "How do I apply for admission?",
-    answer: "You can apply for admission through our official portal. Visit the Admissions page for step-by-step instructions and required documents."
-  },
-  {
-    question: "What courses are offered at Dr. APJAK Women's Institute of Technology?",
-    answer: "We offer B.Tech, BCA, MCA, MBA, and various diploma programs. Check the Courses page for a full list."
-  },
-  {
-    question: "How can I submit a complaint or feedback?",
-    answer: "You can submit complaints or feedback online using the forms available on our website, or contact the relevant department directly."
-  },
-  {
-    question: "Where can I find the fee structure?",
-    answer: "Fee details for all courses are available on the Fee Structure page. Scholarships and payment plans are also listed there."
-  },
-  {
-    question: "How do I contact the college?",
-    answer: "You can reach us at info@apjakwit.edu or call 123-456-7890. Visit the Contact page for more details."
-  }
-];
+import { useTranslation } from "react-i18next";
 
 function FAQSection() {
+  const { t, i18n } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = t("faqs", { returnObjects: true });
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "hi" : "en";
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <div className="w-full bg-green-50 p-5 md:p-8 rounded-xl shadow-lg text-center max-w-screen-md mx-auto">
+      <button
+        onClick={toggleLanguage}
+        className="mb-4 px-4 py-2 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 rounded"
+      >
+        {i18n.language === "en" ? "हिंदी में देखें" : "View in English"}
+      </button>
+
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#024E6F] mb-5 font-[Poppins]">
-        Frequently Asked Questions
+        {t("faq_heading")}
       </h2>
 
       <div className="flex flex-col gap-4">
@@ -64,7 +57,7 @@ function FAQSection() {
       </div>
 
       <p className="text-sm sm:text-base mt-6 font-semibold text-gray-800 font-[Poppins]">
-        📞 Need more help? Contact our support team or use our chatbot for instant assistance.
+        📞 {t("faq_footer")}
       </p>
     </div>
   );

@@ -23,19 +23,25 @@ const facultyData = [
     title: "Assistant Professor (Regular)",
     name: "Mr. Amit Kumar Mishra",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty4.jpg"
+    image: "/images/amit sir.jpg"
   },
   {
     title: "Assistant Professor (Regular)",
     name: "Mr. Asif Habibi",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty5.jpg"
+    image: "/images/ashif sir.jpg"
   },
   {
     title: "Assistant Professor (Regular)",
-    name: "Mrs. Rashmi",
+    name: "Mrs. Rashmi Kumari",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty6.jpg"
+    image: "/images/rashmi mam.jpg"
+  },
+  {
+    title: "Assistant Professor (Regular)",
+    name: "Mrs. Madhu",
+    department: "Bioinformatics (BI)",
+    image: "/images/madhu mam.jpg"
   }
 ];
 
@@ -57,12 +63,14 @@ const Faculty = () => {
               {faculty.title}
             </div>
 
-            {/* Image with responsive height */}
-            <img
-              src={faculty.image}
-              alt={faculty.name}
-              className="w-full h-44 sm:h-52 md:h-60 lg:h-72 object-cover"
-            />
+             {/* Image with proper fit (no cropping) */}
+            <div className="w-full h-72 bg-gray-100 flex items-center justify-center">
+              <img
+                src={faculty.image}
+                alt={faculty.name}
+                className="max-h-full max-w-full object-contain p-2"
+              />
+            </div>
 
             {/* Name */}
             <div className="bg-gray-200 text-green-800 text-sm sm:text-base font-semibold py-2 px-2 text-center">

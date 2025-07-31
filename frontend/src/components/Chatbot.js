@@ -213,7 +213,7 @@ function WITBot() {
     ];
     
     const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-    
+
     return `${randomResponse}\n\nFor more detailed information, please visit the relevant section on our website or contact our office directly.\n\nYou can also ask me about:\n• Admissions & Courses\n• Fees & Scholarships\n• Campus Facilities\n• Placements & Careers`;
   };
 

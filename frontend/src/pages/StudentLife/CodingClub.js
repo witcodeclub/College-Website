@@ -26,6 +26,7 @@ const photos = [
   "/images/codin quest image cer.jpg",
   "/images/coding quest pic1.jpg",
   "/images/pairprogram pic1.jpg",
+  "/images/code club.jpg",
 ];
 
 const CodingClub = () => {

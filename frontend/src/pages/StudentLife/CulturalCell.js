@@ -2,9 +2,11 @@ import React from 'react';
 
 const CulturalCell = () => {
   const galleryImages = [
-    { src: '/images/cultural1.jpg', alt: 'Event Image 1', delay: 'delay-200' },
-    { src: '/images/cultural2.jpg', alt: 'Event Image 2', delay: 'delay-400' },
-    { src: '/images/cultural3.jpg', alt: 'Event Image 3', delay: 'delay-600' },
+    { src: '/images/img22.jpg', alt: 'Event Image 1', delay: 'delay-200' },
+    { src: '/images/img18.jpg', alt: 'Event Image 2', delay: 'delay-400' },
+    { src: '/images/img20.jpg', alt: 'Event Image 3', delay: 'delay-600' },
+    { src: '/images/culture1.jpg', alt: 'Event Image 4', delay: 'delay-800' },
+    { src: '/images/culture2.jpg', alt: 'Event Image 5', delay: 'delay-1000' },
   ];
 
   return (

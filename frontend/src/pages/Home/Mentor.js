@@ -14,14 +14,19 @@ const mentors = [
   },
   {
     title: "REGISTRAR, LNMU",
-    name: "",
+    name: "Dr. Divya Rani Hansda",
     image: "/images/registrar.jpeg",
   },
   {
     title: "DEPUTY REGISTRAR, WIT",
-    name: "",
-    image: "/images/deputy.jpeg",
+    name: "Priyanka Rai",
+    image: "/images/priyanka mam.jpg",
   },
+  {
+    title: "MENTOR, WIT",
+    name: "Prof. Nirmal Kumar",
+    image: "/images/nirmal.jpeg",
+  }
 ];
 
 const Mentor = () => {

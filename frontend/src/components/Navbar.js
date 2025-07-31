@@ -59,7 +59,7 @@ const Navbar = () => {
         { name: "placements", path: "/tp/placements" },
         { name: "tp_brochure", path: "/tp/brochure" },
         { name: "training", path: "/tp/training" },
-        { name: "tp_contact", path: "/tp/contact" },
+        
         { name: "mou", path: "/tp/mou" },
       ],
     },

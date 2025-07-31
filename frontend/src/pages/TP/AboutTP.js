@@ -9,7 +9,7 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaEnvelope, FaInstagram, FaPhoneAlt, FaLinkedin } from "react-icons/fa";
 import CountUp from "react-countup";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement);
@@ -133,12 +133,19 @@ export default function AboutTP() {
         </div>
       </div>
 
-      {/* Placed Students */}
+     {/* Placement Coordinator */}
       <div className="mb-14 text-center">
-        <h2 className="text-2xl font-bold mb-4">Placed Students</h2>
-        <p className="text-gray-700 max-w-xl mx-auto">
-          List of placed students will be added here with names, branches and recruiters.
-        </p>
+        <h2 className="text-2xl font-bold mb-6">Placement Coordinator</h2>
+        <div className="max-w-lg mx-auto bg-white shadow-2xl rounded-2xl p-10 flex flex-col items-center hover:shadow-2xl transition">
+          <img
+            src="/images/rashmi mam1.jpg" // Add image in public/images folder
+            alt="Rashmi Kumari"
+            className="w-32 h-32 rounded-full mb-4 object-cover border-2 border-indigo-500"
+          />
+          <h3 className="text-2xl font-semibold text-gray-800">Prof. Rashmi Kumari</h3>
+          <p className="text-gray-600">Training & Placement Coordinator</p>
+          <p className="text-gray-500 text-base mt-1">APJ Women's Institute of Technology</p>
+        </div>
       </div>
 
       {/* Contact Section */}
@@ -151,6 +158,14 @@ export default function AboutTP() {
           <p className="flex items-center gap-2">
             <FaPhoneAlt className="text-indigo-600" /> +91 9876543210
           </p>
+         <a href="https://www.instagram.com/placementcell.wit?igsh=MWR3N3Q4cHg5ajhhNg==" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-600">
+            <FaInstagram className="text-pink-500" /> Instagram
+          </a>
+          <a href="https://www.linkedin.com/company/training-and-placement-cell-dr-apjak-wit-darbhanga/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-600">
+            <FaLinkedin className="text-blue-600" /> LinkedIn
+          </a>
+
+          
         </div>
       </div>
     </div>
