@@ -6,6 +6,7 @@ import Women from "./Women";
 import Photos from "./Photos";
 import FAQSection from "../../components/FAQSection";
 import Campus from "./Campus";
+import NewsTicker from "./NewsTicker";
 
 const Home = () => {
   return (
@@ -14,6 +15,11 @@ const Home = () => {
       {/* Hero Section */}
       <section className="w-full">
         <Hero />
+      </section>
+
+      {/* ✅ Scrolling News Strip (Just Below Banner) */}
+      <section className="w-full">
+        <NewsTicker />
       </section>
 
       {/* Campus Info */}

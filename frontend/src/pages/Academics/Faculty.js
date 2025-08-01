@@ -52,19 +52,20 @@ const Faculty = () => {
         Faculty Members
       </h2>
 
-      <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+      {/* ✅ Fixed Grid Layout: 4 cards per row on large screens */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {facultyData.map((faculty, index) => (
           <div
             key={index}
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
           >
             {/* Title Bar */}
             <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-1.5 px-2 text-center font-medium tracking-wide">
               {faculty.title}
             </div>
 
-             {/* Image with proper fit (no cropping) */}
-            <div className="w-full h-72 bg-gray-100 flex items-center justify-center">
+            {/* Faculty Image */}
+            <div className="w-full h-64 bg-gray-100 flex items-center justify-center">
               <img
                 src={faculty.image}
                 alt={faculty.name}
@@ -89,6 +90,8 @@ const Faculty = () => {
 };
 
 export default Faculty;
+
+
 
 
 

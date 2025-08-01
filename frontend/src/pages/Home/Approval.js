@@ -10,6 +10,15 @@ const approvals = [
   { name: "NAAC", image: "/images/naac.png", link: "/approval/naac" },
 ];
 
+// ✅ Use the same headlines as in NewsTicker + Festa'25
+const newsHeadlines = [
+  "💡 Hackathon 2025 – Get Ready!",
+  "📰 Admission Notice",
+  "📢 Shortlisted Applicants for the Interview for the Post of Assistant Professor in Subject Mathematics",
+  "📢 Result of W.I.T 7th Semester (Session:2021–25)",
+  "🎉 Festa'25 – Welcome the batch of 2024-2028!"
+];
+
 const CombinedComponent = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showApprovals, setShowApprovals] = useState(true);
@@ -43,7 +52,7 @@ const CombinedComponent = () => {
     <div className="w-full px-4 sm:px-6 lg:px-16 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        {/* Mobile Approvals */}
+        {/* ✅ Mobile Approvals */}
         <div className="lg:hidden rounded-lg shadow-lg overflow-hidden">
           <div
             className="flex justify-between items-center bg-blue-900 text-white px-4 py-3 cursor-pointer"
@@ -68,7 +77,7 @@ const CombinedComponent = () => {
           </div>
         </div>
 
-        {/* Desktop Approvals */}
+        {/* ✅ Desktop Approvals */}
         <div className="hidden lg:block bg-gray-100 p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold text-blue-900 mb-6 text-center font-poppins">
             {t("accreditations_heading")}
@@ -85,7 +94,7 @@ const CombinedComponent = () => {
           </div>
         </div>
 
-        {/* Mobile Notices */}
+        {/* ✅ Mobile Notices */}
         <div className="lg:hidden rounded-lg shadow-lg overflow-hidden">
           <div className="flex justify-between items-center bg-orange-500 text-white px-4 py-3 cursor-pointer" onClick={() => setShowNotices(!showNotices)}>
             <h2 className="text-lg font-bold font-poppins">{t("notices_heading")}</h2>
@@ -102,18 +111,19 @@ const CombinedComponent = () => {
                 {t("calendar_button")}
               </button>
             </div>
-            <div className="space-y-4 text-left">
-              <p className="text-blue-900 text-base">{t("notice_1")}</p>
-              <hr className="border border-cyan-900" />
-              <p className="text-blue-900 text-base">{t("notice_2")}</p>
-              <hr className="border border-cyan-900" />
-              <p className="text-blue-900 text-base">{t("notice_3")}</p>
-              <hr className="border border-cyan-900" />
+
+            {/* ✅ Dynamic Notices from headlines */}
+            <div className="grid gap-3">
+              {newsHeadlines.map((notice, i) => (
+                <div key={i} className="bg-white border border-gray-200 p-3 rounded-md shadow-sm hover:shadow-lg hover:bg-blue-50 transition-all duration-300 cursor-pointer">
+                  <p className="text-blue-900 font-medium">{notice}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Desktop Notices */}
+        {/* ✅ Desktop Notices */}
         <div className="hidden lg:block bg-gray-100 p-6 rounded-lg shadow-lg">
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
             <button className="bg-blue-900 text-white font-bold py-2 px-6 rounded-lg w-full sm:w-auto">
@@ -123,18 +133,19 @@ const CombinedComponent = () => {
               {t("calendar_button")}
             </button>
           </div>
-          <div className="space-y-4 text-left">
-            <p className="text-blue-900 text-base">{t("notice_1")}</p>
-            <hr className="border border-cyan-900" />
-            <p className="text-blue-900 text-base">{t("notice_2")}</p>
-            <hr className="border border-cyan-900" />
-            <p className="text-blue-900 text-base">{t("notice_3")}</p>
-            <hr className="border border-cyan-900" />
+
+          {/* ✅ Dynamic Notices */}
+          <div className="grid gap-3 text-left">
+            {newsHeadlines.map((notice, i) => (
+              <div key={i} className="bg-white border border-gray-200 p-3 rounded-md shadow-sm hover:shadow-lg hover:bg-blue-50 transition-all duration-300 cursor-pointer">
+                <p className="text-blue-900 font-medium">{notice}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* POPUP */}
+      {/* ✅ POPUP */}
       {isPopupOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 transition-opacity duration-300">
           <div className="bg-white p-6 rounded-lg shadow-xl relative w-full sm:w-[80%] md:w-[60%] lg:w-[40%] transform transition-transform duration-300 scale-100 sm:scale-105">
@@ -160,4 +171,6 @@ const CombinedComponent = () => {
 };
 
 export default CombinedComponent;
+
+
 

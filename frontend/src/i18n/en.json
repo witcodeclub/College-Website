@@ -75,15 +75,21 @@
 
   "notices_button": "📢 Notices",
   "holiday_calendar_button": "📅 Holiday Calendar",
-  "notice_1": "📜 Nostalgia 2025 Coming Soon",
-  "notice_2": "🚀 Hackathon 2025",
+  "academic_calendar_button": "📅 Academic Calendar",
     "accreditations_heading": "Accreditations & Recognitions",
   "notices_heading": "Important Notices",
   "notices_button": "📢 Notices",
+  
+  "notices": [
+    "🔥 Nostalgia 2025 Coming Soon",
+    "💡 Hackathon 2025 – Get Ready!",
+    "📰 Admission Notice",
+    "📢 Shortlisted Applicants for the Interview for the Post of Assistant Professor in Subject Mathematics",
+    "📢 Result of W.I.T 7th Semester (Session:2021–25)",
+    "📰 Employment Notice and Application Form for Dr APJ Abdul Kalam Women's Institute of Technology",
+    "🎉 Festa'25 – Coming Soon!"
+  ],
   "calendar_button": "📅 Calendar",
-  "notice_1": "* Nostalgia 2025 Coming Soon",
-  "notice_2": "* Hackathon 2025",
-  "notice_3": "* Inter-College Kho-Kho competition in WIT campus",
   "calendar_popup_title": "Select a Calendar",
   "holiday_calendar": "Holiday Calendar",
   "academic_calendar": "Academic Calendar",
