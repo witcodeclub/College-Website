@@ -104,9 +104,6 @@
   color: white;
 }
 
-.contact:hover {
-  background-color: #5DADE2; /* Sky Blue */
-}
 
 /* Sign In Button */
 .sign-in {
@@ -114,7 +111,3 @@
   color: #0A2647; /* Deep Blue */
 }
 
-.sign-in:hover {
-  background-color: #5DADE2; /* Sky Blue */
-  color: white;
-}

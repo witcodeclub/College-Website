@@ -12,7 +12,7 @@ const Navbar = () => {
         { name: "Mission & Vision", path: "/discover/mission" },
         { name: "Legacy", path: "/discover/legacy" },
         { name: "VC's Message", path: "/discover/vc" },
-        { name: "Director’s Message", path: "/discover/director" },
+        { name: "Director's Message", path: "/discover/director" },
         { name: "Department", path: "/discover/department" },
       ],
     },
@@ -114,7 +114,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/login" className="nav-button log-in">
+          <Link to="/login" className="nav-button sign-in">
             Sign In
           </Link>
         </li>
