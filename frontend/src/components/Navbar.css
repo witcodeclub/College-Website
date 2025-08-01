@@ -1,42 +1,40 @@
-/* Navbar Container */
+/* Navbar Container 
 .navbar {
-    background-color: #0A2647; /* Deep Blue */
-    padding: 10px 10px; /* More padding on all sides */
+    background-color: #0A2647;  Deep Blue 
+    padding: 10px 10px; /* More padding on all sides 
     display: flex;
     justify-content: center;
-    /* margin-bottom: 50px; */
+    
   }
   
-  /* Navbar List */
+  Navbar List 
   .nav-list {
     list-style: none;
     display: flex;
-    gap: 30px; /* Equal spacing for all */
+    gap: 30px; 
     padding: 0;
     margin: 0;
   }
   
-  /* Navbar Item */
+  
   .nav-item {
     position: relative;
     color: white;
-    font-size: 17px; /* Balanced font size */
+    font-size: 17px; 
     font-weight: bold;
     cursor: pointer;
-    padding: 12px 15px; /* More padding */
+    padding: 12px 15px;
     transition: all 0.3s ease;
-  }
   
-  /* Hover Effect */
   .nav-item:hover {
-    background-color: #1B3B6F; /* Slightly brighter blue */
+    background-color: #1B3B6F; 
     border-radius: 5px;
   }
   
-  /* Dropdown */
+  
   .dropdown {
     position: absolute;
-    top: 45px; /* Adjusted for padding */
+    top: 45px; 
     left: 0;
     background-color: white;
     border-radius: 5px;
@@ -49,11 +47,10 @@
     z-index: 100;
   }
   
-  /* Dropdown Items */
   
-  /* Dropdown Hover Effect */
+
   .dropdown-item:hover {
-    background-color:#1B3B6F; /* Soft Sky Blue */
+    background: color #1b3b66;
     color: white;
     border-radius: 5px;
   }
@@ -69,14 +66,12 @@
   }
   
   .dropdown-item a:hover {
-    background-color: #1B3B6F; /* Soft Sky Blue */
+    background-color: #1B3B6F; 
     color: white;
     border-radius: 5px;
   }
   
-  /* NSS, Contact Us and Sign In */
 
-  /* Navbar Button Styling */
 .nav-button {
   display: inline-block;
   padding: 4px 8px;
@@ -87,9 +82,9 @@
   transition: all 0.3s ease;
 }
 
-/* NSS Button */
+
 .nss {
-  color: white; /* Gold */
+  color: white; 
   border: 2px;
 }
 
@@ -98,16 +93,25 @@
 
 }
 
-/* Contact Us Button */
+
 .contact {
-  background-color: #2E8B57; /* Emerald Green */
+  background-color: #2E8B57; 
   color: white;
 }
 
 
-/* Sign In Button */
+.contact:hover {
+  background-color: #5DADE2; 
+}
+
 .sign-in {
   background-color: white;
-  color: #0A2647; /* Deep Blue */
+  color: #0A2647; 
 }
+
+
+.sign-in:hover {
+  background-color: #5DADE2; 
+  color: white;
+}*/
 

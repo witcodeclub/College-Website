@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [weather, setWeather] = useState({
     temp: "",
     humidity: "",
@@ -11,6 +13,7 @@ const Footer = () => {
     condition: "",
     pm25: "",
   });
+
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -38,71 +41,65 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-[#0A2647] text-white px-6 py-10 mt-12 text-center relative">
-      <div className="flex flex-wrap justify-between text-left">
-        {/* Logo and Address */}
-        <div className="flex-1 text-center md:text-left md:pr-6 mb-6">
+    <footer className="bg-[#0A2647] text-white px-4 sm:px-8 md:px-12 py-8 sm:py-12 w-full">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm sm:text-base">
+        {/* Column 1 - Info */}
+        <div className="text-center sm:text-left">
           <img
             src="/images/wit.jpeg"
-            alt="wit Logo"
-            className="w-20 mx-auto md:mx-0 rounded-full mb-3"
+            alt="WIT Logo"
+            className="w-20 sm:w-24 lg:w-28 mx-auto sm:mx-0 rounded-full mb-4"
           />
-          <h3 className="text-xl font-semibold">WIT Darbhanga</h3>
-          <p>Kameshwarnagar, Darbhanga, Bihar-846008</p>
-          <p>📧 email-directorwit@yahoo.in</p>
-          <p>📞 +91-06272-246579</p>
-          <div className="flex justify-center md:justify-start mt-4 gap-6 text-2xl">
-            <a
-              href="https://www.facebook.com/people/apjakwit/61559087061968"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+          <h3 className="text-lg font-semibold leading-tight">
+            {t("footer_college_name")}
+          </h3>
+          <p className="mt-1 text-gray-300">{t("footer_address")}</p>
+          <p className="mt-2">
+            📧 <a href="mailto:directorwit@yahoo.in" className="hover:underline">directorwit@yahoo.in</a>
+          </p>
+          <p>
+            📞 <a href="tel:+9106272246579" className="hover:underline">+91-06272-246579</a>
+          </p>
+          <div className="flex justify-center sm:justify-start mt-3 gap-4 text-xl">
+            <a href="https://www.facebook.com/people/apjakwit/61559087061968" target="_blank" rel="noreferrer" className="hover:text-[#1877F2] hover:scale-110 transition">
               <FaFacebook />
             </a>
-            <a
-              href="https://www.instagram.com/apjak.wit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.instagram.com/apjak.wit" target="_blank" rel="noreferrer" className="hover:text-[#E1306C] hover:scale-110 transition">
               <FaInstagram />
             </a>
-            <a
-              href="https://x.com/apjakwit"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://x.com/apjakwit" target="_blank" rel="noreferrer" className="hover:text-[#1DA1F2] hover:scale-110 transition">
               <FaTwitter />
             </a>
           </div>
         </div>
 
-        {/* Explore */}
-        <div className="flex-1 mb-6 pl-6">
-          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Explore</h3>
-          <ul className="list-none space-y-1 text-sm">
-            <li><Link to="/societies" className="hover:underline">Societies</Link></li>
-            <li><Link to="/facilities/labs" className="hover:underline">Labs</Link></li>
-            <li><Link to="/facilities/library" className="hover:underline">Library</Link></li>
-            <li><Link to="/events" className="hover:underline">Events</Link></li>
+        {/* Column 2 - Explore */}
+        <div>
+          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">{t("explore")}</h4>
+          <ul className="space-y-1 text-gray-300">
+            <li><Link to="/societies" className="hover:underline">{t("societies")}</Link></li>
+            <li><Link to="/facilities/labs" className="hover:underline">{t("labs")}</Link></li>
+            <li><Link to="/facilities/library" className="hover:underline">{t("library")}</Link></li>
+            <li><Link to="/events" className="hover:underline">{t("events")}</Link></li>
           </ul>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex-1 mb-6 px-6">
-          <h3 className="border-b-2 border-dotted inline-block mb-2 pb-1">Quick Links</h3>
-          <ul className="list-none space-y-1 text-sm">
-            <li><Link to="/admission/process" className="hover:underline">Admission</Link></li>
-            <li><Link to="/discover/department" className="hover:underline">Departments</Link></li>
-            <li><Link to="/anti-ragging" className="hover:underline">Anti-Ragging</Link></li>
-            <li><Link to="/tp/placements" className="hover:underline">Placement</Link></li>
-            <li><Link to="/tp/alumni" className="hover:underline">Alumni</Link></li>
+        {/* Column 3 - Quick Links */}
+        <div>
+          <h4 className="font-semibold text-base border-b-2 border-dotted mb-2 w-fit">{t("quick_links")}</h4>
+          <ul className="space-y-1 text-gray-300">
+            <li><Link to="/admission/process" className="hover:underline">{t("admission")}</Link></li>
+            <li><Link to="/discover/department" className="hover:underline">{t("departments")}</Link></li>
+            <li><Link to="/anti-ragging" className="hover:underline">{t("anti_ragging")}</Link></li>
+            <li><Link to="/tp/placements" className="hover:underline">{t("placement")}</Link></li>
+            <li><Link to="/tp/alumni" className="hover:underline">{t("alumni")}</Link></li>
           </ul>
         </div>
 
-        {/* Weather Card */}
-        <div className="flex-1 mt-1 bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-xl shadow-lg text-center">
-          <h3 className="text-xl font-semibold mb-2">Weather in Darbhanga</h3>
-          <p className="font-bold text-sm">
+        {/* Column 4 - Weather */}
+        <div className="bg-gradient-to-b from-green-900 to-gray-200 text-white p-4 rounded-lg shadow-md min-h-[200px]">
+          <h4 className="font-semibold mb-2 text-center">{t("weather_title")}</h4>
+          <p className="text-sm text-center">
             {dateTime.toLocaleDateString("en-US", {
               weekday: "long",
               year: "numeric",
@@ -110,20 +107,25 @@ const Footer = () => {
               day: "numeric",
             })}
           </p>
-          <p className="font-bold text-sm mb-1">{dateTime.toLocaleTimeString()}</p>
-          <p className="font-bold text-sm">Temperature: {weather.temp}°C</p>
-          <p className="font-bold text-sm">Humidity: {weather.humidity}%</p>
-          <p className="font-bold text-sm">Wind Speed: {weather.wind} m/s</p>
-          <p className="font-bold text-sm">Condition: {weather.condition}</p>
-          <p className="text-sm">Air Pollution (PM2.5): <strong>{weather.pm25}</strong>💚</p>
+          <p className="text-sm text-center mb-2">{dateTime.toLocaleTimeString()}</p>
+          <div className="space-y-1 text-sm">
+            <p>🌡 {t("temperature")}: {weather.temp}°C</p>
+            <p>💧 {t("humidity")}: {weather.humidity}%</p>
+            <p>🌬 {t("wind_speed")}: {weather.wind} m/s</p>
+            <p>☁️ {t("condition")}: {weather.condition}</p>
+            <p>{t("pm25")}: <strong>{weather.pm25}</strong></p>
+          </div>
         </div>
       </div>
 
-      <div className="mt-6 border-t border-gray-400 pt-4 text-sm text-gray-300">
-        © 2025 Copyright WIT Darbhanga | Developed by WitCodingClub
+      {/* Bottom line */}
+      <div className="mt-8 text-center text-gray-300 text-xs sm:text-sm border-t border-gray-500 pt-4">
+        {t("copyright")} <span className="text-yellow-400 font-semibold">{t("wit_coding_club")}</span>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
+

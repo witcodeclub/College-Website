@@ -4,97 +4,85 @@ const Events = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsVisible(true), 100); // slight delay for animation
+    setTimeout(() => setIsVisible(true), 100);
   }, []);
 
-  const eventsData = [
-    {
-      title: "Tech Fest 2024",
-      date: "March 5, 2024",
-      description: "A 2-day technical fest with coding, robotics, and gaming competitions.",
-    },
-    {
-      title: "Cultural Carnival",
-      date: "April 12, 2024",
-      description: "Dance, drama, singing, and traditional performances across departments.",
-    },
-    {
-      title: "Annual Sports Meet",
-      date: "January 28, 2024",
-      description: "Track events, volleyball, chess, and kabaddi championships.",
-    },
+  const eventImages = [
+    "/images/event1.jpg",
+    "/images/event2.jpg",
+    "/images/event3.jpg",
+    "/images/event4.jpg",
+    "/images/event5.jpg",
+    "/images/event6.jpg",
+    "/images/event7.jpg",
+    "/images/event8.jpg",
+    "/images/code club.jpg",
+    "/images/event10.jpg",
+    "/images/event11.jpg",
+    "/images/img17.jpg",
+    "/images/img18.jpg",
+    "/images/img19.jpg",
+    "/images/img20.jpg",
+    "/images/img21.jpg",
+    "/images/img22.jpg",
+    "/images/img23.jpg",
+    "/images/img10.jpg",
+    "/images/img11.jpg",
+    "/images/img12.jpg",
   ];
 
   return (
     <div
-      style={{
-        padding: "60px 20px",
-        background: "#f5f5f5",
-        minHeight: "100vh",
-        transition: "opacity 1s ease-in-out",
-        opacity: isVisible ? 1 : 0,
-      }}
+      className={`min-h-screen bg-gradient-to-br from-yellow-50 via-green-50 to-pink-50 transition-opacity duration-1000 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
     >
-      <h1 style={{
-        textAlign: "center",
-        color: "#006400",
-        marginBottom: "40px",
-        fontSize: "38px",
-        borderBottom: "3px solid #006400",
-        display: "inline-block",
-        paddingBottom: "10px"
-      }}>
-        Events in WIT
-      </h1>
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "30px",
-          marginTop: "40px",
-        }}
-      >
-        {eventsData.map((event, index) => (
-          <div
-            key={index}
-            style={{
-              background: "white",
-              borderRadius: "10px",
-              padding: "20px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              cursor: "pointer",
-              animation: `fadeInUp 0.6s ease ${index * 0.2}s both`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-5px)";
-              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 100, 0, 0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
-            }}
-          >
-            <h3 style={{ color: "#006400", marginBottom: "10px" }}>{event.title}</h3>
-            <p style={{ fontWeight: "bold", color: "#444" }}>{event.date}</p>
-            <p style={{ color: "#666", marginTop: "8px" }}>{event.description}</p>
-          </div>
-        ))}
+      {/* ======== Header Section (Like Cultural Cell) ======== */}
+      <div className="bg-emerald-500 text-center py-10 md:py-12 shadow-md animate-headerSlide">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white">
+          Welcome to the Events Gallery
+        </h1>
+        <p className="mt-2 text-white text-base md:text-lg tracking-wide">
+          Relive the moments of celebration, innovation, and achievements
+        </p>
       </div>
 
-      {/* Keyframe animation using inline style tag */}
+      {/* ======== Gallery Section ======== */}
+      <div className="py-10 px-4 md:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+          {eventImages.map((src, index) => (
+            <div
+              key={index}
+              className="rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition duration-500 ease-in-out bg-white"
+              style={{
+                animation: "zoomIn 0.6s ease forwards",
+                animationDelay: `${index * 0.15}s`,
+                opacity: 0,
+              }}
+            >
+              <img
+                src={src}
+                alt="event"
+                className="w-full h-40 sm:h-48 md:h-56 object-cover hover:opacity-90"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ======== Custom Animations ======== */}
       <style>
         {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+          @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          @keyframes headerSlide {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          .animate-headerSlide {
+            animation: headerSlide 1s ease forwards;
           }
         `}
       </style>
@@ -103,3 +91,6 @@ const Events = () => {
 };
 
 export default Events;
+
+
+

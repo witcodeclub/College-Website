@@ -1,15 +1,36 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const imageUrls = [
-  "/images/img1.jpg", "/images/img2.jpg", "/images/img3.jpg",
-  "/images/img4.jpg", "/images/img5.jpg", "/images/img6.jpg",
-  "/images/img7.jpg", "/images/img8.jpg", "/images/img9.jpg",
-  "/images/img10.jpg" 
+  "/images/img1.jpg",
+  "/images/img2.jpg",
+  "/images/img3.jpg",
+  "/images/img4.jpg",
+  "/images/codin quest image cer.jpg",
+  "/images/img5.jpg",
+  "/images/img10.jpg",
+  "/images/img11.jpg",
+  "/images/img12.jpg",
+  "/images/img13.jpg",
+  "/images/img14.jpg",
+  "/images/img15.jpg",
+  "/images/img16.jpg",
+  
+  "/images/img21.jpg",
+  "/images/img22.jpg",
+  "/images/img23.jpg"
 ];
 
 const Photos = () => {
   const [scrollIndex, setScrollIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const intervalRef = useRef(null);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    startAutoScroll();
+    return () => stopAutoScroll();
+  }, []);
 
   const handleNext = () => {
     setScrollIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
@@ -19,64 +40,64 @@ const Photos = () => {
     setScrollIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
   };
 
+  const startAutoScroll = () => {
+    if (!intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setScrollIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+      }, 2000);
+    }
+  };
+
+  const stopAutoScroll = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
+
   return (
-    <div style={containerStyle}>
-      <h1 style={headingStyle}>Life At WIT</h1>
-      <div style={galleryContainer}>
-        <button onClick={handlePrev} style={navButton}>&lt;</button>
-        <div style={imageWrapper}>
-          <img src={imageUrls[scrollIndex]} alt="Gallery" style={imageStyle} />
+    <div className="text-center px-4 py-10">
+      <h1 className="text-3xl sm:text-4xl font-bold text-green-600 mb-6">
+        {t("life_at_wit")}
+      </h1>
+
+      <div className="flex items-center justify-center gap-4 flex-wrap">
+        {/* Prev Button */}
+        <button
+          onClick={handlePrev}
+          className="bg-green-600 text-white px-4 py-2 text-xl rounded hover:bg-green-700"
+        >
+          &lt;
+        </button>
+
+        {/* Image Display */}
+        <div
+          className="w-full sm:w-[80%] flex justify-center overflow-hidden"
+          onMouseEnter={() => {
+            setIsHovered(true);
+            stopAutoScroll();
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+            startAutoScroll();
+          }}
+        >
+          <img
+            src={imageUrls[scrollIndex]}
+            alt="Gallery"
+            className="w-full h-[200px] sm:h-[400px] md:h-[500px] object-cover rounded-lg transition duration-500"
+          />
         </div>
-        <button onClick={handleNext} style={navButton}>&gt;</button>
+
+        {/* Next Button */}
+        <button
+          onClick={handleNext}
+          className="bg-green-600 text-white px-4 py-2 text-xl rounded hover:bg-green-700"
+        >
+          &gt;
+        </button>
       </div>
     </div>
   );
 };
 
-// Inline CSS Styles
-const containerStyle = {
-  textAlign: "center",
-  padding: "20px",
-  // backgroundColor: "#f9f9f9",
-};
-
-const headingStyle = {
-  fontSize: "40px",
-  fontWeight: "bold",
-  color: "green",
-  marginBottom: "20px",
-};
-
-const galleryContainer = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "20px",
-};
-
-const imageWrapper = {
-  width: "80%",
-  display: "flex",
-  justifyContent: "center",
-};
-
-const imageStyle = {
-  width: "80%", 
-  height: "500px",
-  objectFit: "cover",
-  borderRadius: "10px",
-  boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.2)",
-  transition: "none",
-};
-
-const navButton = {
-  backgroundColor: "green",
-  color: "white",
-  border: "none",
-  padding: "10px 20px",
-  fontSize: "20px",
-  cursor: "pointer",
-  borderRadius: "5px",
-};
-
 export default Photos;
+

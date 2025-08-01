@@ -23,35 +23,65 @@ const facultyData = [
     title: "Assistant Professor (Regular)",
     name: "Mr. Amit Kumar Mishra",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty4.jpg"
+    image: "/images/amit sir.jpg"
   },
   {
     title: "Assistant Professor (Regular)",
     name: "Mr. Asif Habibi",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty5.jpg"
+    image: "/images/ashif sir.jpg"
   },
-
   {
     title: "Assistant Professor (Regular)",
-    name: "Mrs. Rashmi ",
+    name: "Mrs. Rashmi Kumari",
     department: "ENGINEERING & TECHNOLOGY (CSE/IT/MCA)",
-    image: "/images/faculty6.jpg"
+    image: "/images/rashmi mam.jpg"
+  },
+  {
+    title: "Assistant Professor (Regular)",
+    name: "Mrs. Madhu",
+    department: "Bioinformatics (BI)",
+    image: "/images/madhu mam.jpg"
   }
-  // Add more as needed
 ];
 
 const Faculty = () => {
   return (
-    <div style={styles.wrapper}>
-      <h2 style={styles.heading}>Faculty Members</h2>
-      <div style={styles.grid}>
+    <div className="px-4 py-8 sm:px-6 lg:px-10 bg-gray-50 min-h-screen">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-900 text-center mb-6 uppercase">
+        Faculty Members
+      </h2>
+
+      {/* ✅ Fixed Grid Layout: 4 cards per row on large screens */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {facultyData.map((faculty, index) => (
-          <div key={index} style={styles.card}>
-            <div style={styles.titleBar}>{faculty.title}</div>
-            <img src={faculty.image} alt={faculty.name} style={styles.image} />
-            <div style={styles.name}>{faculty.name}</div>
-            <div style={styles.department}>{faculty.department}</div>
+          <div
+            key={index}
+            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
+          >
+            {/* Title Bar */}
+            <div className="bg-emerald-900 text-white text-[11px] sm:text-xs py-1.5 px-2 text-center font-medium tracking-wide">
+              {faculty.title}
+            </div>
+
+            {/* Faculty Image */}
+            <div className="w-full h-64 bg-gray-100 flex items-center justify-center">
+              <img
+                src={faculty.image}
+                alt={faculty.name}
+                className="max-h-full max-w-full object-contain p-2"
+              />
+            </div>
+
+            {/* Name */}
+            <div className="bg-gray-200 text-green-800 text-sm sm:text-base font-semibold py-2 px-2 text-center">
+              {faculty.name}
+            </div>
+
+            {/* Department */}
+            <div className="bg-gray-100 text-gray-700 text-xs sm:text-sm py-2 px-2 text-center border-t border-gray-300">
+              {faculty.department}
+            </div>
           </div>
         ))}
       </div>
@@ -59,57 +89,9 @@ const Faculty = () => {
   );
 };
 
-const styles = {
-  wrapper: {
-    padding: "30px",
-    fontFamily: "Arial"
-  },
-  heading: {
-    textAlign: "center",
-    marginBottom: "30px",
-    fontSize: "28px",
-    color: "green",
-    fontWeight: "bold"
-  },
-  grid: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "25px"
-  },
-  card: {
-    width: "300px",
-    border: "1px solid #ccc",
-    backgroundColor: "#f0f0f0",
-    textAlign: "center",
-    borderRadius: "5px",
-    overflow: "hidden",
-    boxShadow: "0 2px 6px rgba(0,0,0,0.1)"
-  },
-  titleBar: {
-    backgroundColor: "#3b1212",
-    color: "#fff",
-    padding: "6px 0",
-    fontSize: "13px"
-  },
-  image: {
-    width: "100%",
-    height: "300px",
-    objectFit: "cover"
-  },
-  name: {
-    backgroundColor: "#d2d2d2",
-    color: "green",
-    fontWeight: "bold",
-    padding: "6px",
-    fontSize: "15px"
-  },
-  department: {
-    padding: "6px",
-    fontSize: "13px",
-    backgroundColor: "#d2d2d2",
-    borderTop: "1px solid #999"
-  }
-};
-
 export default Faculty;
+
+
+
+
+

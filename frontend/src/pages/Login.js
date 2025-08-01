@@ -11,18 +11,24 @@ function Login() {
     e.preventDefault();
 
     if (emailOrReg && password) {
-      if (role === 'student') navigate('/dashboard/student');
-      else if (role === 'professor') navigate('/dashboard/professor');
-      else if (role === 'staff') navigate('/dashboard/staff');
+      const baseURL = 'http://localhost:3001';
+
+      if (role === 'student') {
+        window.location.href = `${baseURL}/student`;
+      } else if (role === 'professor') {
+        window.location.href = `${baseURL}/professor`;
+      } else if (role === 'staff') {
+        window.location.href = `${baseURL}/staff`;
+      }
     } else {
       alert("Please enter valid credentials.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 md:px-10 py-10">
+      <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
         <form onSubmit={handleLogin}>
           <label className="block font-semibold text-gray-700 mb-1">Select Role</label>
           <select

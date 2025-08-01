@@ -1,87 +1,32 @@
 import React from "react";
 
 const Sports = () => {
-  const containerStyle = {
-    padding: "20px",
-    fontFamily: "Arial, sans-serif",
-    background: "#fff", // Light greyish-blue gradient
-    borderRadius: "8px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center", // Center the content
-  };
-
-  const titleStyle = {
-    fontSize: "30px",
-    fontWeight: "bold",
-    color: "#28a745", // Green color for the title
-    marginBottom: "20px",
-    textAlign: "center",
-  };
-
-  const mainCardStyle = {
-    width: "80%", // Set the width of the main card
-    maxWidth: "900px", // Limit the maximum width
-    padding: "20px",
-    background: "#ffffff",
-    borderRadius: "8px",
-    boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
-    marginBottom: "30px",
-    textAlign: "left", // Align text to the left
-  };
-
-  const contentStyle = {
-    fontSize: "18px",
-    lineHeight: "1.6",
-    marginBottom: "20px",
-  };
-
-  const cardContainer = {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "15px",
-    flexWrap: "wrap",
-    marginTop: "20px",
-  };
-
-  const cardStyle = {
-    width: "25%", // Adjust the width to fit images in a single row
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    padding: "10px",
-    textAlign: "center",
-    boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
-    background: "#ffffff",
-  };
-
-  const imgStyle = {
-    width: "100%",
-    height: "170px",
-    borderRadius: "5px",
-  };
-
-  
+  const images = ["sports1.jpg", "sports2.jpg", "sports4.jpg"];
 
   return (
-    <div style={containerStyle}>
-      <div style={titleStyle}>
+    <div className="px-4 sm:px-6 py-10 bg-white font-sans flex flex-col items-center">
+      {/* Heading */}
+      <h2 className="text-3xl font-bold text-green-600 text-center mb-6">
         College Sports Facilities
-      </div>
+      </h2>
 
-      <div style={mainCardStyle}>
-        <div style={contentStyle}>
-          <p>
+      {/* Content Box */}
+      <div className="w-full max-w-5xl bg-white p-4 sm:p-6 rounded-lg shadow-md mb-8">
+        <div className="text-lg text-gray-700 leading-relaxed mb-6 text-center sm:text-justify">
+          <p className="mb-4">
             Our college provides excellent sports facilities for students to stay active and engaged. 
             We have both indoor and outdoor game areas to ensure students have ample opportunities to 
             enjoy their favorite sports.
           </p>
-          <h3 style={{ color: "#28a745" }}>Indoor Play Area</h3>
-          <p>
+
+          <h3 className="text-green-600 text-xl font-semibold mb-2">Indoor Play Area</h3>
+          <p className="mb-4">
             The indoor play area is designed for students who enjoy indoor games. We offer facilities 
             for Table Tennis, Carrom Board, and Chess. These games help students enhance their focus, 
             strategic thinking, and reflexes while having fun.
           </p>
-          <h3 style={{ color: "#28a745" }}>Outdoor Sports Ground</h3>
+
+          <h3 className="text-green-600 text-xl font-semibold mb-2">Outdoor Sports Ground</h3>
           <p>
             For outdoor sports enthusiasts, our college has a spacious ground where students can play 
             Badminton, Kho-Kho, Kabaddi, and many other outdoor games. The ground is well-maintained, 
@@ -90,11 +35,18 @@ const Sports = () => {
           </p>
         </div>
 
-        <div style={cardContainer}>
-          {["sports1.jpg", "sports2.jpg", "sports4.jpg"].map((img, index) => (
-            <div key={index} style={cardStyle}>
-              <img src={`/images/${img}`} alt={`Sports ${index + 1}`} style={imgStyle} />
-              
+        {/* Images */}
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="w-full sm:w-[48%] md:w-[31%] bg-white border border-gray-200 p-3 rounded-lg shadow hover:shadow-md transition duration-300 text-center"
+            >
+              <img
+                src={`/images/${img}`}
+                alt={`Sports ${index + 1}`}
+                className="w-full h-44 sm:h-52 object-cover rounded-md"
+              />
             </div>
           ))}
         </div>
@@ -104,3 +56,5 @@ const Sports = () => {
 };
 
 export default Sports;
+
+

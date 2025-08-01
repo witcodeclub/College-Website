@@ -1,41 +1,21 @@
 import React from "react";
 
 function Mission() {
-  const containerStyle = {
-    display: "flex",
-    alignItems: "center",
-    padding: "40px",
-    textAlign: "left",
-    color:"Green"
-  };
-
-  const textStyle = {
-    fontSize: "1.2rem",
-    color: "#555",
-    maxWidth: "800px",
-    color:"#1B3B6F"
-  };
-
-  const imageStyle = {
-    width: "250px",
-    height: "250px",
-    borderRadius: "50%",
-    marginRight: "20px",
-  };
-
   return (
-    <div style={containerStyle}>
-      <img 
-        src="/images/APJK.png" 
-        alt="Dr. APJ Abdul Kalam" 
-        style={imageStyle} 
+    <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 px-4 md:px-12 py-10">
+      <img
+        src="/images/APJK.png"
+        alt="Dr. APJ Abdul Kalam"
+        className="w-36 h-36 sm:w-40 sm:h-40 md:w-64 md:h-64 rounded-full object-cover"
       />
-      <div>
-        <h1>Mission & Vision</h1>
-        <p style={textStyle}>
+      <div className="text-left">
+        <h1 className="text-2xl md:text-3xl font-semibold text-green-800 mb-4">
+          Mission & Vision
+        </h1>
+        <p className="text-base md:text-lg text-[#1B3B6F] mb-4 leading-relaxed text-justify">
           "If one educates a woman, an individual is educated. If one educates a woman, the whole family is educated." - Dr. APJ Abdul Kalam
         </p>
-        <p style={textStyle}>
+        <p className="text-base md:text-lg text-[#1B3B6F] leading-relaxed text-justify">
           The mission of APJAKWIT, an engineering college exclusively for women, is to produce at least one woman technocrat from every village of Bihar in order to empower the family, society, and nation.
         </p>
       </div>
@@ -44,3 +24,4 @@ function Mission() {
 }
 
 export default Mission;
+
