@@ -15,7 +15,6 @@ const imageUrls = [
   "/images/img14.jpg",
   "/images/img15.jpg",
   "/images/img16.jpg",
-  
   "/images/img21.jpg",
   "/images/img22.jpg",
   "/images/img23.jpg"
@@ -44,7 +43,7 @@ const Photos = () => {
     if (!intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setScrollIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-      }, 2000);
+      }, 4000); // ⏳ Slower scroll (4s per image)
     }
   };
 
@@ -54,7 +53,7 @@ const Photos = () => {
   };
 
   return (
-    <div className="text-center px-4 py-10">
+    <div className="text-center px-4 py-10 bg-[#f9fafb]">
       <h1 className="text-3xl sm:text-4xl font-bold text-green-600 mb-6">
         {t("life_at_wit")}
       </h1>
@@ -68,23 +67,23 @@ const Photos = () => {
           &lt;
         </button>
 
-        {/* Image Display */}
+        {/* Image Slider Container */}
         <div
-          className="w-full sm:w-[80%] flex justify-center overflow-hidden"
-          onMouseEnter={() => {
-            setIsHovered(true);
-            stopAutoScroll();
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-            startAutoScroll();
-          }}
+          className="relative w-full sm:w-[80%] max-w-5xl h-[220px] sm:h-[420px] md:h-[520px] overflow-hidden rounded-lg shadow-lg"
+          onMouseEnter={() => { setIsHovered(true); stopAutoScroll(); }}
+          onMouseLeave={() => { setIsHovered(false); startAutoScroll(); }}
         >
-          <img
-            src={imageUrls[scrollIndex]}
-            alt="Gallery"
-            className="w-full h-[200px] sm:h-[400px] md:h-[500px] object-cover rounded-lg transition duration-500"
-          />
+          {/* ✅ Image with smooth slide transition */}
+          <div
+            className="w-full h-full transition-transform duration-[1300ms] ease-in-out"
+            style={{ transform: `translateX(0)` }}
+          >
+            <img
+              src={imageUrls[scrollIndex]}
+              alt="Gallery"
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
         </div>
 
         {/* Next Button */}
@@ -100,4 +99,5 @@ const Photos = () => {
 };
 
 export default Photos;
+
 

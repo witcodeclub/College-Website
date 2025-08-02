@@ -25,7 +25,7 @@ function NSS() {
   return (
     <div className={`font-sans p-5 bg-gradient-to-br from-blue-50 to-blue-100 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Header */}
-      <div className="text-center p-6 rounded-lg bg-blue-900 text-white shadow-xl">
+      <div className="text-center p-6 rounded-lg bg-emerald-800 text-white shadow-xl">
         <h1 className="text-3xl font-bold">National Service Scheme (NSS)</h1>
         <p className="text-lg mt-2">Serving Society, Building the Nation</p>
       </div>
@@ -41,7 +41,7 @@ function NSS() {
       </div>
 
       {/* Activities */}
-      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-6">Activities We Conduct</h2>
+      <h2 className="text-center text-green-900 text-2xl font-semibold mt-6">Activities We Conduct</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-5">
         {activities.map((act, index) => (
           <div
@@ -55,7 +55,7 @@ function NSS() {
       </div>
 
       {/* Gallery */}
-      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-10">Gallery</h2>
+      <h2 className="text-center text-green-900 text-2xl font-semibold mt-10">Gallery</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-5">
         {[...Array(12).keys()].map((num, index) => (
           <div
@@ -67,7 +67,7 @@ function NSS() {
             <img
               src={`/images/nss${num + 1}.jpg`}
               alt={`NSS ${num + 1}`}
-              className="w-full h-40 object-cover transition-transform duration-300 hover:scale-105"
+              className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
             />
           </div>
         ))}
@@ -88,7 +88,7 @@ function NSS() {
       )}
 
       {/* Contact */}
-      <h2 className="text-center text-blue-900 text-2xl font-semibold mt-10">Contact Us</h2>
+      <h2 className="text-center text-green-900 text-2xl font-semibold mt-10">Contact Us</h2>
       <div className="bg-white max-w-xl mx-auto rounded-xl p-6 shadow-lg text-center text-base leading-relaxed">
         <p>
           📍 NSS Office, Dr. APJ Abdul Kalam Women's Institute Of Technology

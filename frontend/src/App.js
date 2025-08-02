@@ -91,11 +91,7 @@ const App = () => {
 
   return (
     <div>
-      {/* Language Switcher */}
-      <div className="bg-slate-100 text-right pr-4 pt-2 text-sm">
-        <button onClick={() => changeLanguage("en")} className="mr-2 hover:underline">English</button>
-        <button onClick={() => changeLanguage("hi")} className="hover:underline">हिन्दी</button>
-      </div>
+     
 
 
       {/* Logo */}

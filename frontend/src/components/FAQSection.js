@@ -2,24 +2,14 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function FAQSection() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = t("faqs", { returnObjects: true });
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === "en" ? "hi" : "en";
-    i18n.changeLanguage(newLang);
-  };
-
   return (
     <div className="w-full bg-green-50 p-5 md:p-8 rounded-xl shadow-lg text-center max-w-screen-md mx-auto">
-      <button
-        onClick={toggleLanguage}
-        className="mb-4 px-4 py-2 text-sm font-semibold text-white bg-green-600 hover:bg-green-700 rounded"
-      >
-        {i18n.language === "en" ? "हिंदी में देखें" : "View in English"}
-      </button>
+      {/* ✅ Removed language toggle button */}
 
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#024E6F] mb-5 font-[Poppins]">
         {t("faq_heading")}
@@ -64,3 +54,4 @@ function FAQSection() {
 }
 
 export default FAQSection;
+

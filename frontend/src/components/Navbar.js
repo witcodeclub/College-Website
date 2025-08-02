@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -11,19 +12,11 @@ const Navbar = () => {
     {
       title: "discover_us",
       submenu: [
-<<<<<<< HEAD
         { name: "Mission & Vision", path: "/discover/mission" },
         { name: "Legacy", path: "/discover/legacy" },
         { name: "VC's Message", path: "/discover/vc" },
         { name: "Director's Message", path: "/discover/director" },
         { name: "Department", path: "/discover/department" },
-=======
-        { name: "mission", path: "/discover/mission" },
-        { name: "legacy", path: "/discover/legacy" },
-        { name: "vc_message", path: "/discover/vc" },
-        { name: "director_message", path: "/discover/director" },
-        { name: "department", path: "/discover/department" },
->>>>>>> ada15781fa49f5588764edbb58ad3138a618432c
       ],
     },
     {
@@ -67,7 +60,6 @@ const Navbar = () => {
         { name: "placements", path: "/tp/placements" },
         { name: "tp_brochure", path: "/tp/brochure" },
         { name: "training", path: "/tp/training" },
-        
         { name: "mou", path: "/tp/mou" },
       ],
     },
@@ -84,148 +76,111 @@ const Navbar = () => {
   ];
 
   return (
-<<<<<<< HEAD
-    <nav className="navbar">
-      <ul className="nav-list">
-        <li className="nav-item">
-          <Link to="/" className="nav-button home" style={{color : "white"}}>
-            Home
-          </Link>
-        </li>
-        {menuItems.map((item, index) => (
-          <li
-            key={index}
-            className="nav-item"
-            onMouseEnter={() => setDropdown(index)}
-            onMouseLeave={() => setDropdown(null)}
-          >
-            {item.title}
-            {dropdown === index && (
-              <ul className="dropdown">
-                {item.submenu.map((subItem, subIndex) => (
-                  <li key={subIndex} className="dropdown-item">
-                    <Link to={subItem.path}>{subItem.name}</Link>{" "}
-                    {/* ✅ Link Added */}
+    <nav className="bg-[#0A2647] text-white shadow-md relative z-[999]">
+      <div className="max-w-[1200px] mx-auto px-4 py-3 flex justify-between items-center flex-nowrap">
+        {/* ✅ Mobile Toggle */}
+        <div className="md:hidden">
+          <button onClick={() => setMobileMenu(!mobileMenu)}>
+            {mobileMenu ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
+
+        {/* ✅ Desktop Menu */}
+        <ul className="hidden md:flex items-center justify-between w-full space-x-5 flex-nowrap">
+          {/* Home */}
+          <li>
+            <Link to="/" className="font-bold text-[16px] px-3 py-2 whitespace-nowrap rounded hover:bg-[#1B3B6F] transition">
+              {t("home")}
+            </Link>
+          </li>
+
+          {/* Dropdown Menus */}
+          {menuItems.map((item, index) => (
+            <li key={index} className="relative group whitespace-nowrap">
+              <span className="font-bold text-[16px] px-3 py-2 cursor-pointer whitespace-nowrap rounded hover:bg-[#1B3B6F] transition">
+                {t(item.title)}
+              </span>
+              <ul className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out flex-col top-full left-0 bg-white text-black rounded-md shadow-md min-w-[220px] z-[999]">
+                {item.submenu.map((sub, i) => (
+                  <li key={i}>
+                    <Link to={sub.path} className="block px-4 py-2 text-[15px] hover:bg-[#1B3B6F] hover:text-white transition whitespace-nowrap">
+                      {t(sub.name)}
+                    </Link>
                   </li>
                 ))}
               </ul>
-            )}
-          </li>
-        ))}
-        {/* NSS, Contact Us and Log In */}
-        <li className="nav-item">
-          <Link to="/nss" className="nav-button nss">
-            NSS
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact" className="nav-button contact">
-            Contact Us
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/login" className="nav-button sign-in">
-            Sign In
-          </Link>
-        </li>
-      </ul>
-    </nav>
-=======
-    <>
-      <nav className="bg-[#0A2647] text-white shadow-md relative z-[999]">
-        <div className="max-w-[1200px] mx-auto px-4 py-3 flex justify-between items-center">
-          {/* Hamburger - Mobile */}
-          <div className="md:hidden">
-            <button onClick={() => setMobileMenu(!mobileMenu)}>
-              {mobileMenu ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
-          </div>
-
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex gap-4 items-center whitespace-nowrap">
-            <li>
-              <Link to="/" className="text-white font-bold text-[17px] px-4 py-2 hover:bg-[#1B3B6F] rounded transition">
-                {t("home")}
-              </Link>
             </li>
+          ))}
 
+          {/* NSS */}
+          <li>
+            <Link to="/nss" className="font-bold text-[16px] px-3 py-2 whitespace-nowrap rounded hover:text-[#FFD700] transition">
+              {t("nss")}
+            </Link>
+          </li>
+
+          {/* Contact Us */}
+          <li>
+            <Link to="/contact" className="bg-[#2E8B57] text-white font-bold text-[16px] px-3 py-2 whitespace-nowrap rounded hover:bg-[#5DADE2] transition">
+              {t("contact_us")}
+            </Link>
+          </li>
+
+          {/* Sign In Dropdown */}
+          <li className="relative group ml-2 whitespace-nowrap">
+            <div className="bg-white text-[#0A2647] font-bold text-[16px] px-3 py-2 rounded hover:bg-[#5DADE2] hover:text-white transition cursor-pointer">
+              {t("sign_in")}
+            </div>
+            <div className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out flex flex-col top-full right-0 bg-white text-black rounded shadow-md min-w-[200px] z-[999]">
+              <Link to="/login" className="block px-4 py-2 whitespace-nowrap hover:bg-[#1B3B6F] hover:text-white transition">
+                {t("login")}
+              </Link>
+              <Link to="/employer-login" className="block px-4 py-2 whitespace-nowrap hover:bg-[#1B3B6F] hover:text-white transition">
+                {t("login_employer")}
+              </Link>
+            </div>
+          </li>
+
+          {/* 🌐 Language Switcher */}
+          <li className="ml-3 whitespace-nowrap">
+            <LanguageSwitcher />
+          </li>
+        </ul>
+      </div>
+
+      {/* ✅ Mobile Menu */}
+      {mobileMenu && (
+        <div className="md:hidden px-4 pb-4">
+          <ul className="flex flex-col gap-3 text-white">
+            <li><Link to="/" onClick={() => setMobileMenu(false)}>{t("home")}</Link></li>
             {menuItems.map((item, index) => (
-              <li key={index} className="relative group">
-                <span className="text-white font-bold text-[17px] px-4 py-2 cursor-pointer hover:bg-[#1B3B6F] rounded transition inline-block">
-                  {t(item.title)}
-                </span>
-                <ul className="absolute hidden group-hover:flex flex-col top-full left-0 bg-white text-black rounded-md shadow-md min-w-[220px] z-[999]">
+              <details key={index} className="bg-[#1B3B6F] rounded">
+                <summary className="cursor-pointer px-4 py-2 font-semibold">{t(item.title)}</summary>
+                <ul className="pl-4 pb-2">
                   {item.submenu.map((sub, i) => (
                     <li key={i}>
-                      <Link
-                        to={sub.path}
-                        className="block px-4 py-2 text-[15px] hover:bg-[#1B3B6F] hover:text-white transition whitespace-nowrap"
-                      >
-                        {t(sub.name)}
-                      </Link>
+                      <Link to={sub.path} onClick={() => setMobileMenu(false)} className="block py-1 text-sm">{t(sub.name)}</Link>
                     </li>
                   ))}
                 </ul>
-              </li>
+              </details>
             ))}
-
-            <li>
-              <Link to="/nss" className="text-white font-bold text-[17px] px-4 py-2 hover:text-[#FFD700] rounded transition">
-                {t("nss")}
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/contact" className="bg-[#2E8B57] text-white font-bold text-[17px] px-4 py-2 rounded hover:bg-[#5DADE2] transition">
-                {t("contact_us")}
-              </Link>
-            </li>
-
-            <li className="relative group">
-              <div className="bg-white text-[#0A2647] font-bold text-[17px] px-4 py-2 rounded hover:bg-[#5DADE2] hover:text-white transition cursor-pointer">
-                {t("sign_in")}
-              </div>
-              <div className="absolute hidden group-hover:flex flex-col top-full right-0 bg-white text-black rounded shadow-md min-w-[180px] z-[999]">
-                <Link to="/login" className="px-4 py-2 hover:bg-[#1B3B6F] hover:text-white transition">
-                  {t("login")}
-                </Link>
-                <Link to="/employer-login" className="px-4 py-2 hover:bg-[#1B3B6F] hover:text-white transition">
-                  {t("login_employer")}
-                </Link>
-              </div>
-            </li>
+            <li><Link to="/nss" onClick={() => setMobileMenu(false)}>{t("nss")}</Link></li>
+            <li><Link to="/contact" onClick={() => setMobileMenu(false)}>{t("contact_us")}</Link></li>
+            <li><Link to="/login" onClick={() => setMobileMenu(false)}>{t("login")}</Link></li>
+            <li><Link to="/employer-login" onClick={() => setMobileMenu(false)}>{t("login_employer")}</Link></li>
+            <li><LanguageSwitcher /></li>
           </ul>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenu && (
-          <div className="md:hidden px-4 pb-4">
-            <ul className="flex flex-col gap-3 text-white">
-              <li><Link to="/" onClick={() => setMobileMenu(false)}>{t("home")}</Link></li>
-              {menuItems.map((item, index) => (
-                <details key={index} className="bg-[#1B3B6F] rounded">
-                  <summary className="cursor-pointer px-4 py-2 font-semibold">{t(item.title)}</summary>
-                  <ul className="pl-4 pb-2">
-                    {item.submenu.map((sub, i) => (
-                      <li key={i}>
-                        <Link to={sub.path} onClick={() => setMobileMenu(false)} className="block py-1 text-sm">{t(sub.name)}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              ))}
-              <li><Link to="/nss" onClick={() => setMobileMenu(false)}>{t("nss")}</Link></li>
-              <li><Link to="/contact" onClick={() => setMobileMenu(false)}>{t("contact_us")}</Link></li>
-              <li><Link to="/login" onClick={() => setMobileMenu(false)}>{t("login")}</Link></li>
-              <li><Link to="/employer-login" onClick={() => setMobileMenu(false)}>{t("login_employer")}</Link></li>
-            </ul>
-          </div>
-        )}
-      </nav>
-    </>
->>>>>>> ada15781fa49f5588764edbb58ad3138a618432c
+      )}
+    </nav>
   );
 };
 
 export default Navbar;
+
+
+
+
+
 

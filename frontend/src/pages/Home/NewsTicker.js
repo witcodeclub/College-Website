@@ -15,22 +15,22 @@ const NewsTicker = () => {
   }, []);
 
   return (
-    <div className="relative w-full bg-[#0d47a1] text-white overflow-hidden h-14 flex items-center">
-      {/* ✅ Fixed Green Announcement Label */}
-      <div className="absolute left-0 top-0 bottom-0 bg-green-600 px-3 sm:px-4 flex items-center font-semibold text-white shadow-md z-10">
+    <div className="relative w-full bg-[#0A2647] text-white overflow-hidden h-12 flex items-center">
+      {/* ✅ Bold Green Announcement Label */}
+      <div className="absolute left-0 top-0 bottom-0 bg-green-600 px-3 sm:px-4 flex items-center font-extrabold text-white shadow-md z-10">
         Announcement
       </div>
 
-      {/* ✅ Scrolling Headlines with Pause on Hover/Touch */}
+      {/* ✅ Scrolling Headlines with Pause on Hover */}
       <div
-        className="pl-40 sm:pl-44 md:pl-52 whitespace-nowrap animate-marquee-right text-base sm:text-lg font-medium hover:[animation-play-state:paused] active:[animation-play-state:paused]"
+        className="pl-40 sm:pl-44 md:pl-52 whitespace-nowrap animate-marquee-right text-sm sm:text-base font-medium hover:[animation-play-state:paused] active:[animation-play-state:paused]"
       >
         {headlines.map((news, index) => (
           <span key={index} className="mx-6 sm:mx-10">{news}</span>
         ))}
       </div>
 
-      {/* ✅ Custom Animation (Left → Right) */}
+      {/* ✅ Custom Animation */}
       <style>
         {`
           @keyframes marquee-right {
@@ -48,6 +48,7 @@ const NewsTicker = () => {
 };
 
 export default NewsTicker;
+
 
 
 
