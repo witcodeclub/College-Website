@@ -78,7 +78,7 @@ const Footer = () => {
             {t("explore")} <span className="sm:hidden">{exploreOpen ? "▲" : "▼"}</span>
           </h4>
           <ul className={`space-y-1 text-gray-300 transition-all duration-300 overflow-hidden sm:block ${exploreOpen ? "max-h-40" : "max-h-0 sm:max-h-none"}`}>
-            <li><Link to="/societies" className="hover:underline">{t("societies")}</Link></li>
+            <li><Link to="/facilities/societies" className="hover:underline">{t("societies")}</Link></li>
             <li><Link to="/facilities/labs" className="hover:underline">{t("labs")}</Link></li>
             <li><Link to="/facilities/library" className="hover:underline">{t("library")}</Link></li>
             <li><Link to="/events" className="hover:underline">{t("events")}</Link></li>

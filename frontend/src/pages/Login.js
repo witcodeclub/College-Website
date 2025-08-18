@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { users as defaultUsers } from '../data/user';
 
 function Login() {
   const [role, setRole] = useState('student');
@@ -10,23 +11,32 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (emailOrReg && password) {
-      const baseURL = 'http://localhost:3001';
+    // Merge localStorage users + default dummy users
+    const localUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const allUsers = [...defaultUsers, ...localUsers];
 
-      if (role === 'student') {
-        window.location.href = `${baseURL}/student`;
-      } else if (role === 'professor') {
-        window.location.href = `${baseURL}/professor`;
-      } else if (role === 'staff') {
-        window.location.href = `${baseURL}/staff`;
-      }
+    let matchedUser;
+    if (role === 'student') {
+      matchedUser = allUsers.find(
+        (u) => u.role === 'student' && u.regNo === emailOrReg && u.password === password
+      );
     } else {
-      alert("Please enter valid credentials.");
+      matchedUser = allUsers.find(
+        (u) => u.role === role && u.email === emailOrReg && u.password === password
+      );
+    }
+
+    if (matchedUser) {
+      const baseURL = 'http://localhost:3001'; 
+      window.location.href = `${baseURL}/${role}`;
+    } else {
+      alert("Invalid credentials. Please try again or Sign Up.");
+      navigate("/signin"); // redirect to signup if not found
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 md:px-10 py-10">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
       <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">Login</h2>
         <form onSubmit={handleLogin}>
@@ -45,8 +55,8 @@ function Login() {
             {role === 'student' ? 'Registration Number' : 'Email'}
           </label>
           <input
-            type={role === 'student' ? 'text' : 'email'}
-            placeholder={role === 'student' ? 'e.g., 23CSE1234' : 'Enter your email'}
+            type={role === "student" ? "text" : "email"}
+            placeholder={role === 'student' ? 'e.g., 2025001' : 'Enter your Email'}
             value={emailOrReg}
             onChange={(e) => setEmailOrReg(e.target.value)}
             className="w-full border border-gray-300 rounded-md p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -70,10 +80,24 @@ function Login() {
             Login
           </button>
         </form>
+
+        <p className="text-center text-gray-600 mt-4">
+          Don't have an account?{" "}
+          <button
+            onClick={() => navigate('/signin')}
+            className="text-blue-600 hover:underline"
+          >
+            Sign Up
+          </button>
+        </p>
       </div>
     </div>
   );
 }
 
 export default Login;
+
+
+
+
 

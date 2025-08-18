@@ -21,6 +21,7 @@ import NSS from "./pages/NSS";
 // Login Pages
 import Login from "./pages/Login";
 import EmployerLogin from "./pages/EmployerLogin";
+import SignIn from "./pages/SignIn"; // Import SignIn component
 
 // Discover Pages
 import Discover from "./pages/Discover/Discover";
@@ -54,6 +55,8 @@ import Sports from "./pages/Facilities/SportsClub";
 import Hostel from "./pages/Facilities/Hostel";
 import Cafeteria from "./pages/Facilities/Cafeteria";
 import Other from "./pages/Facilities/Other";
+
+
 
 // Training & Placement Pages
 import TP from "./pages/TP/TP";
@@ -108,13 +111,13 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/anti-ragging" element={<AntiRagging />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/societies" element={<Societies />} />
+      
         <Route path="/nss" element={<NSS />} />
 
         {/* Login */}
         <Route path="/login" element={<Login />} />
         <Route path="/employer-login" element={<EmployerLogin />} />
-
+        <Route path="/signin" element={<SignIn />} />
         {/* Discover */}
         <Route path="/discover" element={<Discover />} />
         <Route path="/discover/department" element={<Department />} />
@@ -146,7 +149,7 @@ const App = () => {
         <Route path="/facilities/sports" element={<Sports />} />
         <Route path="/facilities/hostel" element={<Hostel />} />
         <Route path="/facilities/other" element={<Other />} />
-        <Route path="/facilities/societies" element={<Societies />} />
+        <Route path="/societies" element={<Societies />} />
         <Route path="/facilities/cafeteria" element={<Cafeteria />} />
 
         {/* Training & Placement */}
