@@ -1,6 +1,8 @@
 // EmployerLogin.js
 import React, { useState } from "react";
-import {users} from "../data/user"; // Dummy users data file
+import axios from "axios";
+
+const API_URL = 'http://localhost:3001/api/auth';
 
 const EmployerLogin = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -8,38 +10,48 @@ const EmployerLogin = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleAuth = () => {
+  const handleAuth = async () => {
     setError("");
+    setLoading(true);
 
-    if (isSignup) {
-      // SIGNUP (Only Director can signup)
-      const directorExists = users.find(
-        (u) => u.role === "director" && u.email === email
-      );
-      if (directorExists) {
-        setError("Director already registered!");
-        return;
-      }
+    try {
+      if (isSignup) {
+        // SIGNUP (Only Director can signup)
+        const response = await axios.post(`${API_URL}/employer-register`, {
+          email,
+          password,
+          name,
+        });
 
-      if (email && password && name) {
-        users.push({ id: Date.now(), name, email, password, role: "director" });
-        alert("Director account created successfully!");
-        setIsSignup(false); // Go back to login
+        if (response.data.success) {
+          // Store token and user info
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          
+          alert("Director account created successfully!");
+          setIsSignup(false); // Go back to login
+          setLoading(false);
+        }
       } else {
-        setError("All fields are required!");
-      }
-    } else {
-      // LOGIN (Only director can login)
-      const director = users.find(
-        (u) => u.role === "director" && u.email === email && u.password === password
-      );
+        // LOGIN (Only director can login)
+        const response = await axios.post(`${API_URL}/employer-login`, {
+          email,
+          password,
+        });
 
-      if (director) {
-        window.location.href = "http://localhost:3001/employer";
-      } else {
-        setError("Invalid credentials or not authorized!");
+        if (response.data.success) {
+          // Store token and user info
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+          
+          window.location.href = "http://localhost:3003/employer";
+        }
       }
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid credentials or not authorized!");
+      setLoading(false);
     }
   };
 
@@ -79,10 +91,11 @@ const EmployerLogin = () => {
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
         <button
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md font-semibold transition duration-200"
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white py-2 rounded-md font-semibold transition duration-200"
           onClick={handleAuth}
+          disabled={loading}
         >
-          {isSignup ? "Signup" : "Login"}
+          {loading ? (isSignup ? "Signing up..." : "Logging in...") : (isSignup ? "Signup" : "Login")}
         </button>
 
         <p className="mt-4 text-sm text-center text-gray-600">

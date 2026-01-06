@@ -1,37 +1,58 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { users as defaultUsers } from '../data/user';
+import axios from 'axios';
+
+const API_URL = 'http://localhost:3001/api/auth';
 
 function Login() {
   const [role, setRole] = useState('student');
   const [emailOrReg, setEmailOrReg] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
 
-    // Merge localStorage users + default dummy users
-    const localUsers = JSON.parse(localStorage.getItem("users")) || [];
-    const allUsers = [...defaultUsers, ...localUsers];
+    try {
+      // Trim whitespace from inputs
+      const trimmedEmailOrReg = emailOrReg.trim();
+      const trimmedPassword = password.trim();
 
-    let matchedUser;
-    if (role === 'student') {
-      matchedUser = allUsers.find(
-        (u) => u.role === 'student' && u.regNo === emailOrReg && u.password === password
-      );
-    } else {
-      matchedUser = allUsers.find(
-        (u) => u.role === role && u.email === emailOrReg && u.password === password
-      );
-    }
+      const response = await axios.post(`${API_URL}/login`, {
+        role,
+        emailOrReg: trimmedEmailOrReg,
+        password: trimmedPassword,
+      });
 
-    if (matchedUser) {
-      const baseURL = 'http://localhost:3001'; 
-      window.location.href = `${baseURL}/${role}`;
-    } else {
-      alert("Invalid credentials. Please try again or Sign Up.");
-      navigate("/signin"); // redirect to signup if not found
+      if (response.data.success) {
+        // Store token and user info
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        
+        // Redirect to dashboard
+        const baseURL = 'http://localhost:3003'; 
+        window.location.href = `${baseURL}/${role}`;
+      } else {
+        setError('Login failed. Please try again.');
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      if (err.response) {
+        // Server responded with error
+        setError(err.response.data?.message || 'Invalid credentials. Please try again.');
+      } else if (err.request) {
+        // Request made but no response (backend might be down)
+        setError('Cannot connect to server. Please make sure the backend is running on port 3001.');
+      } else {
+        // Something else happened
+        setError('An error occurred. Please try again.');
+      }
+      setLoading(false);
     }
   };
 
@@ -73,11 +94,18 @@ function Login() {
             required
           />
 
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+              {error}
+            </div>
+          )}
+
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-semibold transition duration-200"
+            disabled={loading}
+            className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white py-2 rounded-md font-semibold transition duration-200"
           >
-            Login
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
