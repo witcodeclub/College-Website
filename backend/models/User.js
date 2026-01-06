@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     sparse: true,
     unique: true,
   },
-  // For professors, staff, and director
+  // Email for all users (students can have email too)
   email: {
     type: String,
     sparse: true,

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import {
   PieChart,
   Pie,
@@ -8,8 +9,103 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+const API_URL = 'http://localhost:3001/api/auth';
+
 const Professor = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [professorData, setProfessorData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+    let redirectTimeout = null;
+
+    // Check for token in URL hash (from login redirect)
+    const hash = window.location.hash;
+    if (hash && hash.includes('token=')) {
+      const tokenFromHash = decodeURIComponent(hash.split('token=')[1].split('&')[0]);
+      console.log('✅ Token found in URL hash, storing in localStorage');
+      localStorage.setItem('token', tokenFromHash);
+      // Clear the hash from URL
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    const fetchProfessorProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        console.log('=== Professor Dashboard Load Debug ===');
+        console.log('Token exists:', !!token);
+        
+        if (!token) {
+          console.log('❌ No token found, redirecting to login');
+          if (isMounted) {
+            redirectTimeout = setTimeout(() => {
+              window.location.href = 'http://localhost:3000/login';
+            }, 2000);
+          }
+          return;
+        }
+
+        console.log('Fetching professor profile from:', `${API_URL}/profile`);
+        console.log('Request headers:', {
+          'Authorization': `Bearer ${token.substring(0, 20)}...`
+        });
+        
+        const response = await axios.get(`${API_URL}/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          timeout: 15000,
+          withCredentials: false
+        });
+
+        console.log('Profile response:', response.data);
+        if (isMounted && response.data.success) {
+          setProfessorData(response.data.user);
+          setLoading(false);
+        } else if (isMounted) {
+          setError('Failed to load professor profile');
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('Error fetching professor profile:', err);
+        console.error('Error response:', err.response?.data);
+        console.error('Error status:', err.response?.status);
+        
+        if (!isMounted) return;
+        
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          console.log('❌ Unauthorized, clearing token and redirecting');
+          localStorage.clear();
+          redirectTimeout = setTimeout(() => {
+            window.location.href = 'http://localhost:3000/login';
+          }, 2000);
+        } else if (err.request) {
+          console.error('Network error details:', {
+            message: err.message,
+            code: err.code,
+            request: err.request
+          });
+          setError(`Cannot connect to server at ${API_URL}/profile. Please check if the backend is running on port 3001. Error: ${err.message}`);
+          setLoading(false);
+        } else {
+          setError(`Failed to load professor profile: ${err.message}`);
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProfessorProfile();
+
+    return () => {
+      isMounted = false;
+      if (redirectTimeout) {
+        clearTimeout(redirectTimeout);
+      }
+    };
+  }, []);
 
   const chartData = [
     { name: 'Total Students', value: 120 },
@@ -72,11 +168,26 @@ const Professor = () => {
 
       {/* Main Content */}
       <main className="md:ml-56 flex-1 p-4 sm:p-6 space-y-6">
-        {/* Welcome */}
-           <section id="welcome" className="bg-emerald-700 p-4 sm:p-6 rounded shadow text-center text-gray-800">
-  <h1 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Welcome, Professor!</h1>
-  <p className="text-sm sm:text-base">Dr. APJ Abdul Kalam Women's Institute of Technology</p>
-</section>
+        {loading ? (
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-700 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading profile...</p>
+            </div>
+          </div>
+        ) : error ? (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            {error}
+          </div>
+        ) : (
+          <>
+            {/* Welcome */}
+            <section id="welcome" className="bg-emerald-700 p-4 sm:p-6 rounded shadow text-center text-white">
+              <h1 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">
+                Hi {professorData?.name || 'Professor'}!
+              </h1>
+              <p className="text-sm sm:text-base">Dr. APJ Abdul Kalam Women's Institute of Technology</p>
+            </section>
 
 
         {/* Profile + Overview */}
@@ -94,11 +205,11 @@ const Professor = () => {
   </div>
 
   <div className="text-sm text-gray-800 space-y-1 text-left w-full max-w-[230px] sm:max-w-[260px]">
-    <div className="flex justify-between"><span><strong>Name:</strong></span><span>Dr. A.K. Sinha</span></div>
-    <div className="flex justify-between"><span><strong>Department:</strong></span><span>Computer Science</span></div>
-    <div className="flex justify-between"><span><strong>Email:</strong></span><span>aksinha@college.edu.in</span></div>
+    <div className="flex justify-between"><span><strong>Name:</strong></span><span>{professorData?.name || 'N/A'}</span></div>
+    <div className="flex justify-between"><span><strong>Department:</strong></span><span>{professorData?.department || 'N/A'}</span></div>
+    <div className="flex justify-between"><span><strong>Email:</strong></span><span className="text-xs">{professorData?.email || 'N/A'}</span></div>
+    <div className="flex justify-between"><span><strong>Role:</strong></span><span>{professorData?.role || 'N/A'}</span></div>
     <div className="flex justify-between"><span><strong>Experience:</strong></span><span>10+ years</span></div>
-    <div className="flex justify-between"><span><strong>Courses:</strong></span><span>DSA, DBMS, OS</span></div>
   </div>
 </div>
 
@@ -187,6 +298,8 @@ const Professor = () => {
             </div>
           </div>
         </section>
+          </>
+        )}
       </main>
     </div>
   );

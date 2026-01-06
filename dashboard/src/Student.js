@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -9,8 +10,147 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+const API_URL = 'http://localhost:3001/api/student';
+
 const Student = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [studentData, setStudentData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let isMounted = true;
+    let redirectTimeout = null;
+    let hasRedirected = false;
+
+    // Check for token in URL hash (from login redirect)
+    const hash = window.location.hash;
+    if (hash && hash.includes('token=')) {
+      const tokenFromHash = decodeURIComponent(hash.split('token=')[1].split('&')[0]);
+      console.log('✅ Token found in URL hash, storing in localStorage');
+      localStorage.setItem('token', tokenFromHash);
+      // Clear the hash from URL
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    const fetchStudentProfile = async () => {
+      // Prevent multiple redirects
+      if (hasRedirected) {
+        console.log('Already redirected, skipping');
+        return;
+      }
+
+      try {
+        const token = localStorage.getItem('token');
+        const userData = localStorage.getItem('user');
+        
+        console.log('=== Dashboard Load Debug ===');
+        console.log('Token exists:', !!token);
+        console.log('Token length:', token?.length);
+        console.log('User data:', userData ? JSON.parse(userData) : 'No user data');
+        console.log('API URL:', `${API_URL}/profile`);
+        
+        if (!token) {
+          console.log('❌ No token found, redirecting to login');
+          hasRedirected = true;
+          if (isMounted) {
+            redirectTimeout = setTimeout(() => {
+              window.location.href = 'http://localhost:3000/login';
+            }, 2000);
+          }
+          return;
+        }
+
+        // Verify token format
+        if (token.length < 10) {
+          console.error('❌ Invalid token format (too short)');
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          hasRedirected = true;
+          if (isMounted) {
+            redirectTimeout = setTimeout(() => {
+              window.location.href = 'http://localhost:3000/login';
+            }, 2000);
+          }
+          return;
+        }
+
+        console.log('✅ Token looks valid, making API call...');
+        console.log('Request URL:', `${API_URL}/profile`);
+        console.log('Request headers:', {
+          'Authorization': `Bearer ${token.substring(0, 20)}...`
+        });
+
+        const response = await axios.get(`${API_URL}/profile`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          timeout: 15000,
+          withCredentials: false
+        });
+
+        console.log('✅ Profile response received:', response.data);
+        if (isMounted && response.data.success) {
+          console.log('✅ Setting student data:', response.data.student);
+          setStudentData(response.data.student);
+          setLoading(false);
+        } else if (isMounted) {
+          console.error('❌ Response not successful');
+          setError('Failed to load student profile');
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('❌ Error fetching student profile:', err);
+        console.error('Error type:', err.name);
+        console.error('Error message:', err.message);
+        console.error('Error response data:', err.response?.data);
+        console.error('Error response status:', err.response?.status);
+        console.error('Error request:', err.request);
+        
+        if (!isMounted || hasRedirected) return;
+        
+        // Only redirect on 401/403 (unauthorized), not on other errors
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          console.log('❌ Unauthorized (401/403), clearing token and redirecting');
+          console.log('Error details:', err.response?.data);
+          localStorage.clear();
+          hasRedirected = true;
+          redirectTimeout = setTimeout(() => {
+            window.location.href = 'http://localhost:3000/login';
+          }, 2000);
+        } else if (err.response?.status === 404) {
+          console.error('❌ Student profile not found (404)');
+          setError('Student profile not found. Please contact support.');
+          setLoading(false);
+        } else if (err.request) {
+          // Network error - don't redirect, just show error
+          console.error('❌ Network error - backend not reachable');
+          console.error('Network error details:', {
+            message: err.message,
+            code: err.code,
+            request: err.request
+          });
+          setError(`Cannot connect to server at ${API_URL}/profile. Please check if the backend is running on port 3001. Error: ${err.message}`);
+          setLoading(false);
+        } else {
+          console.error('❌ Other error:', err.message);
+          setError(`Failed to load student profile: ${err.message}`);
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchStudentProfile();
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+      if (redirectTimeout) {
+        clearTimeout(redirectTimeout);
+      }
+    };
+  }, []); // Empty dependency array - only run once on mount
 
   const attendanceData = [
     { subject: "DSA", attendance: 85 },
@@ -77,15 +217,28 @@ const Student = () => {
 
       {/* Main Content */}
       <main className="md:ml-56 flex-1 p-4 sm:p-6 space-y-6 bg-emerald-to-br from emerald-50 to white min-h-screen overflow-y-auto">
-        {/* Welcome */}
-        <section id="welcome" className="bg-emerald-700 p-4 sm:p-6 rounded-xl shadow text-center">
-  <h1 className="text-2xl sm:text-3xl font-bold text-white-900 mb-1 sm:mb-2">
-    Welcome, Student!
-  </h1>
-  <p className="text-base sm:text-lg text-white-700">
-    Dr. APJ Abdul Kalam Women's Institute of Technology
-  </p>
-</section>
+        {loading ? (
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-700 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading profile...</p>
+            </div>
+          </div>
+        ) : error ? (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            {error}
+          </div>
+        ) : (
+          <>
+            {/* Welcome */}
+            <section id="welcome" className="bg-emerald-700 p-4 sm:p-6 rounded-xl shadow text-center">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
+                Hi {studentData?.name || 'Student'}!
+              </h1>
+              <p className="text-base sm:text-lg text-white">
+                Dr. APJ Abdul Kalam Women's Institute of Technology
+              </p>
+            </section>
 
     <section id="profile" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
   {/* Profile */}
@@ -99,12 +252,12 @@ const Student = () => {
       />
     </div>
     <div className="text-sm text-gray-800 space-y-1 text-left w-full max-w-[230px] sm:max-w-[250px]">
-      <div className="flex justify-between"><span><strong>Name:</strong></span><span>__________</span></div>
-      <div className="flex justify-between"><span><strong>University Roll:</strong></span><span>__________</span></div>
-      <div className="flex justify-between"><span><strong>Class Roll:</strong></span><span>__________</span></div>
+      <div className="flex justify-between"><span><strong>Name:</strong></span><span>{studentData?.name || 'N/A'}</span></div>
+      <div className="flex justify-between"><span><strong>Registration Number:</strong></span><span>{studentData?.registrationNumber || 'N/A'}</span></div>
+      <div className="flex justify-between"><span><strong>Roll Number:</strong></span><span>{studentData?.rollNumber || 'N/A'}</span></div>
+      <div className="flex justify-between"><span><strong>Email:</strong></span><span className="text-xs">{studentData?.email || 'N/A'}</span></div>
       <div className="flex justify-between"><span><strong>Branch:</strong></span><span>__________</span></div>
       <div className="flex justify-between"><span><strong>Semester:</strong></span><span>__________</span></div>
-      <div className="flex justify-between"><span><strong>Session:</strong></span><span>__________</span></div>
     </div>
   </div>
 
@@ -193,6 +346,8 @@ const Student = () => {
             <a href="#" className="text-blue-700 underline text-sm">View/Download Result</a>
           </div>
         </section>
+          </>
+        )}
       </main>
     </div>
   );

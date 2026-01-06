@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/api/auth';
+const API_URL = 'http://localhost:3001/api';
+const STUDENT_API_URL = `${API_URL}/student`;
+const AUTH_API_URL = `${API_URL}/auth`;
 
 function Login() {
   const [role, setRole] = useState('student');
@@ -22,35 +24,72 @@ function Login() {
       const trimmedEmailOrReg = emailOrReg.trim();
       const trimmedPassword = password.trim();
 
-      const response = await axios.post(`${API_URL}/login`, {
-        role,
-        emailOrReg: trimmedEmailOrReg,
-        password: trimmedPassword,
-      });
+      let response;
+      
+      // Use student-specific login endpoint for students
+      if (role === 'student') {
+        response = await axios.post(`${STUDENT_API_URL}/login`, {
+          registrationNumber: trimmedEmailOrReg,
+          password: trimmedPassword,
+        });
+      } else {
+        // Use general auth endpoint for professor/staff
+        response = await axios.post(`${AUTH_API_URL}/login`, {
+          role,
+          emailOrReg: trimmedEmailOrReg,
+          password: trimmedPassword,
+        });
+      }
 
       if (response.data.success) {
         // Store token and user info
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
+        const token = response.data.token;
+        const userData = response.data.user;
         
-        // Redirect to dashboard
+        console.log('Login successful, token received:', token ? 'Token exists' : 'No token');
+        console.log('User data:', userData);
+        
+        // Store in localStorage (for same origin)
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(userData));
+        
+        // Verify token was stored
+        const storedToken = localStorage.getItem('token');
+        console.log('Token stored in localStorage:', storedToken ? 'Yes' : 'No');
+        
+        // Since dashboard is on different port, pass token via URL hash
+        // Dashboard will extract it and store in its localStorage
         const baseURL = 'http://localhost:3003'; 
-        window.location.href = `${baseURL}/${role}`;
+        const redirectURL = `${baseURL}/${role}#token=${encodeURIComponent(token)}`;
+        
+        console.log('Redirecting to dashboard with token in URL hash');
+        window.location.href = redirectURL;
       } else {
         setError('Login failed. Please try again.');
         setLoading(false);
       }
     } catch (err) {
       console.error('Login error:', err);
+      console.error('Error details:', {
+        message: err.message,
+        response: err.response?.data,
+        status: err.response?.status,
+        request: err.request
+      });
+      
       if (err.response) {
         // Server responded with error
-        setError(err.response.data?.message || 'Invalid credentials. Please try again.');
+        const errorMessage = err.response.data?.message || 'Invalid credentials. Please try again.';
+        setError(errorMessage);
+        console.error('Server error:', errorMessage);
       } else if (err.request) {
         // Request made but no response (backend might be down)
         setError('Cannot connect to server. Please make sure the backend is running on port 3001.');
+        console.error('Network error - backend might be down');
       } else {
         // Something else happened
-        setError('An error occurred. Please try again.');
+        setError(`An error occurred: ${err.message}`);
+        console.error('Unexpected error:', err.message);
       }
       setLoading(false);
     }

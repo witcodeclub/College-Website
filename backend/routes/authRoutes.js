@@ -46,18 +46,51 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = generateToken(user._id, user.role);
+    // If student, get registry details for token
+    let token;
+    let userResponse = {
+      id: user._id,
+      role: user.role,
+      regNo: user.regNo,
+      email: user.email,
+      name: user.name,
+    };
+
+    if (role === 'student' && user.regNo) {
+      // Get student registry for rollNumber
+      const StudentRegistry = require('../models/StudentRegistry');
+      const registryEntry = await StudentRegistry.findOne({ 
+        registrationNumber: user.regNo 
+      });
+      
+      if (registryEntry) {
+        const secret = process.env.JWT_SECRET || 'college-website-secret-key-2024-change-in-production';
+        token = jwt.sign(
+          { 
+            id: user._id, 
+            role: user.role,
+            registrationNumber: user.regNo,
+            rollNumber: registryEntry.rollNumber,
+            name: user.name
+          }, 
+          secret, 
+          {
+            expiresIn: process.env.JWT_EXPIRE || '7d',
+          }
+        );
+        userResponse.rollNumber = registryEntry.rollNumber;
+        userResponse.registrationNumber = user.regNo;
+      } else {
+        token = generateToken(user._id, user.role);
+      }
+    } else {
+      token = generateToken(user._id, user.role);
+    }
 
     res.json({
       success: true,
       token,
-      user: {
-        id: user._id,
-        role: user.role,
-        regNo: user.regNo,
-        email: user.email,
-        name: user.name,
-      },
+      user: userResponse,
     });
   } catch (error) {
     console.error('Login error:', error);
@@ -153,7 +186,23 @@ router.post('/register', async (req, res) => {
       userData.email = email.toLowerCase();
     }
 
+    console.log('Creating user with data:', {
+      role,
+      name: userData.name,
+      email: userData.email || 'N/A',
+      regNo: userData.regNo || 'N/A',
+      hasPassword: !!userData.password
+    });
+
     const user = await User.create(userData);
+
+    console.log('✅ User created successfully:', {
+      id: user._id,
+      role: user.role,
+      name: user.name,
+      email: user.email,
+      regNo: user.regNo
+    });
 
     const token = generateToken(user._id, user.role);
 
@@ -169,11 +218,29 @@ router.post('/register', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Register error:', error);
+    console.error('❌ Register error:', error);
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error code:', error.code);
+    
     if (error.code === 11000) {
+      console.error('Duplicate key error - user already exists');
       return res.status(400).json({ message: 'User already exists' });
     }
-    res.status(500).json({ message: 'Server error' });
+    
+    // Check if it's a MongoDB connection error
+    if (error.name === 'MongoServerError' || error.name === 'MongoError') {
+      console.error('❌ MongoDB error detected');
+      return res.status(500).json({ 
+        message: 'Database error. Please check MongoDB connection.',
+        error: error.message 
+      });
+    }
+    
+    res.status(500).json({ 
+      message: 'Server error',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 
@@ -239,6 +306,49 @@ router.get('/me', protect, async (req, res) => {
     res.json(user);
   } catch (error) {
     console.error('Get user error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// @route   GET /api/auth/profile
+// @desc    Get user profile (for professor and staff)
+// @access  Private
+router.get('/profile', protect, async (req, res) => {
+  try {
+    console.log('=== Profile Request Debug ===');
+    console.log('User from token:', req.user);
+    console.log('User role:', req.user?.role);
+    console.log('User ID:', req.user?.id);
+
+    // Find user
+    const user = await User.findById(req.user.id).select('-password');
+    if (!user) {
+      console.log('❌ User not found in database');
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    console.log('✅ User found:', {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role
+    });
+
+    const profileData = {
+      success: true,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        department: user.department || '',
+      },
+    };
+
+    console.log('✅ Sending response:', profileData);
+    res.json(profileData);
+  } catch (error) {
+    console.error('❌ Get profile error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
